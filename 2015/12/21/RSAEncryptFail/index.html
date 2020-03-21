@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="转载," />
+  <meta name="keywords" content="原创," />
 
 
 
@@ -79,17 +79,22 @@
 
 
 
-<meta name="description" content="在开发的过程中很多功能模块可能会在同一个App的不同的业务模块出现，也可能在不同的App出现，为了提高我们的开发效率，我们应该将普遍使用的功能模块封装成组件，并通过Cocoapods来管理  利用pod trunk发布程序">
+<meta name="description" content="前言：前段时间做RSA加密的时候，在调试的过程中，经常失败，后台接收到的加密参数为空，但是这种不是经常发生，而是随机的。经过测试，发现，这种情况在单独使用真机、模拟器的时候都不发生，只有在真机连接xcode进行调试的时候才会发生。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用Cocoapods制作属于自己的仓库">
-<meta property="og:url" content="http://yoursite.com/2018/12/21/MakeCocoapods/index.html">
+<meta property="og:title" content="iOS：关于iPhone连接Xcode时，RSA加密失败的一点总结">
+<meta property="og:url" content="http://yoursite.com/2015/12/21/RSAEncryptFail/index.html">
 <meta property="og:site_name" content="以技术之名">
-<meta property="og:description" content="在开发的过程中很多功能模块可能会在同一个App的不同的业务模块出现，也可能在不同的App出现，为了提高我们的开发效率，我们应该将普遍使用的功能模块封装成组件，并通过Cocoapods来管理  利用pod trunk发布程序">
-<meta property="article:published_time" content="2018-12-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-03-21T09:07:29.348Z">
+<meta property="og:description" content="前言：前段时间做RSA加密的时候，在调试的过程中，经常失败，后台接收到的加密参数为空，但是这种不是经常发生，而是随机的。经过测试，发现，这种情况在单独使用真机、模拟器的时候都不发生，只有在真机连接xcode进行调试的时候才会发生。">
+<meta property="og:image" content="http://note.youdao.com/yws/res/1743/WEBRESOURCE6aabbee371cdc4958f97a82fd2e10bfd">
+<meta property="og:image" content="https://note.youdao.com/src/WEBRESOURCE45dc12158d7d802e94f9aa97a2dac957">
+<meta property="og:image" content="https://note.youdao.com/src/WEBRESOURCE60da2ee59d90630d2153e1c32eeea6ad">
+<meta property="og:image" content="https://note.youdao.com/src/WEBRESOURCE98ddbdf80709cc5b154da3a6b13bdb09">
+<meta property="article:published_time" content="2015-12-21T09:13:53.000Z">
+<meta property="article:modified_time" content="2020-03-21T09:15:35.990Z">
 <meta property="article:author" content="Ray">
-<meta property="article:tag" content="转载">
+<meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://note.youdao.com/yws/res/1743/WEBRESOURCE6aabbee371cdc4958f97a82fd2e10bfd">
 
 
 
@@ -119,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/21/MakeCocoapods/"/>
+  <link rel="canonical" href="http://yoursite.com/2015/12/21/RSAEncryptFail/"/>
 
 
 
 
 
-  <title>用Cocoapods制作属于自己的仓库 | 以技术之名</title>
+  <title>iOS：关于iPhone连接Xcode时，RSA加密失败的一点总结 | 以技术之名</title>
   
 
 
@@ -302,7 +307,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/21/MakeCocoapods/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/12/21/RSAEncryptFail/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Ray">
@@ -319,7 +324,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">用Cocoapods制作属于自己的仓库</h1>
+          <h1 class="post-title" itemprop="name headline">iOS：关于iPhone连接Xcode时，RSA加密失败的一点总结</h1>
         
 
         <div class="post-meta">
@@ -331,8 +336,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-21T00:00:00+08:00">
-                2018-12-21
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2015-12-21T17:13:53+08:00">
+                2015-12-21
               </time>
             
 
@@ -371,7 +376,7 @@
 
           
           
-             <span id="/2018/12/21/MakeCocoapods/" class="leancloud_visitors" data-flag-title="用Cocoapods制作属于自己的仓库">
+             <span id="/2015/12/21/RSAEncryptFail/" class="leancloud_visitors" data-flag-title="iOS：关于iPhone连接Xcode时，RSA加密失败的一点总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -402,56 +407,37 @@
       
 
       
-        <blockquote>
-<p>在开发的过程中很多功能模块可能会在同一个App的不同的业务模块出现，也可能在不同的App出现，为了提高我们的开发效率，我们应该将普遍使用的功能模块封装成组件，并通过Cocoapods来管理</p>
-</blockquote>
-<p><a href="https://cyrill.win/articles/2016/12/04/pod-trunk" target="_blank" rel="noopener">利用pod trunk发布程序</a></p>
+        <h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><p>前段时间做RSA加密的时候，在调试的过程中，经常失败，后台接收到的加密参数为空，但是这种不是经常发生，而是随机的。经过测试，发现，这种情况在单独使用真机、模拟器的时候都不发生，只有在真机连接xcode进行调试的时候才会发生。</p>
 <a id="more"></a>
+<h3 id="追踪："><a href="#追踪：" class="headerlink" title="追踪："></a>追踪：</h3><p>在笔者打了N多断点之后，终于找到了问题发生的根源。在RSA加密的类中，有这么一段代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">CFTypeRef persistKey &#x3D; nil;</span><br><span class="line">OSStatus status &#x3D; SecItemAdd((__bridge CFDictionaryRef)publicKey, &amp;persistKey);</span><br><span class="line">if (persistKey !&#x3D; nil)&#123;</span><br><span class="line">CFRelease(persistKey);</span><br><span class="line">&#125;</span><br><span class="line">if ((status !&#x3D; noErr) &amp;&amp; (status !&#x3D; errSecDuplicateItem)) &#123;</span><br><span class="line">       </span><br><span class="line">       return nil;</span><br><span class="line">       &#125;</span><br><span class="line">       </span><br><span class="line">       [publicKey removeObjectForKey:(__bridge id)kSecValueData];</span><br><span class="line">       [publicKey removeObjectForKey:(__bridge id)kSecReturnPersistentRef];</span><br><span class="line">       [publicKey setObject:[NSNumber numberWithBool:YES] forKey:(__bridge id)kSecReturnRef];</span><br><span class="line">       [publicKey setObject:(__bridge id) kSecAttrKeyTypeRSA forKey:(__bridge id)kSecAttrKeyType];</span><br><span class="line">       </span><br><span class="line">       &#x2F;&#x2F; Now fetch the SecKeyRef version of the key</span><br><span class="line">       SecKeyRef keyRef &#x3D; nil;</span><br><span class="line">       status &#x3D; SecItemCopyMatching((__bridge CFDictionaryRef)publicKey, (CFTypeRef *)&amp;keyRef);</span><br><span class="line">           </span><br><span class="line">           if(status !&#x3D; noErr)&#123;</span><br><span class="line">           return nil;</span><br><span class="line">    &#125;</span><br><span class="line">          </span><br><span class="line">return keyRef;</span><br></pre></td></tr></table></figure>
+<p>在模拟器上测试的时候：<br><img src="http://note.youdao.com/yws/res/1743/WEBRESOURCE6aabbee371cdc4958f97a82fd2e10bfd" alt="rsafail01.png"></p>
+<p>真机连接Xcode的时候：<br><img src="https://note.youdao.com/src/WEBRESOURCE45dc12158d7d802e94f9aa97a2dac957" alt="rsafail02.png"></p>
+<p>问题就出在：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OSStatus status &#x3D; SecItemAdd((__bridge CFDictionaryRef)publicKey, &amp;persistKey);</span><br></pre></td></tr></table></figure>
 
-<h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk register 邮箱 &#39;用户名&#39; --description&#x3D;&#39;电脑描述&#39;</span><br></pre></td></tr></table></figure>
-<h3 id="查收邮件"><a href="#查收邮件" class="headerlink" title="查收邮件"></a>查收邮件</h3><ul>
-<li>如果是QQ邮箱，可能会被放到“垃圾箱”中，并不一定是“收件箱”</li>
-<li>点击邮件中的链接： <a href="https://trunk.cocoapods.org/sessions/verify/xxxx" target="_blank" rel="noopener">https://trunk.cocoapods.org/sessions/verify/xxxx</a></li>
+<p>在<a href="https://stackoverflow.com/questions/20344255/secitemadd-and-secitemcopymatching-returns-error-code-34018-errsecmissingentit" target="_blank" rel="noopener">stack overflow</a>发现有的人也遇到了类似的问题，现总问题结如下：</p>
+<blockquote>
+<p>1.当我在连接着Xcode的真机设备上运行app的时候,我试图获取钥匙串，却由于-34018的错误导致运行失败。缺乏钥匙串错误代码开发文档，而且也很难重现此错误(发生的概率大概30%，我也不知道为什么发生)。由于缺乏相关的文档，所以调试这种错误就变得非常困难。为什么会出现此错误，如何解决？xcode5、ios7</p>
+</blockquote>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h5 id="方案一："><a href="#方案一：" class="headerlink" title="方案一："></a>方案一：</h5><p>你不得不通过在你的test target中添加下面的代码作为运行脚本来签名你的 .xcttest文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">codesign --verify --force --sign &quot;$CODE_SIGN_IDENTITY&quot; &quot;$CODESIGNING_FOLDER_PATH&quot;</span><br></pre></td></tr></table></figure>
+<h5 id="方案二："><a href="#方案二：" class="headerlink" title="方案二："></a>方案二：</h5><p>在查看<a href="https://opensource.apple.com/source/Security/Security-55471/sec/Security/" target="_blank" rel="noopener">源码</a> 之后，我注意到钥匙串通过一种安全进程(区别于app的进程)获取。<br>app和<code>安全进程</code>通过一项称之为<a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingXPCServices.html" target="_blank" rel="noopener">XPC</a>的技术进行<code>对话</code>。<code>安全进程</code>经由<code>XPC</code>的启动命令启动。你可以发现真机（模拟器也是如此）app的<code>安全进程</code>正在运行，它的父进程也已经启动。<br>我猜测，有可能某些未知的原因导致<code>安全进程</code>启动失败或者启动太慢，使得你使用它的时候还没有准备好。<br>或许，你可以考虑如何重启<code>安全进程</code>。</p>
+<h5 id="来自苹果官方回复："><a href="#来自苹果官方回复：" class="headerlink" title="来自苹果官方回复："></a>来自苹果官方回复：</h5><p>1.我们终于能够在ios8.3里重现-34018错误，这是我们查找问题根源和修复问题的第一步。<br>可是，我们并不能给出确切的解决时间，但是由于已经影响了很多的开发者，我们也非常希望尽快解决。<br>作为变通方案，我建议在在didFinishLaunchingWithOptions 和applicationDidBecomeActive: 两个方法之前添加一个小的延时给获取字符串争取一点时间。然而，好像并没有明显的作用，这就意味着除了重启app确实没有更好的解决方法。<br>这个问题似乎和内存压力也有一定的关系，在解决这个问题的时候，要积极处理内存警告的问题</p>
+<h3 id="更新："><a href="#更新：" class="headerlink" title="更新："></a>更新：</h3><ul>
+<li>一些情况下是由于不正确的app签名造成的，你可以很清楚的辨别这种原因，因为它100%可以重现。</li>
+<li>有些情况下这种问题的造成是由于iOS支持app开发环境中的一个bug<br>造成的。由于os中的另一个bug掩盖了它的影响，排查这个问题非常困难，这就意味着这个问题在内存面临巨大压力的时候会突然出现，我们相信这个问题在ios9.3中已经解决。</li>
+<li>我们猜测可能有其他的原因造成了这个问题</li>
 </ul>
-<h3 id="查看个人信息"><a href="#查看个人信息" class="headerlink" title="查看个人信息"></a>查看个人信息</h3><ul>
-<li>pod trunk me</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- Name:     &#39;Cyrill&#39;</span><br><span class="line">- Email:    lichunyang@outlook.com</span><br><span class="line">- Since:    December 4th, 2016 21:22</span><br><span class="line">- Pods:     None</span><br><span class="line">- Sessions:</span><br><span class="line">- December 4th, 2016 21:22 - July 13th, 21:00. IP: 103.244.255.84 Description: ‘MacbookProOfCyrill’</span><br></pre></td></tr></table></figure>
-<p>中间可能遇到这种错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NoMethodError - undefined method &#39;last&#39; for #&lt;Netrc::Entry:0x007fc59c246378&gt;</span><br></pre></td></tr></table></figure>
-<p>这时候需要尝试更新gem源或者pod</p>
-<ul>
-<li>sudo gem update –system</li>
-<li>sudo gem install cocoapods</li>
-<li>sudo gem install cocospods-trunk</li>
-</ul>
-<h3 id="创建podspec文件"><a href="#创建podspec文件" class="headerlink" title="创建podspec文件"></a>创建podspec文件</h3><p>接下来需要在项目根路径创建一个podspec文件来描述你的项目信息</p>
-<ul>
-<li>pod spec cretae 文件名 (比如pod spec cretae MJExtension就会生成一个MJExtension.podspec)</li>
-</ul>
-<h3 id="填写podspec内容"><a href="#填写podspec内容" class="headerlink" title="填写podspec内容"></a>填写podspec内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># spec开始  s作为spec的别名</span><br><span class="line">Pod::Spec.new do |s|</span><br><span class="line">    # 项目名称</span><br><span class="line">    s.name         &#x3D; &quot;CYPhotoLib&quot;  </span><br><span class="line">    # 版本号</span><br><span class="line">    s.version      &#x3D; &quot;0.0.1&quot;</span><br><span class="line">    # 简介</span><br><span class="line">    s.summary      &#x3D; &quot;A photo selection framework used PhotoLib.&quot;</span><br><span class="line">    # 项目地址，主页</span><br><span class="line">    s.homepage     &#x3D; &quot;https:&#x2F;&#x2F;github.com&#x2F;CoderCYLee&#x2F;CYPhotoLib&quot;</span><br><span class="line">    # 开源协议</span><br><span class="line">    s.license      &#x3D; &quot;MIT&quot;</span><br><span class="line">    # 作者</span><br><span class="line">    s.author             &#x3D; &#123; &quot;Cyrill&quot; &#x3D;&gt; &quot;lichunyang@outlook.com&quot; &#125;</span><br><span class="line">    # 作者的社交url</span><br><span class="line">    s.social_media_url   &#x3D; &quot;http:&#x2F;&#x2F;weibo.com&#x2F;exceptions&quot;</span><br><span class="line">    # 支持最低ios版本</span><br><span class="line">    s.platform     &#x3D; :ios, &quot;8.0&quot;</span><br><span class="line">    # 代码的git源地址 这里的tag&#x3D;&gt;&quot;#&#123;s.version&#125;&quot; 引用了上面的s.version  如果，在打tag的时候是用的  git tag &#39;v1.0.0&#39;  那么这里需要使用   tag &#x3D;&gt; &quot;v#&#123;s.version&#125;&quot; </span><br><span class="line">    s.source       &#x3D; &#123; :git &#x3D;&gt; &quot;https:&#x2F;&#x2F;github.com&#x2F;CoderCYLee&#x2F;CYPhotoLib.git&quot;, :tag &#x3D;&gt; s.version &#125;</span><br><span class="line">    # 项目需要用到的ios framework </span><br><span class="line">    s.frameworks &#x3D; &quot;UIKit&quot;, &quot;Photos&quot;</span><br><span class="line">    # 项目中用到的库</span><br><span class="line">    # s.libraries    &#x3D; &quot;stdc++ </span><br><span class="line">    # 代码文件</span><br><span class="line">    s.source_files  &#x3D; &quot;CYPhotoLib&#x2F;Classes&#x2F;**&#x2F;*.&#123;h,m&#125;&quot;</span><br><span class="line">    # 资源文件</span><br><span class="line">    s.resources &#x3D; &quot;CYPhotoLib&#x2F;Resource&#x2F;*.png&quot;</span><br><span class="line">    # 是否ARC</span><br><span class="line">    s.requires_arc &#x3D; true</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
-<ul>
-<li>值得注意的是，现在的podspec必须有tag，所以最好先打个tag，传到github:</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git tag 0.0.1</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-<ul>
-<li>删除tag</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git tag -d 1.0</span><br><span class="line">git push origin :refs&#x2F;tags&#x2F;1.0</span><br><span class="line">git tag -a 1.0 -m &quot;Version 1.0&quot;</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-<h3 id="检测podspec语法"><a href="#检测podspec语法" class="headerlink" title="检测podspec语法"></a>检测podspec语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod lib lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod spec相对于pod lib会更为精确，pod lib相当于只验证一个本地仓库，pod spec会同时验证本地仓库和远程仓库。</span><br></pre></td></tr></table></figure>
-<h3 id="发布podspec"><a href="#发布podspec" class="headerlink" title="发布podspec"></a>发布podspec</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pod trunk push CYPhotoLib.podspec</span><br><span class="line">如果是第一次发布pod，需要去 https:&#x2F;&#x2F;trunk.cocoapods.org&#x2F;claims&#x2F;new 认领pod</span><br></pre></td></tr></table></figure>
-<p>有可能出现的错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint 的时候是通过了的，没有错误</span><br><span class="line">然后 pod trunk push 的时候报错，如下：</span><br><span class="line">    [iOS] unknown: Encountered an unknown error (Pod::DSLError) during validation.</span><br><span class="line">解决：这种状况有可能是git的tag和podspec的tag不对</span><br></pre></td></tr></table></figure>
-<h3 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pod setup : 初始化</span><br><span class="line">pod repo update : 更新仓库</span><br><span class="line">pod search CYPhotoLib</span><br></pre></td></tr></table></figure>
-
-<h3 id="仓库更新"><a href="#仓库更新" class="headerlink" title="仓库更新"></a>仓库更新</h3><p>如果仓库更新慢，可以考虑更换仓库镜像</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pod repo remove master</span><br><span class="line">pod repo add master http:&#x2F;&#x2F;git.oschina.net&#x2F;akuandev&#x2F;Specs.git</span><br></pre></td></tr></table></figure>
-
-<h3 id="遇到的坑："><a href="#遇到的坑：" class="headerlink" title="遇到的坑："></a>遇到的坑：</h3><ol>
-<li>每次修改完代码，podspec内容的version字段都要修改，否则一直会读取原来的内容</li>
-<li>podspec的version字段和git提交的tag需要保持相同的</li>
-<li>代码中引入三方库的时候，不要用 <code>#import&quot;xxx.h&quot;</code>,要通过<code>#import&lt;xxx/xxxx.h&gt;</code>来引入，否则的话，会报 <code>include of non-modular header inside framework module “xxx.h”</code>的错误</li>
-</ol>
+<p>所以，如果你在运行ios9.3及以后系统的用户设备上（<code>未和Xcode链接</code>）遇到此问题，请记录此bug并报告给我们。）</p>
+<h5 id="方案四："><a href="#方案四：" class="headerlink" title="方案四："></a>方案四：</h5><p>我的app（iOS8.4）现在极少遇到 -34018的错误，在做过一些调查之后，我发现当app频繁的从钥匙串请求数据的时候就会造成这种问题。例如，在同一时间，在不同的加载模块，两次读同一个specific key 的值。为了解决这个问题，我在内存中缓存了这个值。</p>
+<h5 id="方案五："><a href="#方案五：" class="headerlink" title="方案五："></a>方案五：</h5><p>其他的方式对我都没有用，我清空了我设备上所有的配置文件，以及一些通配符配置文件（这些文件似乎是重点），为了这么做，去window的Devices，然后右击你的（连接）的iphone:<br><img src="https://note.youdao.com/src/WEBRESOURCE60da2ee59d90630d2153e1c32eeea6ad" alt="rsafail03.png"></p>
+<p>点击”Show provisioning profiles”删除相关的文件，尤其是team相关的配置文件包括带*号的文件，然后重新导入。</p>
+<h5 id="方案五：-1"><a href="#方案五：-1" class="headerlink" title="方案五："></a>方案五：</h5><p>点击”Show provisioning profiles”删除相关的文件，尤其是team相关的配置文件包括带*号的文件，然后重新导入。<br><img src="https://note.youdao.com/src/WEBRESOURCE98ddbdf80709cc5b154da3a6b13bdb09" alt="rsafail04.png"></p>
+<h5 id="方案六："><a href="#方案六：" class="headerlink" title="方案六："></a>方案六：</h5><p>我在Xcode6.2 、iphone6、ios8.3环境下，在测试设备上也出现这种问题。更清楚的说，在运行Xcode tests的时候这种情况没有发生，在我的真机，模拟器上都是正常的。</p>
+<p>以上的方式都对我无效。</p>
+<p>我临时的改变了获取的方式从<br>kSecAttrAccessibleAfterFirstUnlock 到kSecAttrAccessibleAlwaysThisDeviceOnly，运行app,完美运行，且可以写到钥匙串，然后我再改回到kSecAttrAccessibleAfterFirstUnlock,问题似乎永久性的解决了。</p>
+<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>非常遗憾，笔者这个问题仍旧没有解决，希望笔者摘录的几种解决方式给大家一点思路。</p>
 
       
     </div>
@@ -469,7 +455,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag"># 转载</a>
+            <a href="/tags/%E5%8E%9F%E5%88%9B/" rel="tag"># 原创</a>
           
         </div>
       
@@ -482,8 +468,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/04/21/Jenkins/" rel="next" title="Jenkins自动打包搭建之路">
-                <i class="fa fa-chevron-left"></i> Jenkins自动打包搭建之路
+              <a href="/2015/10/21/Nill/" rel="next" title="四胞胎之----nil 、 Nil 、 NULL 、NSNull">
+                <i class="fa fa-chevron-left"></i> 四胞胎之----nil 、 Nil 、 NULL 、NSNull
               </a>
             
           </div>
@@ -492,8 +478,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/03/21/cocoapodsVisual/" rel="prev" title="cocoapods依赖关系可视化">
-                cocoapods依赖关系可视化 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/21/NSScanner/" rel="prev" title="NSScanner,一个陌生的条件判断利器!">
+                NSScanner,一个陌生的条件判断利器! <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -630,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册"><span class="nav-number">1.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查收邮件"><span class="nav-number">2.</span> <span class="nav-text">查收邮件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看个人信息"><span class="nav-number">3.</span> <span class="nav-text">查看个人信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建podspec文件"><span class="nav-number">4.</span> <span class="nav-text">创建podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填写podspec内容"><span class="nav-number">5.</span> <span class="nav-text">填写podspec内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测podspec语法"><span class="nav-number">6.</span> <span class="nav-text">检测podspec语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布podspec"><span class="nav-number">7.</span> <span class="nav-text">发布podspec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测"><span class="nav-number">8.</span> <span class="nav-text">检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库更新"><span class="nav-number">9.</span> <span class="nav-text">仓库更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇到的坑："><span class="nav-number">10.</span> <span class="nav-text">遇到的坑：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#前言："><span class="nav-number">1.</span> <span class="nav-text">前言：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#追踪："><span class="nav-number">2.</span> <span class="nav-text">追踪：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决方案"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方案一："><span class="nav-number">3.0.1.</span> <span class="nav-text">方案一：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方案二："><span class="nav-number">3.0.2.</span> <span class="nav-text">方案二：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#来自苹果官方回复："><span class="nav-number">3.0.3.</span> <span class="nav-text">来自苹果官方回复：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新："><span class="nav-number">4.</span> <span class="nav-text">更新：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#方案四："><span class="nav-number">4.0.1.</span> <span class="nav-text">方案四：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方案五："><span class="nav-number">4.0.2.</span> <span class="nav-text">方案五：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方案五：-1"><span class="nav-number">4.0.3.</span> <span class="nav-text">方案五：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#方案六："><span class="nav-number">4.0.4.</span> <span class="nav-text">方案六：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#总结："><span class="nav-number">5.</span> <span class="nav-text">总结：</span></a></li></ol></div>
             
 
           </div>
