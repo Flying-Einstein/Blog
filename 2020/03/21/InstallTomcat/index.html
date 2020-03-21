@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="转载," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="购买云服务器我使用的是腾讯云, 配置：1核 1GB 1Mbps系统盘：普通云硬盘，Centos系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux(Centos)安装tomcat并且部署Java Web项目---踩坑">
+<meta property="og:url" content="http://yoursite.com/2020/03/21/InstallTomcat/index.html">
+<meta property="og:site_name" content="以技术之名">
+<meta property="og:description" content="购买云服务器我使用的是腾讯云, 配置：1核 1GB 1Mbps系统盘：普通云硬盘，Centos系统">
+<meta property="og:image" content="http://note.youdao.com/yws/res/1073/WEBRESOURCE09175fb46cd9fdc38535cde18522b526">
+<meta property="og:image" content="http://note.youdao.com/yws/res/1117/WEBRESOURCE89ed8ddb1806682f813db374a7cf315f">
+<meta property="og:image" content="http://note.youdao.com/yws/res/1154/WEBRESOURCEf409f4010bc2fdc2f0809890f9f67fb8">
+<meta property="article:published_time" content="2020-03-21T08:47:08.000Z">
+<meta property="article:modified_time" content="2020-03-21T08:55:11.627Z">
+<meta property="article:author" content="Ray">
+<meta property="article:tag" content="转载">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://note.youdao.com/yws/res/1073/WEBRESOURCE09175fb46cd9fdc38535cde18522b526">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/03/21/InstallTomcat/"/>
+
+
+
+
+
+  <title>Linux(Centos)安装tomcat并且部署Java Web项目---踩坑 | 以技术之名</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?2fdaf8ee633a188c5649eefea79b28b3";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">以技术之名</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-schedule">
+          <a href="/schedule/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />
+            
+            日程表
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/InstallTomcat/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Ray">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="以技术之名">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Linux(Centos)安装tomcat并且部署Java Web项目---踩坑</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-03-21T16:47:08+08:00">
+                2020-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/iOS/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+             <span id="/2020/03/21/InstallTomcat/" class="leancloud_visitors" data-flag-title="Linux(Centos)安装tomcat并且部署Java Web项目---踩坑">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="购买云服务器"><a href="#购买云服务器" class="headerlink" title="购买云服务器"></a>购买云服务器</h3><p>我使用的是<a href="https://cloud.tencent.com/login?s_url=https%3A%2F%2Fconsole.cloud.tencent.com%2F" target="_blank" rel="noopener">腾讯云</a>, 配置：1核 1GB 1Mbps系统盘：普通云硬盘，Centos系统</p>
+<a id="more"></a>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>腾讯云提供了好几种<a href="https://cloud.tencent.com/document/product/213/5436" target="_blank" rel="noopener">登录</a>方式</p>
+<ol>
+<li>最简单的登陆方式是登陆控制台，点击下面的【登录】按钮，使用WebShell登录，这里就不过多介绍了</li>
+</ol>
+<p><img src="http://note.youdao.com/yws/res/1073/WEBRESOURCE09175fb46cd9fdc38535cde18522b526" alt="linux01.png"></p>
+<h3 id="使用-Linux-Mac-OS-X-系统的电脑（使用密码登录）"><a href="#使用-Linux-Mac-OS-X-系统的电脑（使用密码登录）" class="headerlink" title="使用 Linux/Mac OS X 系统的电脑（使用密码登录）"></a>使用 Linux/Mac OS X 系统的电脑（使用密码登录）</h3><ol>
+<li>打开 SSH 客户端（Mac可使用系统自带的终端）</li>
+<li>输入<code>ssh -q -l root -p ip</code>(公网ip)</li>
+<li>输入 CVM 实例密码进行登录。</li>
+</ol>
+<h3 id="使用-Linux-Mac-OS-X-系统的电脑（使用密钥登录"><a href="#使用-Linux-Mac-OS-X-系统的电脑（使用密钥登录" class="headerlink" title="使用 Linux/Mac OS X 系统的电脑（使用密钥登录)"></a>使用 Linux/Mac OS X 系统的电脑（使用密钥登录)</h3><ol>
+<li>打开 SSH 客户端（Mac可使用系统自带的终端）。</li>
+<li>查找您云服务器关联的 SSH 密钥文件本地存放地址。(现在控制台生成SSH秘钥，并下载到本地)</li>
+<li>您的密钥必须不公开可见，SSH 才能工作。请使用此命令：chmod 400 [密钥文件路径]。</li>
+<li>输入命令：ssh [-i 密钥文件路径] root@ip (解释：root是账户，ip是公网ip地址)</li>
+</ol>
+<h3 id="SSH免密登陆"><a href="#SSH免密登陆" class="headerlink" title="SSH免密登陆"></a>SSH免密登陆</h3><p>首先我们在自己的Linux系统上生成一对SSH Key：SSH密钥和SSH公钥．密钥保存在自己的Linux系统上。<br>然后公钥上传到Linux服务器．之后我们就能无密码SSH登录了．SSH密钥就好比是你的身份证明．</p>
+<ul>
+<li>在自己的Linux系统上生成SSH密钥和公钥<br>打开终端，使用下面的ssh-keygen来生成RSA密钥和公钥．-t表示type，就是说要生成RSA加密的钥匙．</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<p>RSA也是默认的加密类型．所以你也可以只输入ssh-keygen．默认的RSA长度是2048位．如果你非常注重安全，那么可以指定4096位的长度</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -b 4096 -t rsa</span><br></pre></td></tr></table></figure>
+<p>生成SSH Key的过程中会要求你指定一个文件来保存密钥，按Enter键使用默认的文件就行了．然后需要输入一个密码来加密你的SSH Key．密码至少要20位长度．SSH密钥会保存在home目录下的<code>.ssh/id_rsa</code>文件中．SSH公钥保存在<code>.ssh/id_rsa.pub</code>文件中．</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Generating public&#x2F;private rsa key pair.</span><br><span class="line">Enter file in which to save the key (&#x2F;home&#x2F;matrix&#x2F;.ssh&#x2F;id_rsa): 　按Enter键</span><br><span class="line">Enter passphrase (empty for no passphrase): 　　输入一个密码</span><br><span class="line">Enter same passphrase again: 　　再次输入密码</span><br><span class="line">Your identification has been saved in &#x2F;home&#x2F;matrix&#x2F;.ssh&#x2F;id_rsa.</span><br><span class="line">Your public key has been saved in &#x2F;home&#x2F;matrix&#x2F;.ssh&#x2F;id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">e1:dc:ab:ae:b6:19:b0:19:74:d5:fe:57:3f:32:b4:d0 matrix@vivid</span><br><span class="line">The key&#39;s randomart image is:</span><br><span class="line">+---[RSA 4096]----+</span><br><span class="line">| .. |</span><br><span class="line">| . . |</span><br><span class="line">| . . .. . |</span><br><span class="line">| . . o o.. E .|</span><br><span class="line">| o S ..o ...|</span><br><span class="line">| &#x3D; ..+...|</span><br><span class="line">| o . . .o .|</span><br><span class="line">| .o . |</span><br><span class="line">| .++o |</span><br><span class="line">+-----------------+</span><br></pre></td></tr></table></figure>
+<ul>
+<li>将SSH公钥上传到Linux服务器,可以使用<code>ssh-copy-id</code>命令来完成</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id root@ip</span><br></pre></td></tr></table></figure>
+<p><img src="http://note.youdao.com/yws/res/1117/WEBRESOURCE89ed8ddb1806682f813db374a7cf315f" alt="linux02.png"></p>
+<p>输入远程用户的密码后，SSH公钥就会自动上传了．SSH公钥保存在远程Linux服务器的<code>.ssh/authorized_keys</code>文件中．<br>上传完成后，SSH登录就不需要再次输入密码了．但是首次使用SSH Key登录时需要输入一次SSH密钥的加密密码．（只需要输入一次，将来会自动登录，不再需要输入密钥的密码．）</p>
+<p>使用scp命令来传送文件时也不需要输入密码</p>
+<blockquote>
+<p>如果你是按照腾讯云的步骤来的话，登录成功后可能会继续让你分区与格式化数据盘，虽然我也扩展了数据盘，但是我发现其实没必要做这一步(主要是我按照官方的步骤一直失败，后来发现已经默认分了一个盘，而且一直处于挂载的状态，也无法卸载，就没再捣鼓)，接下来就可以配置部署所需要的环境了</p>
+</blockquote>
+<h3 id="安装JDK-centos默认安装了yum-所以我用yum安装的JDK"><a href="#安装JDK-centos默认安装了yum-所以我用yum安装的JDK" class="headerlink" title="安装JDK(centos默认安装了yum,所以我用yum安装的JDK)"></a>安装JDK(centos默认安装了yum,所以我用yum安装的JDK)</h3><h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><ul>
+<li><p>下载tomcat linux安装包： <a href="http://tomcat.apache.org/download-80.cgi" target="_blank" rel="noopener">安装包下载地址</a></p>
+</li>
+<li><p>在云服务器创建存放tomcat的文件夹,例如创建一个kencery的文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;</span><br><span class="line">mkdir kencery</span><br><span class="line">cd kencery&#x2F;</span><br></pre></td></tr></table></figure></li>
+<li><p>然后将下载的tomcat安装包复制到kencery文件夹下（可用cp命令或图形化操作）<br>我用cp命令没有成功，最后用的是图形化操作，Mac版本的FileZilla,可以直接将本地的安装包拖到云服务器的kencery文件夹根目录下， 然后进行解压</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">tar -zxv -f apache-tomcat-8.0.29.tar.gz</span><br><span class="line">mv apache-tomcat-8.0.29 tomcat</span><br><span class="line">cd tomcat</span><br></pre></td></tr></table></figure>
+<p>解析完成后即可以启动tomcat，检查是否安装成功，命令如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&#x2F;bin&#x2F;startup.sh</span><br></pre></td></tr></table></figure>
+<p><img src="http://note.youdao.com/yws/res/1154/WEBRESOURCEf409f4010bc2fdc2f0809890f9f67fb8" alt="linux03.png"></p>
+<p>出现如上图所示信息，则表示启动成功。这时候我们可以在浏览器中使用<code>http://ip:8080</code>访问（注：ip为服务器外网ip），如能够显示tomcat的主页，则表示不需要进行任何操作了，如果不能显示，则需要在Linux中开放防火墙的8080端口。</p>
+<p><strong>Tips:</strong> 在进行这一步的时候，好多次，都不成功，可以通过下面的方式来排除问题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1.请确定tomcat监听的8080端口：</span><br><span class="line">Tomcat安装的目录下： </span><br><span class="line">conf\server.xml,找到： </span><br><span class="line">&lt;Connector port&#x3D;&quot;8080&quot; maxHttpHeaderSize&#x3D;&quot;8192&quot; </span><br><span class="line">maxThreads&#x3D;&quot;150&quot; minSpareThreads&#x3D;&quot;25&quot; maxSpareThreads&#x3D;&quot;75&quot; </span><br><span class="line">enableLookups&#x3D;&quot;false&quot; redirectPort&#x3D;&quot;8443&quot; acceptCount&#x3D;&quot;100&quot; </span><br><span class="line">connectionTimeout&#x3D;&quot;20000&quot; disableUploadTimeout&#x3D;&quot;true&quot; &#x2F;&gt; </span><br><span class="line">看你的PORT是多少。</span><br><span class="line">2.防火墙是否屏蔽：</span><br><span class="line">在开启了防火墙时，做如下设置，开启相关端口， </span><br><span class="line">修改&#x2F;etc&#x2F;sysconfig&#x2F;iptables 文件，添加以下内容： </span><br><span class="line">-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT </span><br><span class="line">-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT</span><br><span class="line">设置完之后可以重启防火墙服务</span><br><span class="line">（1) 重启后生效 </span><br><span class="line">开启： chkconfig iptables on </span><br><span class="line">关闭： chkconfig iptables off </span><br><span class="line">（2) 即时生效，重启后失效 </span><br><span class="line">开启： service iptables start </span><br><span class="line">关闭： service iptables stop </span><br><span class="line">3.安全组是否允许相应的端口(控制台-&gt;云服务器-&gt;安全组)</span><br></pre></td></tr></table></figure>
+<p>如果都设置成功了，访问的时候可能出现一直加载不出来的情况，首次访问的时间特别长，我就在这里遇到了坑，以为没有设置对</p>
+<h3 id="Linux中设置tomcat的服务器启动和关闭"><a href="#Linux中设置tomcat的服务器启动和关闭" class="headerlink" title="Linux中设置tomcat的服务器启动和关闭"></a>Linux中设置tomcat的服务器启动和关闭</h3><ol>
+<li>完成步骤二对tomcat的安装后，接下来就可以部署项目，但是这里存在一个问题，那就是Linux的系统和重启我们每次都需要接路径并且执行命令，比较麻烦，因此我们可以设置成service的形式来实现这个功能。</li>
+<li>执行命令：<code>vim /etc/rc.d/init.d/tomcat</code> ，创建脚本文件，在文件中写入如下代码，保存并且退出：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">#!&#x2F;bin&#x2F;bash  </span><br><span class="line"># &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;tomcat  </span><br><span class="line"># init script for tomcat precesses  </span><br><span class="line"># processname: tomcat  </span><br><span class="line"># description: tomcat is a j2se server  </span><br><span class="line"># chkconfig: 2345 86 16  </span><br><span class="line"># description: Start up the Tomcat servlet engine.  </span><br><span class="line"></span><br><span class="line">if [ -f &#x2F;etc&#x2F;init.d&#x2F;functions ]; then  </span><br><span class="line">. &#x2F;etc&#x2F;init.d&#x2F;functions  </span><br><span class="line">elif [ -f &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;functions ]; then  </span><br><span class="line">. &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;functions  </span><br><span class="line">else  </span><br><span class="line">echo -e &quot;\atomcat: unable to locate functions lib. Cannot continue.&quot;  </span><br><span class="line">exit -1  </span><br><span class="line">fi  </span><br><span class="line">RETVAL&#x3D;$?  </span><br><span class="line">CATALINA_HOME&#x3D;&quot;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&quot;   #tomcat安装目录，你安装在什么目录下就复制什么目录  </span><br><span class="line">case &quot;$1&quot; in  </span><br><span class="line">start)  </span><br><span class="line">if [ -f $CATALINA_HOME&#x2F;bin&#x2F;startup.sh ];  </span><br><span class="line">then  </span><br><span class="line">echo $&quot;Starting Tomcat&quot;  </span><br><span class="line">$CATALINA_HOME&#x2F;bin&#x2F;startup.sh  </span><br><span class="line">fi  </span><br><span class="line">;;  </span><br><span class="line">stop)  </span><br><span class="line">if [ -f $CATALINA_HOME&#x2F;bin&#x2F;shutdown.sh ];  </span><br><span class="line">then  </span><br><span class="line">echo $&quot;Stopping Tomcat&quot;  </span><br><span class="line">$CATALINA_HOME&#x2F;bin&#x2F;shutdown.sh  </span><br><span class="line">fi  </span><br><span class="line">;;  </span><br><span class="line">*)  </span><br><span class="line">echo $&quot;Usage: $0 &#123;start|stop&#125;&quot;  </span><br><span class="line">exit 1  </span><br><span class="line">;;  </span><br><span class="line">esac  </span><br><span class="line">exit $RETVAL</span><br></pre></td></tr></table></figure>
+<p>给文件添加权限，使得脚本文件可以执行，命令为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;tomcat</span><br></pre></td></tr></table></figure>
+<p>将其添加到服务中，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chkconfig --add &#x2F;etc&#x2F;rc.d&#x2F;init.d&#x2F;tomcat</span><br></pre></td></tr></table></figure>
+<p>然后将下面的配置文件加到tomcat中的catalina.sh文件中的最后面，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&#x2F;bin&#x2F;catalina.sh</span><br></pre></td></tr></table></figure>
+<p>添加的配置如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;javajdk   #javajdk的安装路径，使用echo $JAVA_HOME命令可以读取  </span><br><span class="line">export CATALINA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat  </span><br><span class="line">export CATALINA_BASE&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat  </span><br><span class="line">export CATALINA_TMPDIR&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&#x2F;temp</span><br></pre></td></tr></table></figure>
+<p>以上所有工作顺利进行并没有报错，则配置完成，输入下面命令进行验证：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service tomcat start</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service tomcat stop</span><br></pre></td></tr></table></figure>
+
+<h3 id="Linux中设置tomcat开机自启动"><a href="#Linux中设置tomcat开机自启动" class="headerlink" title="Linux中设置tomcat开机自启动"></a>Linux中设置tomcat开机自启动</h3><p>通过步骤三的设置我们可以很方便的启动和关闭tomcat，但这里存在一个问题，那就是当服务器关机重启的时候，服务不能随计算机的启动而自行启动，下面我们将tomcat服务设置为开机启动。</p>
+<p>打开Linux设置开机启动文件，将下面的配置文件写入rc.local文件的最后，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim &#x2F;etc&#x2F;rc.d&#x2F;rc.local</span><br></pre></td></tr></table></figure>
+<p>添加的配置内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;javajdk  </span><br><span class="line">export CLASSPATH&#x3D;.:$JAVA_HOME&#x2F;jre&#x2F;lib&#x2F;rt.jar:$JAVA_HOME&#x2F;lib&#x2F;dt.jar:$JAVA_HOME&#x2F;lib&#x2F;tools.jar  </span><br><span class="line">export PATH&#x3D;$PATH:$JAVA_HOME&#x2F;bin  </span><br><span class="line">export CATALINA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&#x2F;  </span><br><span class="line">#tomcat自启动  </span><br><span class="line">&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&#x2F;bin&#x2F;startup.sh</span><br></pre></td></tr></table></figure>
+<p>tomcat依赖于java的JDK，所以设置的时候将JDK也同步导入。</p>
+<p>完成上面的设置后我们可以将CentOS关机重启一下，看tomcat是否成功自启动</p>
+<h3 id="给tomcat设置用户和密码登录"><a href="#给tomcat设置用户和密码登录" class="headerlink" title="给tomcat设置用户和密码登录"></a>给tomcat设置用户和密码登录</h3><p>当tomcat安装完成之后，访问<code>http://ip:8080</code>即可以看到tomcat发布的网站，若要管理我们发布的网站，就需要登录tomcat，下面就进行用户名和密码的设置。</p>
+<p>在tomcat安装包下面的conf文件下含有一个tomcat-usrs.xml文件，修改此文件即可，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim tomcat-users.xml</span><br></pre></td></tr></table></figure>
+<p>在打开的xml配置文件后面写入下面这段配置内容后，【:wq】保存并且退出即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;role rolename&#x3D;&quot;admin-gui&quot;&#x2F;&gt;     </span><br><span class="line">&lt;role rolename&#x3D;&quot;manager-gui&quot;&#x2F;&gt;  </span><br><span class="line">&lt;user username&#x3D;&quot;tomcat&quot; password&#x3D;&quot;tomcat&quot; roles&#x3D;&quot;manager-gui,admin-gui&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<p>在这里会出现一个问题，因为tomcat-users.xml里面有注释的用户设置信息，取消注释，用文件提供的用户名和密码去访问的时候，会出现403错误，什么原因呢？这是因为我们没有指定用户所拥有的权限。如若我们现在想访问tomcat中图形化管理应用的功能，也就是Manager App，就需要指定manager-gui的权限，如果想访问host manager就必须指定admin-gui权限，故而需要上面所示的配置内容。</p>
+<p>配置完用户名和密码之后，需要重新启动tomcat，命令如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service tomcat stop</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service tomcat start</span><br></pre></td></tr></table></figure>
+<p>重启服务之后，检测是否登录成功，输入用户名和密码登录进入系统，则说明登录成功</p>
+<h3 id="将Java-Web项目发布到tomcat8-0下面并且访问展示"><a href="#将Java-Web项目发布到tomcat8-0下面并且访问展示" class="headerlink" title="将Java Web项目发布到tomcat8.0下面并且访问展示"></a>将Java Web项目发布到tomcat8.0下面并且访问展示</h3><p>以上所有工作都完成之后，完美就可以将打包的JavaWeb程序发布到tomcat下即可<br>tomcat默认的发布web项目的目录是：webapps<br>将导出的war包拷贝到webapps根目录下，随之tomcat的启动，war包可以自动被解析。<br>然后在浏览器中输入路径链接，查询是否安装成功</p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://blog.csdn.net/sqzhao/article/details/71307850" target="_blank" rel="noopener">Linux系统下的ssh使用(依据个人经验总结)</a></p>
+<p><a href="https://www.linuxdashen.com/ssh-key%EF%BC%9A%E4%B8%A4%E4%B8%AA%E7%AE%80%E5%8D%95%E6%AD%A5%E9%AA%A4%E5%AE%9E%E7%8E%B0ssh%E6%97%A0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95" target="_blank" rel="noopener">SSH无密码登录：只需两个简单步骤 (Linux)</a></p>
+<p><a href="https://blog.csdn.net/to_baidu/article/details/52823402" target="_blank" rel="noopener">Linux(Centos)安装tomcat并且部署Java Web项目</a></p>
+<p><a href="https://www.kancloud.cn/curder/linux/121073" target="_blank" rel="noopener">Linux学习笔记</a></p>
+<p><a href="https://blog.csdn.net/loongshawn/article/details/50468201" target="_blank" rel="noopener">MacPro 利用SCP上传下载Linux服务器文件</a></p>
+<p><a href="https://www.cnblogs.com/lwhp/p/5789305.html" target="_blank" rel="noopener">腾讯云访问不了80端口，与8080问题</a></p>
+<p><a href="https://os.51cto.com/art/201609/517037.htm" target="_blank" rel="noopener">CentOS下安装JDK的三种方法</a></p>
+<p><a href="https://www.iteye.com/blog/canfly2010-429078" target="_blank" rel="noopener">查看Tomcat配置的端口</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%BD%AC%E8%BD%BD/" rel="tag"># 转载</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/03/21/MakeCocoapods/" rel="next" title="MakeCocoapods">
+                <i class="fa fa-chevron-left"></i> MakeCocoapods
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/avatar.png"
+                alt="Ray" />
+            
+              <p class="site-author-name" itemprop="name">Ray</p>
+              <p class="site-description motion-element" itemprop="description">为信仰而生</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#购买云服务器"><span class="nav-number">1.</span> <span class="nav-text">购买云服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录"><span class="nav-number">2.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Linux-Mac-OS-X-系统的电脑（使用密码登录）"><span class="nav-number">3.</span> <span class="nav-text">使用 Linux&#x2F;Mac OS X 系统的电脑（使用密码登录）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用-Linux-Mac-OS-X-系统的电脑（使用密钥登录"><span class="nav-number">4.</span> <span class="nav-text">使用 Linux&#x2F;Mac OS X 系统的电脑（使用密钥登录)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH免密登陆"><span class="nav-number">5.</span> <span class="nav-text">SSH免密登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装JDK-centos默认安装了yum-所以我用yum安装的JDK"><span class="nav-number">6.</span> <span class="nav-text">安装JDK(centos默认安装了yum,所以我用yum安装的JDK)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装步骤"><span class="nav-number">6.1.</span> <span class="nav-text">安装步骤</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux中设置tomcat的服务器启动和关闭"><span class="nav-number">7.</span> <span class="nav-text">Linux中设置tomcat的服务器启动和关闭</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Linux中设置tomcat开机自启动"><span class="nav-number">8.</span> <span class="nav-text">Linux中设置tomcat开机自启动</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#给tomcat设置用户和密码登录"><span class="nav-number">9.</span> <span class="nav-text">给tomcat设置用户和密码登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#将Java-Web项目发布到tomcat8-0下面并且访问展示"><span class="nav-number">10.</span> <span class="nav-text">将Java Web项目发布到tomcat8.0下面并且访问展示</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考链接"><span class="nav-number">11.</span> <span class="nav-text">参考链接</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ray</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("t8Fg2rheDXoA3Q05jypSf0e2", "PEa4LXMeFMzlQEGU2mpqqEU0");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
