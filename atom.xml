@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamlay.com/"/>
-  <updated>2020-03-21T08:55:11.627Z</updated>
+  <updated>2020-03-24T05:33:23.533Z</updated>
   <id>https://iamlay.com/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo - Next主题-持续优化</title>
+    <link href="https://iamlay.com/2020/03/24/HexoNextTheme/"/>
+    <id>https://iamlay.com/2020/03/24/HexoNextTheme/</id>
+    <published>2020-03-24T05:32:13.000Z</published>
+    <updated>2020-03-24T05:33:23.533Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="网站" scheme="https://iamlay.com/categories/%E7%BD%91%E7%AB%99/"/>
+    
+    
+      <category term="原创" scheme="https://iamlay.com/tags/%E5%8E%9F%E5%88%9B/"/>
+    
+  </entry>
   
   <entry>
     <title>Linux(Centos)安装tomcat并且部署Java Web项目---踩坑</title>

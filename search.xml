@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo - Next主题-持续优化</title>
+    <url>/2020/03/24/HexoNextTheme/</url>
+    <content><![CDATA[]]></content>
+      <categories>
+        <category>网站</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linux(Centos)安装tomcat并且部署Java Web项目---踩坑</title>
     <url>/2020/03/21/InstallTomcat/</url>
     <content><![CDATA[<h3 id="购买云服务器"><a href="#购买云服务器" class="headerlink" title="购买云服务器"></a>购买云服务器</h3><p>我使用的是<a href="https://cloud.tencent.com/login?s_url=https%3A%2F%2Fconsole.cloud.tencent.com%2F" target="_blank" rel="noopener">腾讯云</a>, 配置：1核 1GB 1Mbps系统盘：普通云硬盘，Centos系统</p>
