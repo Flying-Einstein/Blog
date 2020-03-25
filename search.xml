@@ -7,6 +7,8 @@
 <li>插入网络图片可以用常用的Markdown的方式进行插入: <code>![img-title](img-url)</code></li>
 <li>插入本地图片，主要涉及到本地图片资源的管理，相对插入网络图片复杂一些，但是引用方式大同小异，针对插入本地图片我们稍做展开</li>
 </ul>
+<a id="more"></a>
+
 <h5 id="插入本地图片-01"><a href="#插入本地图片-01" class="headerlink" title="插入本地图片 -01"></a>插入本地图片 -01</h5><ol>
 <li><a href="https://github.com/xcodebuild/hexo-asset-image" target="_blank" rel="noopener">安装插件</a>: 在博客的根目录下执行：<code>npm install hexo-asset-image --save</code> 或<code>npm install hexo-asset-image --g</code></li>
 <li>修改站点配置文件<code>_config.yml</code>： 找到 <code>post_asset_folder</code>，把值改成 <code>true</code>，这样在执行<code>hexo new page</code> 的时候，会在<code>source/_posts</code>文件夹下生成一个和<code>page</code>同名的文件夹，可以存放该<code>page</code>中用到的图片</li>
