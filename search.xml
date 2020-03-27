@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo - Next主题-持续优化</title>
+    <title>Next主题 -设置图片</title>
     <url>/2020/03/24/HexoNextTheme/</url>
     <content><![CDATA[<h3 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h3><h4 id="Hexo有网络图片和插入本地图片两种方式："><a href="#Hexo有网络图片和插入本地图片两种方式：" class="headerlink" title="Hexo有网络图片和插入本地图片两种方式："></a>Hexo有<code>网络图片</code>和<code>插入本地图片</code>两种方式：</h4><ul>
 <li>插入网络图片可以用常用的Markdown的方式进行插入: <code>![img-title](img-url)</code></li>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamlay.com/"/>
-  <updated>2020-03-25T00:18:56.304Z</updated>
+  <updated>2020-03-27T03:49:47.505Z</updated>
   <id>https://iamlay.com/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hexo - Next主题-持续优化</title>
+    <title>Next主题 -设置图片</title>
     <link href="https://iamlay.com/2020/03/24/HexoNextTheme/"/>
     <id>https://iamlay.com/2020/03/24/HexoNextTheme/</id>
     <published>2020-03-24T05:32:13.000Z</published>
-    <updated>2020-03-25T00:18:56.304Z</updated>
+    <updated>2020-03-27T03:49:47.505Z</updated>
     
     <content type="html"><![CDATA[<h3 id="添加图片"><a href="#添加图片" class="headerlink" title="添加图片"></a>添加图片</h3><h4 id="Hexo有网络图片和插入本地图片两种方式："><a href="#Hexo有网络图片和插入本地图片两种方式：" class="headerlink" title="Hexo有网络图片和插入本地图片两种方式："></a>Hexo有<code>网络图片</code>和<code>插入本地图片</code>两种方式：</h4><ul><li>插入网络图片可以用常用的Markdown的方式进行插入: <code>![img-title](img-url)</code></li><li>插入本地图片，主要涉及到本地图片资源的管理，相对插入网络图片复杂一些，但是引用方式大同小异，针对插入本地图片我们稍做展开</li></ul><a id="more"></a><h5 id="插入本地图片-01"><a href="#插入本地图片-01" class="headerlink" title="插入本地图片 -01"></a>插入本地图片 -01</h5><ol><li><a href="https://github.com/xcodebuild/hexo-asset-image" target="_blank" rel="noopener">安装插件</a>: 在博客的根目录下执行：<code>npm install hexo-asset-image --save</code> 或<code>npm install hexo-asset-image --g</code></li><li>修改站点配置文件<code>_config.yml</code>： 找到 <code>post_asset_folder</code>，把值改成 <code>true</code>，这样在执行<code>hexo new page</code> 的时候，会在<code>source/_posts</code>文件夹下生成一个和<code>page</code>同名的文件夹，可以存放该<code>page</code>中用到的图片</li><li>插入本地图片<code>![imageTitle](img.jpg)</code></li></ol><h5 id="插入本地图片-02"><a href="#插入本地图片-02" class="headerlink" title="插入本地图片-02"></a>插入本地图片-02</h5><ol><li>在<code>source</code>下建立一个<code>_posts</code>同级别的文件夹  <code>images</code>，将图片放入其中，此时的图片路径为：<br><code>/hexo/source/images/img.png</code></li><li>插入图片，要使用相对路径，应写为<code>![imageTitle](/images/img.png)</code></li></ol><h4 id="修改图片的大小"><a href="#修改图片的大小" class="headerlink" title="修改图片的大小"></a>修改图片的大小</h4><p>图片默认会显示原本的图片大小并居中显示，如果需要对图片大小进行设置，需要另外写 css 样式进行控制。当使用上面的方式创建和<code>page</code>同名的文件夹的时候，可使用下面的方式更改图片的大小</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;img.jpg&quot; width&#x3D;80% height&#x3D;50% align&#x3D;center&#x2F;&gt;</span><br></pre></td></tr></table></figure><p>或者</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;img src&#x3D;&quot;&#x2F;images&#x2F;img.png&quot; width&#x3D;80% height&#x3D;50% align&#x3D;center&#x2F;&gt;</span><br></pre></td></tr></table></figure>]]></content>
     
