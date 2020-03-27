@@ -39,7 +39,7 @@
 <ol>
 <li>最简单的登陆方式是登陆控制台，点击下面的【登录】按钮，使用WebShell登录，这里就不过多介绍了</li>
 </ol>
-<p><img src="http://note.youdao.com/yws/res/1073/WEBRESOURCE09175fb46cd9fdc38535cde18522b526" alt="linux01.png"></p>
+<p><img src="Linux01.png" alt="linux01.png"></p>
 <h3 id="使用-Linux-Mac-OS-X-系统的电脑（使用密码登录）"><a href="#使用-Linux-Mac-OS-X-系统的电脑（使用密码登录）" class="headerlink" title="使用 Linux/Mac OS X 系统的电脑（使用密码登录）"></a>使用 Linux/Mac OS X 系统的电脑（使用密码登录）</h3><ol>
 <li>打开 SSH 客户端（Mac可使用系统自带的终端）</li>
 <li>输入<code>ssh -q -l root -p ip</code>(公网ip)</li>
@@ -64,7 +64,7 @@
 <li>将SSH公钥上传到Linux服务器,可以使用<code>ssh-copy-id</code>命令来完成</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-copy-id root@ip</span><br></pre></td></tr></table></figure>
-<p><img src="http://note.youdao.com/yws/res/1117/WEBRESOURCE89ed8ddb1806682f813db374a7cf315f" alt="linux02.png"></p>
+<p><img src="Linux02.png" alt="linux02.png"></p>
 <p>输入远程用户的密码后，SSH公钥就会自动上传了．SSH公钥保存在远程Linux服务器的<code>.ssh/authorized_keys</code>文件中．<br>上传完成后，SSH登录就不需要再次输入密码了．但是首次使用SSH Key登录时需要输入一次SSH密钥的加密密码．（只需要输入一次，将来会自动登录，不再需要输入密钥的密码．）</p>
 <p>使用scp命令来传送文件时也不需要输入密码</p>
 <blockquote>
@@ -81,7 +81,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxv -f apache-tomcat-8.0.29.tar.gz</span><br><span class="line">mv apache-tomcat-8.0.29 tomcat</span><br><span class="line">cd tomcat</span><br></pre></td></tr></table></figure>
 <p>解析完成后即可以启动tomcat，检查是否安装成功，命令如下</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&#x2F;bin&#x2F;startup.sh</span><br></pre></td></tr></table></figure>
-<p><img src="http://note.youdao.com/yws/res/1154/WEBRESOURCEf409f4010bc2fdc2f0809890f9f67fb8" alt="linux03.png"></p>
+<p><img src="Linux03.png" alt="linux03.png"></p>
 <p>出现如上图所示信息，则表示启动成功。这时候我们可以在浏览器中使用<code>http://ip:8080</code>访问（注：ip为服务器外网ip），如能够显示tomcat的主页，则表示不需要进行任何操作了，如果不能显示，则需要在Linux中开放防火墙的8080端口。</p>
 <p><strong>Tips:</strong> 在进行这一步的时候，好多次，都不成功，可以通过下面的方式来排除问题</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1.请确定tomcat监听的8080端口：</span><br><span class="line">Tomcat安装的目录下： </span><br><span class="line">conf\server.xml,找到： </span><br><span class="line">&lt;Connector port&#x3D;&quot;8080&quot; maxHttpHeaderSize&#x3D;&quot;8192&quot; </span><br><span class="line">maxThreads&#x3D;&quot;150&quot; minSpareThreads&#x3D;&quot;25&quot; maxSpareThreads&#x3D;&quot;75&quot; </span><br><span class="line">enableLookups&#x3D;&quot;false&quot; redirectPort&#x3D;&quot;8443&quot; acceptCount&#x3D;&quot;100&quot; </span><br><span class="line">connectionTimeout&#x3D;&quot;20000&quot; disableUploadTimeout&#x3D;&quot;true&quot; &#x2F;&gt; </span><br><span class="line">看你的PORT是多少。</span><br><span class="line">2.防火墙是否屏蔽：</span><br><span class="line">在开启了防火墙时，做如下设置，开启相关端口， </span><br><span class="line">修改&#x2F;etc&#x2F;sysconfig&#x2F;iptables 文件，添加以下内容： </span><br><span class="line">-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT </span><br><span class="line">-A RH-Firewall-1-INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT</span><br><span class="line">设置完之后可以重启防火墙服务</span><br><span class="line">（1) 重启后生效 </span><br><span class="line">开启： chkconfig iptables on </span><br><span class="line">关闭： chkconfig iptables off </span><br><span class="line">（2) 即时生效，重启后失效 </span><br><span class="line">开启： service iptables start </span><br><span class="line">关闭： service iptables stop </span><br><span class="line">3.安全组是否允许相应的端口(控制台-&gt;云服务器-&gt;安全组)</span><br></pre></td></tr></table></figure>
