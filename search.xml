@@ -1,6 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>如何在OC中进行源码分析</title>
+    <url>/2020/04/13/OCCodeAnalysis/</url>
+    <content><![CDATA[<h3 id="Part01-获取objc-runtime的源码"><a href="#Part01-获取objc-runtime的源码" class="headerlink" title="Part01-获取objc-runtime的源码"></a>Part01-获取objc-runtime的源码</h3><p><a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="noopener">objc-runtime的源码地址</a></p>
+<p>注意：⚠️⚠️⚠️，objc-runtime的源码的新旧程度并不是按照时间进行排序，而是按照包的大小进行的排序，一般可以理解为包最大的即为最新的源码</p>
+<p>但是官网的runtime代码是无法直接运行的，如果想直接运行可以下载<a href="https://github.com/RetVal" target="_blank" rel="noopener">RetVal</a>处理过的<a href="https://github.com/RetVal/objc-runtime" target="_blank" rel="noopener">源代码</a></p>
+<h3 id="Part02-将OC代码编译成C-代码"><a href="#Part02-将OC代码编译成C-代码" class="headerlink" title="Part02-将OC代码编译成C++代码"></a>Part02-将OC代码编译成C++代码</h3><ol>
+<li>找到需要编译成C++代码的OC文件，这里我们拿<code>main.m</code>来举例</li>
+</ol>
+<p><img src="OCCodeAnalysis01.png" alt="image"></p>
+<ol start="2">
+<li>进入到main.m所在的文件夹，执行：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;-fobjc-arc表示编译需要支持ARC特性。</span><br><span class="line">&#x2F;&#x2F;-framework Foundation表示引用Foundation框架，这个框架中定义了很多基本的类，例如字符串、数组、字典等等。</span><br><span class="line">&#x2F;&#x2F;后面的 mian.m 就是待编译的源代码文件名。</span><br><span class="line">&#x2F;&#x2F;-o main 表示输出的可执行文件的文件名是 main。</span><br><span class="line"></span><br><span class="line">clang -fobjc-arc -framework Foundation main.m -o main</span><br></pre></td></tr></table></figure>
+<p>得到执行文件，双击可以看到执行结果</p>
+<p><img src="OCCodeAnalysis02.png" alt="image"></p>
+<ol start="3">
+<li>生成main.m的cpp文件main.cpp，main.cpp就是编译器对main.m进行转换的结果，执行：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">clang -rewrite-objc main.m</span><br></pre></td></tr></table></figure>
+如果在执行<code>执行 clang -rewrite-objc main.m</code>是报错的，例如：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">main.m:9:9: fatal error: &#39;UIKit&#x2F;UIKit.h&#39; file not found</span><br><span class="line">#import &lt;UIKit&#x2F;UIKit.h&gt;</span><br><span class="line">        ^~~~~~~~~~~~~~~</span><br><span class="line">1 error generated.</span><br></pre></td></tr></table></figure>
+<p>执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">clang -x objective-c -rewrite-objc -isysroot &#x2F;Applications&#x2F;Xcode.app&#x2F;xxxxx.m</span><br></pre></td></tr></table></figure>
+<h3 id="Part03-根据C-代码，结合objc-runtime源码进行分析"><a href="#Part03-根据C-代码，结合objc-runtime源码进行分析" class="headerlink" title="Part03-根据C++代码，结合objc-runtime源码进行分析"></a>Part03-根据C++代码，结合objc-runtime源码进行分析</h3><p>执行完上面的指令，生成了相关文件的C++ 代码，C++代码用到了objc-runtime源码，所以要进入到objc-runtime源码，探索本质。例如下面是main.m编译成main.cpp文件时，-(void)eat生成的C ++代码。标出来的代码都是objc-runtime中的源代码</p>
+<p><img src="OCCodeAnalysis03.png" alt="image"></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
+      <tags>
+        <tag>原创</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>以技术之名周报03#AOP| 2020-04-12</title>
     <url>/2020/04/12/week15/</url>
     <content><![CDATA[<h3 id="Part01-什么是AOP"><a href="#Part01-什么是AOP" class="headerlink" title="Part01-什么是AOP?"></a>Part01-什么是AOP?</h3><blockquote>
