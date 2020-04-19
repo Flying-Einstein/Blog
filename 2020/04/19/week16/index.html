@@ -22,20 +22,32 @@
     var CONFIG = {"hostname":"iamlay.com","root":"/","scheme":"Muse","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="加密的Demo，欢迎下载 java端的加密解密，读者可以看我同事的这篇文章">
+  <meta name="description" content="根据最新的苹果审核规范，2020年4月之后，凡是可以使用第三方软件登录的App，必须接入Sign in with Apple。最新一段时间，主流的App基本都已经接入此功能。在UI设计阶段，Sign in with Apple必须严格遵守苹果的设计原则，否则审核被拒。本篇周报的主要内容是对Sign in with Apple 设计规范的翻译，希望可以帮助到有需要的人。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="iOS，一行代码进行RSA、DES 、AES、MD5加密、解密">
-<meta property="og:url" content="https://iamlay.com/2019/03/21/Encrypt/index.html">
+<meta property="og:title" content="以技术之名周报03#Sign in with Apple 设计原则| 2020-04-19">
+<meta property="og:url" content="https://iamlay.com/2020/04/19/week16/index.html">
 <meta property="og:site_name" content="以技术之名">
-<meta property="og:description" content="加密的Demo，欢迎下载 java端的加密解密，读者可以看我同事的这篇文章">
+<meta property="og:description" content="根据最新的苹果审核规范，2020年4月之后，凡是可以使用第三方软件登录的App，必须接入Sign in with Apple。最新一段时间，主流的App基本都已经接入此功能。在UI设计阶段，Sign in with Apple必须严格遵守苹果的设计原则，否则审核被拒。本篇周报的主要内容是对Sign in with Apple 设计规范的翻译，希望可以帮助到有需要的人。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2019-03-21T08:16:20.000Z">
-<meta property="article:modified_time" content="2020-03-21T09:17:22.348Z">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple01.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple02.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple03.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple04.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple05.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple06.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple07.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple08.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple09.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple10.png">
+<meta property="og:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple11.png">
+<meta property="article:published_time" content="2020-04-19T12:45:27.000Z">
+<meta property="article:modified_time" content="2020-04-19T12:35:26.978Z">
 <meta property="article:author" content="Ray">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://iamlay.com/2020/04/19/week16/SignWithApple01.png">
 
-<link rel="canonical" href="https://iamlay.com/2019/03/21/Encrypt/">
+<link rel="canonical" href="https://iamlay.com/2020/04/19/week16/">
 
 
 <script id="page-configurations">
@@ -48,7 +60,7 @@
   };
 </script>
 
-  <title>iOS，一行代码进行RSA、DES 、AES、MD5加密、解密 | 以技术之名</title>
+  <title>以技术之名周报03#Sign in with Apple 设计原则| 2020-04-19 | 以技术之名</title>
   
 
 
@@ -203,7 +215,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://iamlay.com/2019/03/21/Encrypt/">
+    <link itemprop="mainEntityOfPage" href="https://iamlay.com/2020/04/19/week16/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -216,7 +228,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          iOS，一行代码进行RSA、DES 、AES、MD5加密、解密
+          以技术之名周报03#Sign in with Apple 设计原则| 2020-04-19
         </h1>
 
         <div class="post-meta">
@@ -225,16 +237,10 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2019-03-21 16:16:20" itemprop="dateCreated datePublished" datetime="2019-03-21T16:16:20+08:00">2019-03-21</time>
+              <time title="创建时间：2020-04-19 20:45:27 / 修改时间：20:35:26" itemprop="dateCreated datePublished" datetime="2020-04-19T20:45:27+08:00">2020-04-19</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-03-21 17:17:22" itemprop="dateModified" datetime="2020-03-21T17:17:22+08:00">2020-03-21</time>
-              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
@@ -246,7 +252,7 @@
             </span>
 
           
-            <span id="/2019/03/21/Encrypt/" class="post-meta-item leancloud_visitors" data-flag-title="iOS，一行代码进行RSA、DES 、AES、MD5加密、解密" title="阅读次数">
+            <span id="/2020/04/19/week16/" class="post-meta-item leancloud_visitors" data-flag-title="以技术之名周报03#Sign in with Apple 设计原则| 2020-04-19" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -265,15 +271,16 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>2.3k</span>
+              <span>3k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>2 分钟</span>
+              <span>3 分钟</span>
             </span>
+            <div class="post-description">根据最新的苹果审核规范，2020年4月之后，凡是可以使用第三方软件登录的App，必须接入Sign in with Apple。最新一段时间，主流的App基本都已经接入此功能。在UI设计阶段，Sign in with Apple必须严格遵守苹果的设计原则，否则审核被拒。本篇周报的主要内容是对Sign in with Apple 设计规范的翻译，希望可以帮助到有需要的人。</div>
 
         </div>
       </header>
@@ -284,36 +291,88 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><a href="https://github.com/iamlay/Encryptions" target="_blank" rel="noopener">加密的Demo，欢迎下载</a></p>
-<p>java端的加密解密，读者可以看我同事的<a href="https://note.youdao.com/" target="_blank" rel="noopener">这篇文章</a></p>
-<a id="more"></a>
-
-<p>最近做了一个移动项目，是有服务器和客户端类型的项目，客户端是要登录才行的，服务器也会返回数据，服务器是用Java开发的，客户端要同时支持多平台（Android、iOS），在处理iOS的数据加密的时候遇到了一些问题。起初采取的方案是DES加密，老大说DES加密是对称的，网络抓包加上反编译可能会被破解，故采取RSA方式加密。RSA加密时需要公钥和私钥，客户端保存公钥加密数据，服务器保存私钥解密数据。（iOS端公钥加密私钥解密、java端公钥加密私钥解密，java端私钥加密公钥解密都容易做到，iOS不能私钥加密公钥解密，只能用于验签）。</p>
-<h3 id="问题1：iOS端公钥加密的数据用Java端私钥解密"><a href="#问题1：iOS端公钥加密的数据用Java端私钥解密" class="headerlink" title="问题1：iOS端公钥加密的数据用Java端私钥解密"></a>问题1：iOS端公钥加密的数据用Java端私钥解密</h3><p>iOS无论使用系统自带的sdk函数，用mac产生的或者使用java的jdk产生的公钥和私钥，进行加密解密自己都可以使用。不过ios加密，java解密，或者反过来就不能用了。要么是无法创建报告个-9809或-50的错误，要么解出来是乱码。ios系统函数种只有用公钥加密，私钥解密的方式。而公钥加密每次结果都不同。</p>
-<h3 id="MAC上生成公钥、私钥的方法，及使用"><a href="#MAC上生成公钥、私钥的方法，及使用" class="headerlink" title="MAC上生成公钥、私钥的方法，及使用"></a>MAC上生成公钥、私钥的方法，及使用</h3><ul>
-<li>打开终端，切换到自己想输出的文件夹下</li>
-<li>输入指令:<code>openssl</code>（openssl是生成各种秘钥的工具，mac已经嵌入</li>
-<li>.输入指令:<code>genrsa -out rsa_private_key.pem 1024</code> (生成私钥，java端使用的)</li>
-<li>输入指令:<code>rsa -in rsa_private_key.pem -out rsa_public_key.pem -pubout</code> (生成公钥)</li>
-<li>.输入指令:<code>pkcs8 -topk8 -in rsa_private_key.pem -out pkcs8_rsa_private_key.pem -nocrypt</code>(私钥转格式，在ios端使用私钥解密时用这个私钥)</li>
-</ul>
-<p>注意:在MAC上生成三个.pem格式的文件，一个公钥，两个私钥，都可以在终端通过指令vim xxx.pem 打开，里面是字符串，第三步生成的私钥是java端用来解密数据的，第五步转换格式的私钥iOS端可以用来调试公钥、私钥解密（因为私钥不留在客户端）</p>
-<p><a href="http://blog.sina.com.cn/s/blog_12c8ae0d80102vy21.html" target="_blank" rel="noopener">详细步骤</a></p>
-<h4 id="服务器返回数据也要加密，老大打算用java私钥加密-ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式"><a href="#服务器返回数据也要加密，老大打算用java私钥加密-ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式" class="headerlink" title="服务器返回数据也要加密，老大打算用java私钥加密,ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式"></a>服务器返回数据也要加密，老大打算用java私钥加密,ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式</h4><ul>
-<li>通过简单的URLENCODE ＋ BASE64编码防止数据明文传输</li>
-<li>对普通请求、返回数据，生成MD5校验（MD5中加入动态密钥），进行数据完整性（简单防篡改，安全性较低，优点：快速）校验</li>
-<li>对于重要数据，使用RSA进行数字签名，起到防篡改作</li>
-<li>对于比较敏感的数据，如用户信息（登陆、注册等），客户端发送使用RSA加密，服务器返回使用DES(AES)加密</li>
-</ul>
-<p>因：客户端发送之所以使用RSA加密，是因为RSA解密需要知道服务器私钥，而服务器私钥一般盗取难度较大；如果使用DES的话，可以通过破解客户端获取密钥，安全性较低。而服务器返回之所以使用DES，是因为不管使用DES还是RSA，密钥（或私钥）都存储在客户端，都存在被破解的风险，因此，需要采用动态密钥，而RSA的密钥生成比较复杂，不太适合动态密钥，并且RSA速度相对较慢，所以选用DES）</p>
-<p>所以此次加密，我们选择了第四种加密方式</p>
-<h3 id="加密方式"><a href="#加密方式" class="headerlink" title="加密方式"></a>加密方式</h3><h4 id="iOS端进行DES加密、解密时非常方便"><a href="#iOS端进行DES加密、解密时非常方便" class="headerlink" title="iOS端进行DES加密、解密时非常方便"></a>iOS端进行DES加密、解密时非常方便</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1、引入头文件 #import &quot;DES3Util.h&quot;</span><br><span class="line">2、加密时调用类方法  +(NSString *) encryptUseDES:(NSString *)plainText key:(NSString *)key;</span><br><span class="line">3、解密时调用类方法  +(NSString *)decryptUseDES:(NSString *)cipherText key:(NSString *)key;</span><br></pre></td></tr></table></figure>
-
-<h4 id="iOS端进行RSA加密、解密时非常方便"><a href="#iOS端进行RSA加密、解密时非常方便" class="headerlink" title="iOS端进行RSA加密、解密时非常方便"></a>iOS端进行RSA加密、解密时非常方便</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">1、引入头文件 #import &quot;RSAUtil.h&quot;</span><br><span class="line">2、公钥加密时调用类方法：</span><br><span class="line">+ (NSString *)encryptString:(NSString *)str publicKey:(NSString *)pubKey;</span><br><span class="line">+ (NSData *)encryptData:(NSData *)data publicKey:(NSString *)pubKey;</span><br><span class="line">3、私钥解密时调用类方法 </span><br><span class="line">+ (NSString *)decryptString:(NSString *)str privateKey:(NSString *)privKey;</span><br><span class="line">+ (NSData *)decryptData:(NSData *)data privateKey:(NSString *)privKey;</span><br></pre></td></tr></table></figure>
-
-<h4 id="iOS端进行MD5加密、解密时非常方便"><a href="#iOS端进行MD5加密、解密时非常方便" class="headerlink" title="iOS端进行MD5加密、解密时非常方便"></a>iOS端进行MD5加密、解密时非常方便</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1、引入头文件 #import &quot;MD5Util&quot;</span><br><span class="line">2、加密时调用方法：- (NSString *)md5:(NSString *)str;</span><br></pre></td></tr></table></figure>
-<h4 id="iOS端进行AES加密、解密时非常方便"><a href="#iOS端进行AES加密、解密时非常方便" class="headerlink" title="iOS端进行AES加密、解密时非常方便"></a>iOS端进行AES加密、解密时非常方便</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、引入头文件 #import &quot;AES.h&quot;</span><br><span class="line">2、加密时调用方法</span><br><span class="line">+ (NSString *)encrypt:(NSString *)message password:(NSString *)password;</span><br><span class="line">2、解密时调用的方法</span><br><span class="line">+ (NSString *)decrypt:(NSString *)base64EncodedString password:(NSString *)password;</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.jianshu.com/p/2927ca2b3719" target="_blank" rel="noopener">有关RSA、MD5、AES加密的原理介绍</a></p>
+        <h3 id="使用Apple提供的Button"><a href="#使用Apple提供的Button" class="headerlink" title="使用Apple提供的Button"></a>使用Apple提供的Button</h3><p>当你使用系统提供的API创建Button的时候，能够获得以下优势：</p>
+<ol>
+<li>能够确保Button使用了苹果认可的title、font、color 和 style</li>
+<li>能够确保在你修改Button的Style的时候，Button的Content有一个理想的位置</li>
+<li>Button的title能够跟自动转换成设备手机选择的Language</li>
+<li>支持配置圆角以满足你自己UI的风格（iOS、MacOS、Web）</li>
+</ol>
+<p>对开发者而言，可以看这些使用引导<a href="https://developer.apple.com/documentation/authenticationservices/asauthorizationappleidbutton" target="_blank" rel="noopener">ASAuthorizationAppleIDButton</a> (iOS, macOS, and tvOS), <a href="https://developer.apple.com/documentation/watchkit/wkinterfaceauthorizationappleidbutton" target="_blank" rel="noopener">WKInterfaceAuthorizationAppleIDButton</a> (watchOS), and <a href="https://developer.apple.com/documentation/signinwithapplejs/displaying_and_configuring_sign_in_with_apple_buttons" target="_blank" rel="noopener">Displaying and Configuring Sign in with Apple Buttons</a> (web).</p>
+<p>系统提供的Button 的Title有几种文案。根据你使用的平台，选择最合适的文案。</p>
+<p>下面几种Button Title都可以在iOS、macOS、和tvOS中使用，但是只有Sign in with Apple 和 Continue with Apple 可以在Web中使用</p>
+<p><img src="SignWithApple01.png" alt=""></p>
+<p>对watchOS，系统提供的Title只有一个 <code> Sign in</code></p>
+<p><img src="SignWithApple02.png" alt=""></p>
+<p>依赖于不同的平台，系统提供了三种外观的Button，分别是白色（white）、有边框的白色（white with an outline）、黑色（black）。根据放置Button的背景颜色，选择最合Button样式。</p>
+<h4 id="白色"><a href="#白色" class="headerlink" title="白色"></a>白色</h4><p>白色可以在任何平台使用（包括Web）,当背景是黑色或者其他深色时，选择白色会有更好的表现力</p>
+<p><img src="SignWithApple03.png" alt=""></p>
+<h4 id="白色带边框"><a href="#白色带边框" class="headerlink" title="白色带边框"></a>白色带边框</h4><p>白色带边框的Button可以在iOS、macOS、和Web上面使用，当背景是白色或浅色背景的时候，背景和Button的填充色对比是不够强烈的，通过添加边框可以提升表现力。当背景是深色的时候，不要使用这种风格，深色会使得这种风格变得混乱。</p>
+<p><img src="SignWithApple04.png" alt=""></p>
+<h4 id="黑色"><a href="#黑色" class="headerlink" title="黑色"></a>黑色</h4><p>黑色可以在任何平台使用（包括Web）,当背景是白色或者其他浅色时，选择黑色会有更好的表现力</p>
+<p><img src="SignWithApple05.png" alt=""><br>不像其他平台上的黑色风格的Button，在watchOS上，黑色风格的Button是非全黑的填充色，和watchOS全黑色的背景做对比。watchOS上Button用系统定义的黑灰样式。</p>
+<p><img src="SignWithApple06.png" alt=""></p>
+<h4 id="Button的大小和圆角"><a href="#Button的大小和圆角" class="headerlink" title="Button的大小和圆角"></a>Button的大小和圆角</h4><p>调整Button的圆角以匹配App中其他登录Button的风格。默认情况下， Sign in with Apple的Button是没有圆角的。在iOS、macOS、Web中，可以通过修改圆角的半径，生成直角或者药丸状的Button。</p>
+<p><img src="SignWithApple07.png" alt=""></p>
+<p><strong>iOS、macOS 、Web中使用的Button，必须有一个最小的的Size和外边距</strong>。值得注意的是，依赖于文本的本地化，Button的长度或许很长。下面的值可以做作为设计原则：</p>
+<table>
+<thead>
+<tr>
+<th>Minimum width</th>
+<th>Minimum height</th>
+<th>Minimum margin</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>140pt (140px @1x, 280px @2x)</td>
+<td>30pt (30px @1x, 60px @2x)</td>
+<td>1/10 of the button’s height</td>
+</tr>
+</tbody></table>
+<h3 id="创建一个自定义的-Sign-in-with-Apple-Button"><a href="#创建一个自定义的-Sign-in-with-Apple-Button" class="headerlink" title="创建一个自定义的 Sign in with Apple Button"></a>创建一个自定义的 Sign in with Apple Button</h3><p>如果你有需要的话，可以在iOS、macOS、或者Web平台上自己创建一个自定义的Sign in with Apple Button 。比如：或许你支持多种登录方式，你想展示<code>Left-Aligned Logo</code> Button或者<code>Logo-Only</code> Button。</p>
+<p><img src="SignWithApple08.png" alt=""></p>
+<p><a href="https://developer.apple.com/design/resources/" target="_blank" rel="noopener">Apple Design Resources </a>提供了一些美术资源，你可以使用这些美术资源自定义Sign in with Apple Button。这些资源包括PNG、SVG和PDF三种格式，并且包含黑白两种表现形式。下面是<code>Logo-Only</code> Button的两个例子，每个Logo都添加了富有表现力的背景色</p>
+<p><img src="SignWithApple09.png" alt=""></p>
+<p>所有下载的Logo文件都包含一个内边距，这样在Button中放置logo更加容易</p>
+<ol>
+<li><code>Left-Aligned Logo</code>文件包含一个垂直方向上的内边距，能够确保Logo在Button中有一个合适的占比，水平方向上的内边距也为Logo和Button的左边距、Logo和Button的title之间提供了一个最小边距。</li>
+<li><code>Logo-Only</code>文件包含一个水平和垂直方向上的内边距，确保了Logo在Button中有一个合适的占比</li>
+</ol>
+<p>使用<code>Logo-Only</code>文件的时候,需要遵循以下原则：</p>
+<ol>
+<li>不要仅仅使用 Apple Logo  自己作为一个Button</li>
+<li>Logo文件的高度要和Button的高度保持一致</li>
+<li>不要剪切Logo文件</li>
+<li>不要添加垂直方向的内边距</li>
+<li>Logo文件不要使用自己定义的颜色</li>
+</ol>
+<h4 id="Left-Aligned-Logo-Buttons"><a href="#Left-Aligned-Logo-Buttons" class="headerlink" title="Left-Aligned Logo Buttons"></a>Left-Aligned Logo Buttons</h4><p>根据你的Button的高度选择合适的Logo文件。因为PDF和SVG是矢量图，你可以在任何高度的Button中使用这两种文件。而PNG文件只能在高度为44的Button中使用，这是iOS中Button的默认高度。</p>
+<p>Title要使用系统字体(Sign in with Apple、Sign up with Apple、 Continue with Apple)：为了统一，你自定义的Button的高度和Title应该和系统使用的<code>保持一样的比例</code>。Title应该占据Button高度的43%，换言之Button的高度应该是Title Font大小的233%。下面两个例子展示了这种比例：</p>
+<p><img src="SignWithApple10.png" alt=""></p>
+<p><strong>保持Title的大写的风格</strong>所有Title的首字母都是大写的（Sign or Continue — and Apple），其他的字母是小写的。切不可改变这种风格。</p>
+<p><strong>保持Title和Logo和Button在垂直方向上对齐</strong>：为了做到这一点，Title和Button的中部在垂直方向上对齐，然后添加Logo图片，确保图片的高度和Button的高度一致。因为Logo图片本身具有顶部和底部的内边距，垂直对齐Button的Title能够确保Title和Logo在Button中占据合适的比例。</p>
+<p><strong>如果有需要可以嵌入Logo</strong> 如果你需要将苹果的Logo和其他的认证的logo对齐，可以将Logo左侧嵌入</p>
+<p><strong>Title和Button的右边有一个最小内边距</strong>  边距至少占据Button宽度的8%</p>
+<p><strong>Button有一个最小的size，且Button有一个内边距</strong> ：因为文本的本地化，Button的长度可能很长。参考下面的设计原则：</p>
+<table>
+<thead>
+<tr>
+<th>Minimum width</th>
+<th>Minimum height</th>
+<th>Minimum margin</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>140pt (140px @1x, 280px @2x)</td>
+<td>30pt (30px @1x, 60px @2x)</td>
+<td>1/10 of the button’s height</td>
+</tr>
+</tbody></table>
+<h4 id="Logo-Only-Buttons"><a href="#Logo-Only-Buttons" class="headerlink" title="Logo-Only Buttons"></a>Logo-Only Buttons</h4><p><strong>根据你的Button的高度选择合适的Logo文件</strong>。因为PDF和SVG是矢量图，你可以在任何高度的Button中使用这两种文件。而PNG文件只能在高度为44的Button中使用。</p>
+<p><strong>不要为Logo-Only图片添加水平方向上的内边距</strong>   Logo-only的Button是1:1的比例，下载的Logo-Only文件已经有了合适的内边距</p>
+<p><strong>用mask(遮罩)改变Logo-only图片的形状</strong>  例如 Sign in with Apple使用用圆形或者椭圆矩形的Button。不要为了减小内边距剪切Apple提供的美术资源，也不要只使用Apple Logo。</p>
+<p><img src="SignWithApple11.png" alt=""></p>
+<p><strong>Button有一个最小的内边距</strong>  内边距至少为Button高度的1/10</p>
 
     </div>
 
@@ -351,13 +410,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2019/03/21/cocoapodsVisual/" rel="prev" title="cocoapods依赖关系可视化">
-      <i class="fa fa-chevron-left"></i> cocoapods依赖关系可视化
+    <a href="/2020/04/13/OCCodeAnalysis/" rel="prev" title="如何在OC中进行源码分析">
+      <i class="fa fa-chevron-left"></i> 如何在OC中进行源码分析
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2020/03/21/26Birthday/" rel="next" title="嗨，26岁！">
-      嗨，26岁！ <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -422,7 +478,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#问题1：iOS端公钥加密的数据用Java端私钥解密"><span class="nav-number">1.</span> <span class="nav-text">问题1：iOS端公钥加密的数据用Java端私钥解密</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MAC上生成公钥、私钥的方法，及使用"><span class="nav-number">2.</span> <span class="nav-text">MAC上生成公钥、私钥的方法，及使用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务器返回数据也要加密，老大打算用java私钥加密-ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式"><span class="nav-number">2.1.</span> <span class="nav-text">服务器返回数据也要加密，老大打算用java私钥加密,ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加密方式"><span class="nav-number">3.</span> <span class="nav-text">加密方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS端进行DES加密、解密时非常方便"><span class="nav-number">3.1.</span> <span class="nav-text">iOS端进行DES加密、解密时非常方便</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS端进行RSA加密、解密时非常方便"><span class="nav-number">3.2.</span> <span class="nav-text">iOS端进行RSA加密、解密时非常方便</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS端进行MD5加密、解密时非常方便"><span class="nav-number">3.3.</span> <span class="nav-text">iOS端进行MD5加密、解密时非常方便</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iOS端进行AES加密、解密时非常方便"><span class="nav-number">3.4.</span> <span class="nav-text">iOS端进行AES加密、解密时非常方便</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Apple提供的Button"><span class="nav-number">1.</span> <span class="nav-text">使用Apple提供的Button</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#白色"><span class="nav-number">1.1.</span> <span class="nav-text">白色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#白色带边框"><span class="nav-number">1.2.</span> <span class="nav-text">白色带边框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#黑色"><span class="nav-number">1.3.</span> <span class="nav-text">黑色</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Button的大小和圆角"><span class="nav-number">1.4.</span> <span class="nav-text">Button的大小和圆角</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个自定义的-Sign-in-with-Apple-Button"><span class="nav-number">2.</span> <span class="nav-text">创建一个自定义的 Sign in with Apple Button</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Left-Aligned-Logo-Buttons"><span class="nav-number">2.1.</span> <span class="nav-text">Left-Aligned Logo Buttons</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Logo-Only-Buttons"><span class="nav-number">2.2.</span> <span class="nav-text">Logo-Only Buttons</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
