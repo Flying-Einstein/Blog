@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>以技术之名周报03#Sign in with Apple 设计原则| 2020-04-19</title>
+    <title>以技术之名周报04#Sign in with Apple 设计原则| 2020-04-19</title>
     <url>/2020/04/19/week16/</url>
     <content><![CDATA[<h3 id="使用Apple提供的Button"><a href="#使用Apple提供的Button" class="headerlink" title="使用Apple提供的Button"></a>使用Apple提供的Button</h3><p>当你使用系统提供的API创建Button的时候，能够获得以下优势：</p>
 <ol>
