@@ -3,9 +3,72 @@
   <entry>
     <title>以技术之名周报05#ipa包“瘦身”| 2020-04-26</title>
     <url>/2020/04/26/week17/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h3 id="背景："><a href="#背景：" class="headerlink" title="背景："></a>背景：</h3><blockquote>
+<p>随着App版本的不断迭代，安装包会越来越大。安装包的大小是非常影响用户体验的。在推广App的时候，如果安装包很大，需要花费很多的时间来下载，会劝退很多用户。所以，我们应当使安装包尽量小。</p>
+</blockquote>
+<h3 id="Part01-瘦身方向"><a href="#Part01-瘦身方向" class="headerlink" title="Part01 - 瘦身方向"></a>Part01 - 瘦身方向</h3><h4 id="安装包组成"><a href="#安装包组成" class="headerlink" title="安装包组成"></a>安装包组成</h4><p>通过将导出的ipa包，用<code>归档工具</code>解压，在解压出的<code>payload</code>文件夹中得到App文件,查看App包含的内容，我们可以发现该文件主要包含以下内容：</p>
+<ol>
+<li>Exectutable-可执行文件</li>
+<li>Resources:资源文件<ul>
+<li>图片资源（Assets.car/bundle/png/jpg）</li>
+<li>音/视频资源（mp/mp4）</li>
+<li>静态网页资源：html/css/js</li>
+<li>其他：文本/字体/证书等</li>
+</ul>
+</li>
+<li>Framework:<ul>
+<li>SwiftSupport: libSwiftxxx 等一系列 Swift 库</li>
+<li>其他依赖库：Embeded Framework</li>
+</ul>
+</li>
+<li>Plugins: Application Extensions<ul>
+<li>appex：其组成大致与 ipa 包组成一致</li>
+</ul>
+</li>
+</ol>
+<h4 id="安装包优化分析"><a href="#安装包优化分析" class="headerlink" title="安装包优化分析"></a>安装包优化分析</h4><p> 在安装包中，可执行文件、图片资源和动态库占比较大，所以我们优化的重点就是这三个方向。</p>
+<h3 id="Part02-瘦身实施"><a href="#Part02-瘦身实施" class="headerlink" title="Part02 - 瘦身实施"></a>Part02 - 瘦身实施</h3><h4 id="图片资源优化"><a href="#图片资源优化" class="headerlink" title="图片资源优化"></a>图片资源优化</h4><p>对大部分的App来讲，占比最大资源文件应该就是图片资源，所以资源文件优化的重点就是图片资源的优化。图片资源的优化可以从下面几个方向来进行。</p>
+<h5 id="1⃣️️将部分图片资源放到服务器上"><a href="#1⃣️️将部分图片资源放到服务器上" class="headerlink" title="1⃣️️将部分图片资源放到服务器上"></a>1⃣️️将部分图片资源放到服务器上</h5><p>将所有的图片资源都打到安装包中其实是不必要的，反而会造成安装包极速的增大，资源应该是按需加载的。除了一些常用的图片资源和一些如果放在线上非常影响用户体验的图片，其他的图片都应该放在资源服务器上，做好相应的图片缓存策略。</p>
+<h5 id="2⃣️清理没用的图片资源"><a href="#2⃣️清理没用的图片资源" class="headerlink" title="2⃣️清理没用的图片资源"></a>2⃣️清理没用的图片资源</h5><p>随着版本的迭代，之前导入的一些图片资源已经不再使用，要做到及时的清理没用的图片资源。<a href="https://github.com/tinymind/LSUnusedResources" target="_blank" rel="noopener">LSUnusedResources </a>是一款非常不错的无用图片查找工具，<a href="https://github.com/tinymind/LSUnusedResources" target="_blank" rel="noopener">LSUnusedResources </a>的思路是，先获取图片文件(imageset, jpg, png, gif)集合A，然后搜索代码文件中所有字符串名称得到B，然后从A集合中排除集合B就得到未使用的图片资源。</p>
+<h5 id="3⃣️图片资源压缩"><a href="#3⃣️图片资源压缩" class="headerlink" title="3⃣️图片资源压缩"></a>3⃣️图片资源压缩</h5><p>可以使用<a href="https://github.com/ImageOptim/ImageOptim" target="_blank" rel="noopener">ImageOptim</a>，通过优化压缩参数，移除无用的文件元数据和不必要的颜色配置来实现图片的无损压缩。我们UI切图使用的是蓝湖，蓝湖也支持图片压缩，如果没有使用过的同学可以尝试。</p>
+<h5 id="4⃣️iconfont"><a href="#4⃣️iconfont" class="headerlink" title="4⃣️iconfont"></a>4⃣️iconfont</h5><p>即使经过了图片转下载，无用图片删除，但是工程中的图片数量还是极为可观，其中各种各样的icon图标占了不少的数量。为了进一步减少图片数量，可以使用<code>iconfont</code>方案， <code>iconfont</code>优点：</p>
+<ul>
+<li>矢量，缩放不失真</li>
+<li>可以设置颜色</li>
+<li>接入成本低，不需要引入额外的类库</li>
+</ul>
+<p><code>iconfont</code>可以解决因为icon大小，颜色不同而重新切图的窘境。<code>iconfont</code>是一个能减少图片数量的好方案。</p>
+<h4 id="可执行文件-Mach-O-优化"><a href="#可执行文件-Mach-O-优化" class="headerlink" title="可执行文件(Mach-O)优化"></a>可执行文件(Mach-O)优化</h4><h5 id="1⃣️LinkMap文件"><a href="#1⃣️LinkMap文件" class="headerlink" title="1⃣️LinkMap文件"></a>1⃣️LinkMap文件</h5><p>但是通过<code>MachOView</code>，是不可以查看每个静态文件喝每个.o文件的大小，所以我们需要想办法量化文件的大小,我们可以通过分析<code>LinkMap</code>文件做到。</p>
+<p><code>LinkMap</code>文件是Xcode产生可执行文件的同时生成的链接信息，用来描述可执行文件的构造成分，包括代码段（<strong>TEXT）和数据段（</strong>DATA）的分布情况，可以根据这些信息进行针对性的优化。</p>
+<ul>
+<li><p>LinkMap文件获取：</p>
+<ol>
+<li>设置<code>Project-&gt;Build Settings-&gt;Write Link Map File</code>为<code>YES</code></li>
+<li>设置<code>Project-&gt;Build Settings-&gt;Path to Link Map File</code>为LinkMap文件的输出路径</li>
+</ol>
+</li>
+<li><p>LinkMap文件分析：</p>
+<p>可以使用<a href="https://github.com/huanxsd/LinkMap" target="_blank" rel="noopener">LinkMap - LinkMap.txt 文件解析工具</a>分析每个类或者静态库的大小。通过查看LinkMap文件，各个静态库和文件的大小一目了然。</p>
+<p><img src="week1702.png" alt="Alt text"></p>
+<p>1、 在选用三方库的时候，尽量使用占用内存比较小的三方库，及时的移除不再使用的三方库。<br>2、分析占用内存比较大的类，删除类中没用的代码，减少冗余，保证用最简代码实现相应的功能，提升代码的复用性。</p>
+</li>
+</ul>
+<p><code>LinkMap</code>可以在宏观上获取需要优化的部分，但是微观上，哪些是无用的类和方法，需要我们在    <code>Mach-O</code>层面进行分析，可以使用<a href="https://github.com/fangshufeng/MachOView" target="_blank" rel="noopener">MachOView </a>对<code>Mach-O</code>文件进行分析。可以通过阅读<a href="http://hawk0620.github.io/blog/2018/03/22/study-mach-o-file/" target="_blank" rel="noopener">这篇文章</a>探秘<code>Mach-O</code>。 下面这张图是<code>MachOView</code>查看<code>Mach-O</code>文件的截图：</p>
+<p><img src="week1701.png" alt="Alt text"></p>
+<p>大家可以阅读<a href="https://juejin.im/post/5d5d1a92e51d45620923886a" target="_blank" rel="noopener">:删除无用的类</a>进行实践</p>
+<h5 id="2⃣️尽量不要使用OC和Swift混编"><a href="#2⃣️尽量不要使用OC和Swift混编" class="headerlink" title="2⃣️尽量不要使用OC和Swift混编"></a>2⃣️尽量不要使用OC和Swift混编</h5><p>OC和Swift混编的时候，因为需要一些静态库的支持，会造成安装包急剧增大。所以，尽量选择一种语言开发，不要采用混编的方式。<br><img src="week1703.png" alt="Alt text"></p>
+<h5 id="3⃣️代码瘦身"><a href="#3⃣️代码瘦身" class="headerlink" title="3⃣️代码瘦身"></a>3⃣️代码瘦身</h5><p>可以使用<a href="https://www.jetbrains.com/objc/" target="_blank" rel="noopener">AppCode</a>进行代码的静态检查。<a href="https://www.jetbrains.com/objc/" target="_blank" rel="noopener">AppCode</a> 提供了非常强大的代码静态检查工具，使用<code>Inspect Code</code>，可以找到很多代码优化的地方:主要包括删除不用的类，不用的函数，重复的代码等。<br><img src="week1704.png" alt="Alt text"></p>
+<h4 id="编译优化"><a href="#编译优化" class="headerlink" title="编译优化"></a>编译优化</h4><p>Xcode 支持编译器层面的一些优化优化选项，可以让我们介于更快的编译速度、更小的二进制大小和更快的执行速度之间自由选择想要进行的优化粒度。</p>
+<h5 id="1⃣️BitCode"><a href="#1⃣️BitCode" class="headerlink" title="1⃣️BitCode"></a>1⃣️BitCode</h5><p>可以在<code>Xcode Target -&gt; Build Settings -&gt; Enable Bitcode</code> 中打开 bitcode 选项</p>
+<p>Bitcode可以作为中间产物一起提交AppStore。包含Bitcode配置的程序将会在AppStore上被编译和链接。Bitcode允许苹果在后期重新优化我们程序的二进制文件，而不需要我们重新提交一个新的版本到AppStore上。</p>
+<p>在打包时，如果一些三方的依赖库没有开启 bitcode，或者开启了但是没有在最终引用的链接库中带有 bitcode，那么整个工程就无法用 bitcode 来编译了。</p>
+<h3 id="Part03-参考"><a href="#Part03-参考" class="headerlink" title="Part03- 参考"></a>Part03- 参考</h3><p><a href="https://juejin.im/post/5cbb3f9151882529e5627ece" target="_blank" rel="noopener">App瘦身小记</a><br><a href="http://www.cocoachina.com/articles/859032" target="_blank" rel="noopener">京东商城iOS App瘦身实践</a><br><a href="https://www.jianshu.com/p/c94dedef90b7" target="_blank" rel="noopener">APP安装包瘦身实践</a><br><a href="https://zhuanlan.zhihu.com/p/86317689" target="_blank" rel="noopener">OS开发：Archive、ipa 和 App 包瘦身</a></p>
+]]></content>
+      <categories>
+        <category>iOS</category>
+      </categories>
       <tags>
-        <tag>iOS</tag>
+        <tag>原创</tag>
       </tags>
   </entry>
   <entry>
