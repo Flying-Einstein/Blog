@@ -62,7 +62,7 @@
 <h5 id="1⃣️BitCode"><a href="#1⃣️BitCode" class="headerlink" title="1⃣️BitCode"></a>1⃣️BitCode</h5><p>可以在<code>Xcode Target -&gt; Build Settings -&gt; Enable Bitcode</code> 中打开 bitcode 选项</p>
 <p>Bitcode可以作为中间产物一起提交AppStore。包含Bitcode配置的程序将会在AppStore上被编译和链接。Bitcode允许苹果在后期重新优化我们程序的二进制文件，而不需要我们重新提交一个新的版本到AppStore上。</p>
 <p>在打包时，如果一些三方的依赖库没有开启 bitcode，或者开启了但是没有在最终引用的链接库中带有 bitcode，那么整个工程就无法用 bitcode 来编译了。</p>
-<h3 id="Part03-参考"><a href="#Part03-参考" class="headerlink" title="Part03- 参考"></a>Part03- 参考</h3><p><a href="https://juejin.im/post/5cbb3f9151882529e5627ece" target="_blank" rel="noopener">App瘦身小记</a><br><a href="http://www.cocoachina.com/articles/859032" target="_blank" rel="noopener">京东商城iOS App瘦身实践</a><br><a href="https://www.jianshu.com/p/c94dedef90b7" target="_blank" rel="noopener">APP安装包瘦身实践</a><br><a href="https://zhuanlan.zhihu.com/p/86317689" target="_blank" rel="noopener">OS开发：Archive、ipa 和 App 包瘦身</a></p>
+<h3 id="Part03-参考"><a href="#Part03-参考" class="headerlink" title="Part03- 参考"></a>Part03- 参考</h3><p><a href="https://juejin.im/post/5cbb3f9151882529e5627ece" target="_blank" rel="noopener">App瘦身小记</a><br><a href="http://www.cocoachina.com/articles/859032" target="_blank" rel="noopener">京东商城iOS App瘦身实践</a><br><a href="https://www.jianshu.com/p/c94dedef90b7" target="_blank" rel="noopener">APP安装包瘦身实践</a><br><a href="https://zhuanlan.zhihu.com/p/86317689" target="_blank" rel="noopener">iOS开发：Archive、ipa 和 App 包瘦身</a><br>[APP体积优化]（<a href="https://juejin.im/post/5e969d816fb9a03c60188229?utm_source=gold_browser_extension）" target="_blank" rel="noopener">https://juejin.im/post/5e969d816fb9a03c60188229?utm_source=gold_browser_extension）</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
