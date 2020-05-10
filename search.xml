@@ -79,7 +79,7 @@
 <p>是不是非常优雅的解决方案？</p>
 <p>最后一件要做的事情是移除洗面的代码</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">self.usernameTextField.backgroundColor &#x3D; self.usernameIsValid ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line">self.passwordTextField.backgroundColor &#x3D; self.passwordIsValid ? [UIColor clearColor] : [UIColor yellowColor];</span><br></pre></td></tr></table></figure>
-<p>通过下面的图像，可视化当前的逻辑。可以看到，这里有两个简单的管道，它们获取文本信号，然后通过<code>map</code>将它们映射为有指示有效性的Bool值，然后再映射为UIColor,将UIcolor绑定到textfield 的backgroundcolor上。<br><img src="./week19.5.png" alt="Alt text"></p>
+<p>通过下面的图像，可视化当前的逻辑。可以看到，这里有两个简单的管道，它们获取文本信号，然后通过<code>map</code>将它们映射为有指示有效性的Bool值，然后再映射为UIColor,将UIcolor绑定到textfield 的backgroundcolor上。<br><img src="/week1905.png" alt="Alt text"></p>
 <p>你是否好奇，为什么创建了两个分离的信号<code>validPasswordSignal</code>和<code>validUsernameSignal</code>,而不是为每个textfield创建一个单一的流畅管道。保持耐心，这种疯狂背后的方法很快将变得清晰！！！</p>
 <h4 id="Combining-signals-组合信号"><a href="#Combining-signals-组合信号" class="headerlink" title="Combining signals (组合信号)"></a>Combining signals (组合信号)</h4><p>当前情况下， <strong>Sigin  In</strong>Button只有在username和password输入框都有效的情况下才能点击，是时候通过响应式的方式来做这件事情了。</p>
 <p>当前的代码已经有能发出boolean类型值的<strong>信号</strong>，来显示username和password是否是有效的：<code>validUsernameSignal</code>和<code>validPasswordSignal</code>。你要做的就是将这两种信号组合起来，以确定何时是该Button处于enable状态。</p>
@@ -94,7 +94,7 @@
 <p>在运行程序之前，移除下面的属性和代码</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@property (nonatomic) BOOL passwordIsValid;</span><br><span class="line">@property (nonatomic) BOOL usernameIsValid;</span><br><span class="line"></span><br><span class="line">----------------------------</span><br><span class="line">&#x2F;&#x2F; handle text changes for both text fields</span><br><span class="line">[self.usernameTextField addTarget:self</span><br><span class="line">                           action:@selector(usernameTextFieldChanged)</span><br><span class="line">                 forControlEvents:UIControlEventEditingChanged];</span><br><span class="line">[self.passwordTextField addTarget:self </span><br><span class="line">                           action:@selector(passwordTextFieldChanged)</span><br><span class="line">                 forControlEvents:UIControlEventEditingChanged];</span><br></pre></td></tr></table></figure>
 <p>同时也移除<code>updateUIState</code>、<code>usernameTextFieldChange</code>和<code>passwordTextfieldChange</code>方法。最后确保移除viewDidload中对<code>updateUIState</code>的调用。</p>
-<p>运行程序，测试<strong>Sign In</strong> button，当username和password都是有效的时候，<code>Sign In</code> Button应该也是enabled的。这个逻辑如下图：<br><img src="./week1006.png" alt="Alt text"></p>
+<p>运行程序，测试<strong>Sign In</strong> button，当username和password都是有效的时候，<code>Sign In</code> Button应该也是enabled的。这个逻辑如下图：<br><img src="./week1906.png" alt="Alt text"></p>
 <p>上图揭示了一对非常重要的概念，这对概念可以让你用ReactiveCocoa执行非常强大的任务</p>
 <ul>
 <li>拆分 - 信号可以有多个订阅者，并充当多个后续管道步骤的源。上图中，指示username和password有效性的boolean信号被拆分，并用于不同的目的。</li>
