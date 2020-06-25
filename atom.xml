@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>少年之名</title>
+  <title>以技术之名</title>
   
   
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://iamlay.com/"/>
-  <updated>2020-05-10T13:42:10.667Z</updated>
+  <updated>2020-06-25T03:04:23.612Z</updated>
   <id>https://iamlay.com/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一款稳定高效的VPN - CloudSS</title>
+    <link href="https://iamlay.com/2020/06/25/VPN/"/>
+    <id>https://iamlay.com/2020/06/25/VPN/</id>
+    <published>2020-06-25T03:03:44.000Z</published>
+    <updated>2020-06-25T03:04:23.612Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>以技术之名周报06#| ReactiveCocoa入门篇| 2020-05-10</title>
@@ -466,30 +481,6 @@
     
     
       <category term="原创" scheme="https://iamlay.com/tags/%E5%8E%9F%E5%88%9B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>四胞胎之----nil 、 Nil 、 NULL 、NSNull</title>
-    <link href="https://iamlay.com/2015/10/21/Nill/"/>
-    <id>https://iamlay.com/2015/10/21/Nill/</id>
-    <published>2015-10-20T16:00:00.000Z</published>
-    <updated>2020-03-21T09:19:18.632Z</updated>
-    
-    <content type="html"><![CDATA[<p><a href="https://nshipster.cn/nil/" target="_blank" rel="noopener">转自：nil / Nil / NULL / NSNull</a></p><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在OC开发过程中，我们会遇到nil 、 Nil 、 NULL 、NSNull这个四个长得极为相似的字符，nill应该是使用最频繁的，在创建对象之初我们往往会把对象的指针指向nill，但是它们之间的区别到底是什么，我们可能不太清楚。</p><a id="more"></a><h3 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h3><p>在Objective－C中，有几个不同种类的不存在。</p><p>C用0来作为不存在的原始值，而NULL作为指针(这在指针环境中相当于0)。</p><p>Objective-C在C的表达不存在的基础上增加了nil。nil是一个指向不存在的对象指针。虽然它在语义上与NULL不同，但它们在技术上是相等的。</p><p>在框架层面，Foundation定义了NSNull，即一个类方法+null，它返回一个单独的NSNull对象。NSNull与nil以及NULL不同，因为它是一个实际的对象，而不是一个零值。</p><p>另外，在Foundation/NSObjCRuntime.h中，Nil被定义为指向零的类指针。这个nil的鲜为人知的大写的表兄并不常常出现，但它至少值得注意。</p><h3 id="关于-nil-的一些事"><a href="#关于-nil-的一些事" class="headerlink" title="关于 nil 的一些事"></a>关于 nil 的一些事</h3><p>刚被分配的NSObject的内容被设置为0。也就是说那个对象所有的指向其他对象的指针都从nil开始，所以在init方法中设置self.(association) = nil之类的表达是没有必要的。</p><p>也许nil最显著的行为是，它虽然为零，仍然可以有消息发送给它。</p><p>在其他的语言中，比如C++，这样做会使你的程序崩溃，但在Objective-C中，在nil上调用方法返回一个零值。这大大的简化了表达，因为它避免了在使用nil之前对它的检查：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 举个例子，这个表达...</span><br><span class="line">if (name !&#x3D; nil &amp;&amp; [name isEqualToString:@&quot;Steve&quot;]) &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; …可以被简化为：</span><br><span class="line">if ([name isEqualToString:@&quot;steve&quot;]) &#123; ... &#125;</span><br></pre></td></tr></table></figure><p>了解nil如何在Objective-C中工作可以让你将这个便利变成一个功能，而不是潜伏在你的应用中的bug。要确保避免当nil值不需要的情况，要么通过检查或者提前返回来安静的失败，或者通过增加一个NSParameterAssert来抛出异常。</p><h3 id="NSNull：有作没有"><a href="#NSNull：有作没有" class="headerlink" title="NSNull：有作没有"></a>NSNull：有作没有</h3><p>SNull在Foundation和其它框架中被广泛的使用，以解决如NSArray和NSDictionary之类的集合不能有nil值的缺陷。你可以将NSNull理解为有效的将NULL或者nil值封装boxing，以达到在集合中使用它们的目的：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NSMutableDictionary *mutableDictionary &#x3D; [NSMutableDictionary dictionary];</span><br><span class="line">mutableDictionary[@&quot;someKey&quot;] &#x3D; [NSNull null]; &#x2F;&#x2F; Sets value of NSNull singleton for &#96;someKey&#96;</span><br><span class="line">NSLog(@&quot;Keys: %@&quot;, [mutableDictionary allKeys]); &#x2F;&#x2F; @[@&quot;someKey&quot;]</span><br></pre></td></tr></table></figure><p>总的来说，这里的四个表达没有的值是每个Objective-C程序员都应该知道的：</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;&lt;a href=&quot;https://nshipster.cn/nil/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;转自：nil / Nil / NULL / NSNull&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;在OC开发过程中，我们会遇到nil 、 Nil 、 NULL 、NSNull这个四个长得极为相似的字符，nill应该是使用最频繁的，在创建对象之初我们往往会把对象的指针指向nill，但是它们之间的区别到底是什么，我们可能不太清楚。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="iOS" scheme="https://iamlay.com/categories/iOS/"/>
-    
-    
-      <category term="转载" scheme="https://iamlay.com/tags/%E8%BD%AC%E8%BD%BD/"/>
     
   </entry>
   

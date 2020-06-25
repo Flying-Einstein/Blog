@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>一款稳定高效的VPN - CloudSS</title>
+    <url>/2020/06/25/VPN/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>以技术之名周报06#| ReactiveCocoa入门篇| 2020-05-10</title>
     <url>/2020/05/10/week19/</url>
     <content><![CDATA[<h3 id="Part-01-背景"><a href="#Part-01-背景" class="headerlink" title="Part-01 背景"></a>Part-01 背景</h3><p>作为一个iOS开发者，写的每一行代码都是对事件的反馈，像Button点击、网络请求、属性改变（KVO）、用户位置改变等。但是这些事件的处理采用的是Actions、delegate、KVO、回调等不同的方式。<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="noopener">ReactiveCocoa</a>针对不同的事件定义了的标准接口，这样不同的事件可以更容易链式调用、过滤、组合。</p>
