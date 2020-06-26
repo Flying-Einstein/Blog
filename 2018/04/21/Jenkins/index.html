@@ -25,38 +25,38 @@
   <meta name="description" content="本文的大部分步骤参考的是一缕殇流化隐半边冰霜的博客，所以截图和很多步骤都是直接拷贝的该博客，然后补充了自己踩的一些坑。最后的脚本问题我没有拷贝过来，如果大家希望有所了解，可以去原博客，本文主要是个人以后回忆所用">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jenkins自动打包搭建之路">
-<meta property="og:url" content="http://www.iamlay.com/2018/04/21/Jenkins/index.html">
+<meta property="og:url" content="www.iamlay.com/2018/04/21/Jenkins/index.html">
 <meta property="og:site_name" content="以技术之名">
 <meta property="og:description" content="本文的大部分步骤参考的是一缕殇流化隐半边冰霜的博客，所以截图和很多步骤都是直接拷贝的该博客，然后补充了自己踩的一些坑。最后的脚本问题我没有拷贝过来，如果大家希望有所了解，可以去原博客，本文主要是个人以后回忆所用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins02.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins03.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins04.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins05.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins06.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins07.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins08.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins09.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins10.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins11.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins12.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins13.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins14.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins15.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins16.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins17.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins18.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins19.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins20.png">
-<meta property="og:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins21.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins02.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins03.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins04.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins05.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins06.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins07.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins08.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins09.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins10.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins11.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins12.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins13.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins14.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins15.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins16.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins17.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins18.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins19.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins20.png">
+<meta property="og:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins21.png">
 <meta property="article:published_time" content="2018-04-20T16:00:00.000Z">
 <meta property="article:modified_time" content="2020-03-27T04:15:07.613Z">
 <meta property="article:author" content="Ray">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://www.iamlay.com/2018/04/21/Jenkins/jenkins02.png">
+<meta name="twitter:image" content="www.iamlay.com/2018/04/21/Jenkins/jenkins02.png">
 
-<link rel="canonical" href="http://www.iamlay.com/2018/04/21/Jenkins/">
+<link rel="canonical" href="www.iamlay.com/2018/04/21/Jenkins/">
 
 
 <script id="page-configurations">
@@ -223,7 +223,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://www.iamlay.com/2018/04/21/Jenkins/">
+    <link itemprop="mainEntityOfPage" href="www.iamlay.com/2018/04/21/Jenkins/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
