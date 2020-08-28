@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>week2020-36</title>
+    <title>以技术之名周报08#| Swift代码规范| 2020-08-28</title>
     <url>/2020/08/28/week2020-36/</url>
     <content><![CDATA[<h4 id="Part-01-代码格式"><a href="#Part-01-代码格式" class="headerlink" title="Part-01:  代码格式"></a>Part-01:  代码格式</h4><ul>
 <li><p>1.1使用4个空格替代一个<code>Tabs</code></p>
