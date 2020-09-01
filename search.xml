@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>《将博客搬至CSDN》</title>
+    <url>/2020/09/01/CSDN/</url>
+    <content><![CDATA[<p>本人的博客将移步至CSDN，请前往CSDN观看本人的博客</p>
+]]></content>
+  </entry>
+  <entry>
     <title>以技术之名周报08#| Swift代码规范| 2020-08-28</title>
     <url>/2020/08/28/week2020-36/</url>
     <content><![CDATA[<h4 id="Part-01-代码格式"><a href="#Part-01-代码格式" class="headerlink" title="Part-01:  代码格式"></a>Part-01:  代码格式</h4><ul>
