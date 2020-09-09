@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.1.1">
 <!--接入谷歌广告-->
 <script data-ad-client="ca-pub-3825645052664031" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -30,7 +30,7 @@
 <meta property="og:description" content="本文的主要目的是关于写文章摘要的一些思考，以及Hexo的Next主题添加文章摘要的三种方式，希望能给读者提供一些帮助。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-27T04:21:09.000Z">
-<meta property="article:modified_time" content="2020-03-29T13:00:57.204Z">
+<meta property="article:modified_time" content="2020-03-29T13:00:57.000Z">
 <meta property="article:author" content="Ray">
 <meta property="article:tag" content="原创">
 <meta name="twitter:card" content="summary">
@@ -316,7 +316,7 @@
 <h4 id="Hexo添加文摘要的三种方式"><a href="#Hexo添加文摘要的三种方式" class="headerlink" title="Hexo添加文摘要的三种方式"></a>Hexo添加文摘要的三种方式</h4><ol>
 <li>在文章中使用<code>&lt;!--more--&gt;</code>进行手动截断,这其实就是上面讲到的文章截断，推荐在使用<code>&lt;!--more--&gt;</code>之前写好文章摘要</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">本文的主要目的是关于写文章摘要的一些思考，以及Hexo的Next主题添加文章摘要的三种方式，希望能给读者提供一些帮助。</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"> 摘要是简洁、具体的摘要要反映论文的实质性内容，展示论文内容足够的信息，体现论文的创新性，展现论文的重要梗概，一般由具体研究的对象、方法、结果、结论四要素组成。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">本文的主要目的是关于写文章摘要的一些思考，以及Hexo的Next主题添加文章摘要的三种方式，希望能给读者提供一些帮助。</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"> 摘要是简洁、具体的摘要要反映论文的实质性内容，展示论文内容足够的信息，体现论文的创新性，展现论文的重要梗概，一般由具体研究的对象、方法、结果、结论四要素组成。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 <ol start="2">
@@ -326,7 +326,7 @@
 <ol start="3">
 <li>自动生成摘要，主题配置文件中添加以下代码，这种方是更加机械的切割，没有办法控制摘要显示的内容, 而且是对整个网站生效的,不是特别推荐</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -434,7 +434,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是摘要？"><span class="nav-number">1.</span> <span class="nav-text">什么是摘要？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么要添加文章摘要？"><span class="nav-number">2.</span> <span class="nav-text">为什么要添加文章摘要？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo添加文摘要的三种方式"><span class="nav-number">3.</span> <span class="nav-text">Hexo添加文摘要的三种方式</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%91%98%E8%A6%81%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是摘要？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E6%91%98%E8%A6%81%EF%BC%9F"><span class="nav-number">2.</span> <span class="nav-text">为什么要添加文章摘要？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hexo%E6%B7%BB%E5%8A%A0%E6%96%87%E6%91%98%E8%A6%81%E7%9A%84%E4%B8%89%E7%A7%8D%E6%96%B9%E5%BC%8F"><span class="nav-number">3.</span> <span class="nav-text">Hexo添加文摘要的三种方式</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

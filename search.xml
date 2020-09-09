@@ -18,7 +18,7 @@
 </li>
 <li><p>1.4 确保任何地方都没有尾随的空格（ <code>Xcode -&gt; Preferences -&gt; Text Editing -&gt; Automatically trim trailing whitespace 加上 Including whitespace-only lines</code>）</p>
 </li>
-<li><p>不要把左大括号放在新行 — 我们使用 <a href="https://en.m.wikipedia.org/wiki/Indentation_style#1TBS" target="_blank" rel="noopener">1TBS 风格</a></p>
+<li><p>不要把左大括号放在新行 — 我们使用 <a href="https://en.m.wikipedia.org/wiki/Indentation_style#1TBS">1TBS 风格</a></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class SomeClass &#123;</span><br><span class="line">    func someMethod() &#123;</span><br><span class="line">        if x &#x3D;&#x3D; y &#123;</span><br><span class="line">            &#x2F;* ... *&#x2F;</span><br><span class="line">        &#125; else if x &#x3D;&#x3D; z &#123;</span><br><span class="line">            &#x2F;* ... *&#x2F;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            &#x2F;* ... *&#x2F;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;* ... *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>1.6 当为属性、常量、变量、字典的键、函数参数、协议实现或父类书写类型时，不要在冒号<code>:</code>前面加上空格</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 指明类型</span><br><span class="line">let pirateViewController: PirateViewController</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 字典语法（注意我们左对齐而不是对齐冒号）</span><br><span class="line">let ninjaDictionary: [String: AnyObject] &#x3D; [</span><br><span class="line">    &quot;fightLikeDairyFarmer&quot;: false,</span><br><span class="line">    &quot;disgusting&quot;: true</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 声明函数</span><br><span class="line">func myFunction&lt;T, U: SomeProtocol&gt;(firstArgument: U, secondArgument: T) where T.RelatedType &#x3D;&#x3D; U &#123;</span><br><span class="line">    &#x2F;* ... *&#x2F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 调用函数</span><br><span class="line">someFunction(someArgument: &quot;Kitten&quot;)</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 父类</span><br><span class="line">class PirateViewController: UIViewController &#123;</span><br><span class="line">    &#x2F;* ... *&#x2F;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 协议</span><br><span class="line">extension PirateViewController: UITableViewDataSource &#123;</span><br><span class="line">    &#x2F;* ... *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -68,7 +68,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">func pirateName() -&gt; (firstName: String, lastName: String) &#123;</span><br><span class="line">    return (&quot;Guybrush&quot;, &quot;Threepwood&quot;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let name &#x3D; pirateName()</span><br><span class="line">let firstName &#x3D; name.firstName</span><br><span class="line">let lastName &#x3D; name.lastName</span><br></pre></td></tr></table></figure></li>
 <li><p>3.1.5 在为类声明代理或者协议的时候，要注意循环引用，通常这些属性在声明时要用 weak 修饰。</p>
 </li>
-<li><p>3.1.6 在逃逸闭包中直接调用 self 的时候，要注意是否会引起循环引用。 - 当可能发生循环引用时尝试使用 <a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-XID_163" target="_blank" rel="noopener">capture list</a></p>
+<li><p>3.1.6 在逃逸闭包中直接调用 self 的时候，要注意是否会引起循环引用。 - 当可能发生循环引用时尝试使用 <a href="https://developer.apple.com/library/ios/documentation/swift/conceptual/Swift_Programming_Language/Closures.html#//apple_ref/doc/uid/TP40014097-CH11-XID_163">capture list</a></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">myFunctionWithEscapingClosure() &#123; [weak self] (error) -&gt; Void in</span><br><span class="line">    &#x2F;&#x2F; 你可以这么做</span><br><span class="line"></span><br><span class="line">    self?.doSomething()</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 你也可以这么做</span><br><span class="line"></span><br><span class="line">    guard let strongSelf &#x3D; self else &#123;</span><br><span class="line">        return</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    strongSelf.doSomething()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>3.1.7 不要使用 labeled breaks</p>
 </li>
@@ -119,7 +119,7 @@
 <p>记住使用扩展时，无论怎样，扩展中的方法不要被子类重载，这会使测试变麻烦。如果这是一个通用的使用场景，为了一致性使用方法 <code>1</code>可能会更好。否则，<code>2</code>可以使关系的拆分更清楚。<br>即使使用方法<code>2</code> ，也要添加<code>// MARK:</code>语句，以便在 <code>Xcode</code>的方法 / 属性 / 类等的列表 UI 中更加易读</p>
 <h5 id="3-7-属性"><a href="#3-7-属性" class="headerlink" title="3.7 属性"></a>3.7 属性</h5><ul>
 <li>3.7.1 如果创建只读的计算属性，提供不带 get {} 的获取方法<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var computedProperty: String &#123;</span><br><span class="line">    if someBool &#123;</span><br><span class="line">        return &quot;I&#39;m a mighty pirate!&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    return &quot;I&#39;m selling these fine leather jackets.&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>3.7.2 使用 <code>get {}</code>、 <code>set {}</code>、 <code>willSet</code> 和<code>didSet</code>时，缩进这些块</li>
+<li>3.7.2 使用 <code>get &#123;&#125;</code>、 <code>set &#123;&#125;</code>、 <code>willSet</code> 和<code>didSet</code>时，缩进这些块</li>
 <li>3.7.3 虽然你可以为 <code>willSet/didSet</code>和<code>set</code>自定义新值或旧值的名称，但请使用默认提供的标准标识符 <code>newValue / oldValue</code><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var storedProperty: String &#x3D; &quot;I&#39;m selling these fine leather jackets.&quot; &#123;</span><br><span class="line">    willSet &#123;</span><br><span class="line">        print(&quot;will set to \(newValue)&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">    didSet &#123;</span><br><span class="line">        print(&quot;did set from \(oldValue) to \(storedProperty)&quot;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">var computedProperty: String  &#123;</span><br><span class="line">    get &#123;</span><br><span class="line">        if someBool &#123;</span><br><span class="line">            return &quot;I&#39;m a mighty pirate!&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        return storedProperty</span><br><span class="line">    &#125;</span><br><span class="line">    set &#123;</span><br><span class="line">        storedProperty &#x3D; newValue</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>3.7.4 你可以按如下方式声明一个单例属性：<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class PirateManager &#123;</span><br><span class="line">    static let shared &#x3D; PirateManager()</span><br><span class="line"></span><br><span class="line">    &#x2F;* ... *&#x2F;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="3-8-闭包"><a href="#3-8-闭包" class="headerlink" title="3.8 闭包"></a>3.8 闭包</h5></li>
@@ -153,7 +153,7 @@
 </ul>
 <h5 id="4-1-文档"><a href="#4-1-文档" class="headerlink" title="4.1 文档"></a>4.1 文档</h5><p>如果函数比简单的 O (1) 操作负责，通常应该考虑为函数加个文档。因为方法签名的一些信息可能不是那么明显。如果实现方式有任何怪癖，无论在技术上有趣、棘手、不明显等等，都应该被文档化。应该为复杂的类 / 结构体 / 枚举 / 协议和属性添加文档。所有的<code>public</code> <code>函数 / 类 / 属性 / 常量 / 结构体 / 枚举 / 协议</code>等也应该被文档化。（如果，他们的签名 / 名称不能使他们含义 / 功能很明显）。</p>
 <p>写完文档注释之后，你应该按住<code>option</code> 键并单击函数 / 属性 / 类等等来确认文档注释被正确地格式化了。</p>
-<p>务必查看 Swift 注释标记中提供的全套功能，详见 <a href="https://developer.apple.com/library/tvos/documentation/Xcode/Reference/xcode_markup_formatting_ref/Attention.html#//apple_ref/doc/uid/TP40016497-CH29-SW1" target="_blank" rel="noopener">Apple 的文档</a></p>
+<p>务必查看 Swift 注释标记中提供的全套功能，详见 <a href="https://developer.apple.com/library/tvos/documentation/Xcode/Reference/xcode_markup_formatting_ref/Attention.html#//apple_ref/doc/uid/TP40016497-CH29-SW1">Apple 的文档</a></p>
 <p>原则:</p>
 <ul>
 <li>4.1.1 160 个字符列的限制（和代码的部分一样</li>
@@ -170,7 +170,7 @@
 
 </li>
 </ul>
-<h4 id="Part-05-转载"><a href="#Part-05-转载" class="headerlink" title="Part-05:转载"></a>Part-05:转载</h4><p><a href="https://github.com/linkedin/swift-style-guide/" target="_blank" rel="noopener">原文地址</a><br><a href="https://learnku.com/ios/t/23230/linkedin-official-swift-style-guide" target="_blank" rel="noopener">译文地址</a></p>
+<h4 id="Part-05-转载"><a href="#Part-05-转载" class="headerlink" title="Part-05:转载"></a>Part-05:转载</h4><p><a href="https://github.com/linkedin/swift-style-guide/">原文地址</a><br><a href="https://learnku.com/ios/t/23230/linkedin-official-swift-style-guide">译文地址</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -260,10 +260,10 @@
 <li>不要使用动词的过去分词形式作形容词使用</li>
 </ul>
 <p>推荐</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (void)setAcceptsGlyphInfo:(BOOL)flag;</span><br><span class="line">- (BOOL)acceptsGlyphInfo;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (void)setAcceptsGlyphInfo:(BOOL)flag;</span><br><span class="line">- (BOOL)acceptsGlyphInfo;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>反对</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (void)setGlyphInfoAccepted:(BOOL)flag;</span><br><span class="line">- (BOOL)glyphInfoAccepted;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (void)setGlyphInfoAccepted:(BOOL)flag;</span><br><span class="line">- (BOOL)glyphInfoAccepted;    </span><br></pre></td></tr></table></figure>
 <ul>
 <li>可以使用情态动词(can, should, will 等)来提高清晰性,但不要使用 do 或 does</li>
 </ul>
@@ -362,7 +362,7 @@
 <li>方法之间应该正好空一行，这有助于视觉清晰度和代码组织性。在方法中的功能块之间应该使用空白分开，但往往可能应该创建一个新的方法。</li>
 <li><code>@synthesize</code> 和 <code>@dynamic</code>在实现中每个都应该占一个新行。</li>
 </ul>
-<h5 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h5><p>条件判断主体部分应该始终使用大括号括住来防止出错，即使它可以不用大括号（例如它只需要一行）。这些错误包括添加第二行（代码）并希望它是 if 语句的一部分时。还有另外一种<a href="http://programmers.stackexchange.com/a/16530" target="_blank" rel="noopener">更危险的</a>，当 if 语句里面的一行被注释掉，下一行就会在不经意间成为了这个 if 语句的一部分。此外，这种风格也更符合所有其他的条件判断，因此也更容易检查。</p>
+<h5 id="条件判断"><a href="#条件判断" class="headerlink" title="条件判断"></a>条件判断</h5><p>条件判断主体部分应该始终使用大括号括住来防止出错，即使它可以不用大括号（例如它只需要一行）。这些错误包括添加第二行（代码）并希望它是 if 语句的一部分时。还有另外一种<a href="http://programmers.stackexchange.com/a/16530">更危险的</a>，当 if 语句里面的一行被注释掉，下一行就会在不经意间成为了这个 if 语句的一部分。此外，这种风格也更符合所有其他的条件判断，因此也更容易检查。</p>
 <p>推荐:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (!error) &#123;</span><br><span class="line">    return success;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -391,7 +391,7 @@
 <p>推荐：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (void)setExampleText:(NSString *)text image:(UIImage *)image;</span><br></pre></td></tr></table></figure>
 
-<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><p>变量名应该尽可能命名为描述性的。除了 <code>for()</code>循环外，其他情况都应该避免使用单字母的变量名。 星号表示指针属于变量，例如：<code>NSString *text</code>不要写成 <code>NSString* text</code>或者 <code>NSString * text</code> ，常量除外。 尽量定义属性来代替直接使用实例变量。除了初始化方法<code>（init， initWithCoder:，等）</code>， <code>dealloc</code> 方法和自定义的 <code>setters</code>和 <code>getters</code>内部，应避免直接访问实例变量。更多有关在初始化方法和 <code>dealloc</code> 方法中使用访问器方法的信息，参见<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6" target="_blank" rel="noopener">这里</a>。</p>
+<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><p>变量名应该尽可能命名为描述性的。除了 <code>for()</code>循环外，其他情况都应该避免使用单字母的变量名。 星号表示指针属于变量，例如：<code>NSString *text</code>不要写成 <code>NSString* text</code>或者 <code>NSString * text</code> ，常量除外。 尽量定义属性来代替直接使用实例变量。除了初始化方法<code>（init， initWithCoder:，等）</code>， <code>dealloc</code> 方法和自定义的 <code>setters</code>和 <code>getters</code>内部，应避免直接访问实例变量。更多有关在初始化方法和 <code>dealloc</code> 方法中使用访问器方法的信息，参见<a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/MemoryMgmt/Articles/mmPractical.html#//apple_ref/doc/uid/TP40004447-SW6">这里</a>。</p>
 <p>推荐：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@interface NYTSection: NSObject</span><br><span class="line">@property (nonatomic) NSString *headline;</span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
 
@@ -399,7 +399,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@interface NYTSection : NSObject &#123;</span><br><span class="line">    NSString *headline;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h6 id="变量限定符"><a href="#变量限定符" class="headerlink" title="变量限定符"></a>变量限定符</h6><p>当涉及到在 ARC 中被引入变量限定符时， 限定符 (__strong, __weak, __unsafe_unretained, __autoreleasing) 应该位于星号和变量名之间，如：NSString * __weak text。</p>
-<h5 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h5><p>尽可能遵守苹果的命名约定，尤其那些涉及到<a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/MemoryMgmt/Articles/MemoryMgmt.html" target="_blank" rel="noopener">内存管理规则</a>，<a href="http://stackoverflow.com/a/2865194/340508" target="_blank" rel="noopener">NARC</a>的。</p>
+<h5 id="命名"><a href="#命名" class="headerlink" title="命名"></a>命名</h5><p>尽可能遵守苹果的命名约定，尤其那些涉及到<a href="https://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/MemoryMgmt/Articles/MemoryMgmt.html">内存管理规则</a>，<a href="http://stackoverflow.com/a/2865194/340508">NARC</a>的。</p>
 <p>长的和描述性的方法名和变量名都不错。</p>
 <p>推荐：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">UIButton *settingsButton;</span><br></pre></td></tr></table></figure>
@@ -463,7 +463,7 @@
 
 <h5 id="私有属性"><a href="#私有属性" class="headerlink" title="私有属性"></a>私有属性</h5><p>私有属性应该声明在类实现文件的延展（匿名的类目）中。</p>
 <p>推荐：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@interface NYTAdvertisement ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) GADBannerView *googleAdView;</span><br><span class="line">@property (nonatomic, strong) ADBannerView *iAdView;</span><br><span class="line">@property (nonatomic, strong) UIWebView *adXWebView;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@interface NYTAdvertisement ()</span><br><span class="line"></span><br><span class="line">@property (nonatomic, strong) GADBannerView *googleAdView;</span><br><span class="line">@property (nonatomic, strong) ADBannerView *iAdView;</span><br><span class="line">@property (nonatomic, strong) UIWebView *adXWebView;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h5 id="图片命名"><a href="#图片命名" class="headerlink" title="图片命名"></a>图片命名</h5><p>图片名称应该被统一命名以保持组织的完整。它们应该被命名为一个说明它们用途的驼峰式字符串，其次是自定义类或属性的无前缀名字（如果有的话），然后进一步说明颜色 和/或 展示位置，最后是它们的状态。</p>
 <p>推荐：</p>
@@ -512,9 +512,9 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions&#123;</span><br><span class="line">    &#x2F;&#x2F;TODO:增加初始化</span><br><span class="line">    return YES;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="更多规范"><a href="#更多规范" class="headerlink" title="更多规范"></a>更多规范</h4><ul>
-<li><a href="https://github.com/roycms/IosCodeSpecification" target="_blank" rel="noopener">切图规范</a></li>
+<li><a href="https://github.com/roycms/IosCodeSpecification">切图规范</a></li>
 </ul>
-<h4 id="转载"><a href="#转载" class="headerlink" title="转载"></a>转载</h4><p><a href="https://github.com/iamlay/IosCodeSpecification" target="_blank" rel="noopener">iOSCodeSpecification</a></p>
+<h4 id="转载"><a href="#转载" class="headerlink" title="转载"></a>转载</h4><p><a href="https://github.com/iamlay/IosCodeSpecification">iOSCodeSpecification</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -563,14 +563,14 @@
 <p>使用百度的弊端显而易见：搜索结果前排是一大堆的广告，后面跟着千篇一律的答案，要在各种转载复制的文章中找到最佳的解决方案非常耗费时间。我曾经遇到一个问题，使用百度一个下午一无所获，换成Google之后五分解决问题，这件事情直接导致我放弃使用百度搜索，转向Google搜索。</p>
 </blockquote>
 <p> 但是，因为众所周知的原因Google是没有办法访问的，对很多人来讲找到一款便宜稳定的<code>VPN</code>又要花费非常多的时间。相信初级开发者都使用过广为推荐的<code>蓝灯</code>，我最早使用的VPN也是<code>蓝灯</code>，但是免费版本的<code>蓝灯</code>一方面限速限量，另一方面在国内开各种会议的时候直接嗝屁。非常影响体验。后来走上了自己购买国外服务器搭梯子的道路：我当时是在<code>Vultr.com</code>上面买的服务器，然后使用<code>Outline</code>上网，但是在国内两会期间也会被墙，感觉自己搭建服务器花费的时间成本和获得体验是不成正比的，就放弃了。</p>
-<p>后来同事推荐了一个VPN购买网站<a href="https://store.cloudss.org/aff.php?aff=5579" target="_blank" rel="noopener">CloudSS</a>，<a href="https://store.cloudss.org/aff.php?aff=5579" target="_blank" rel="noopener">CloudSS</a>提供的是<code>V2Ray</code>    服务，到现在用了差不多9个月的时间，中间没有出现过被墙，即便是在国内两会期间也非常稳定，所以给大家种草。<br>![Alt text](./截屏2020-06-25 下午2.58.03.png)</p>
-<p>大家无需翻墙，可以直接访问<a href="https://store.cloudss.org/aff.php?aff=5579" target="_blank" rel="noopener">ClodSS的官网</a>,没查出来<a href="https://store.cloudss.org/aff.php?aff=5579" target="_blank" rel="noopener">ClodSS</a>是哪里的公司，但是官网支持<code>英语</code>和<code>汉语</code>两种语言：<img src="./VPN02.png" alt="Alt text"></p>
+<p>后来同事推荐了一个VPN购买网站<a href="https://store.cloudss.org/aff.php?aff=5579">CloudSS</a>，<a href="https://store.cloudss.org/aff.php?aff=5579">CloudSS</a>提供的是<code>V2Ray</code>    服务，到现在用了差不多9个月的时间，中间没有出现过被墙，即便是在国内两会期间也非常稳定，所以给大家种草。<br>![Alt text](./截屏2020-06-25 下午2.58.03.png)</p>
+<p>大家无需翻墙，可以直接访问<a href="https://store.cloudss.org/aff.php?aff=5579">ClodSS的官网</a>,没查出来<a href="https://store.cloudss.org/aff.php?aff=5579">ClodSS</a>是哪里的公司，但是官网支持<code>英语</code>和<code>汉语</code>两种语言：<img src="./VPN02.png" alt="Alt text"></p>
 <h4 id="Part02-购买"><a href="#Part02-购买" class="headerlink" title="Part02- 购买"></a>Part02- 购买</h4><p><code>用户中心</code> -&gt; <code>购买服务</code> -&gt;<code>购买页面</code>-&gt;<code>立即订购</code>-&gt;<code>支付</code> -&gt;<code>购买成功</code></p>
 <p><strong>购买服务入口：</strong><br><img src="./VPN03.png" alt="Alt text"></p>
 <p><strong>服务选择页面：</strong></p>
 <p><img src="./VPN04.png" alt="Alt text"></p>
 <hr>
-<h2 id="这里说下，CloudSS有四种产品：-V2-Trail-3G-A-、V2-25G-A-、V2-S1-A-、V2-S2-A。-这几种产品都支持iOS、Android、Windows、Mac四种类型的设备"><a href="#这里说下，CloudSS有四种产品：-V2-Trail-3G-A-、V2-25G-A-、V2-S1-A-、V2-S2-A。-这几种产品都支持iOS、Android、Windows、Mac四种类型的设备" class="headerlink" title="这里说下，CloudSS有四种产品： V2-Trail-3G-A 、V2-25G-A 、V2-S1-A 、V2-S2-A。 这几种产品都支持iOS、Android、Windows、Mac四种类型的设备"></a><strong>这里说下，<a href="https://store.cloudss.org/aff.php?aff=5579" target="_blank" rel="noopener">CloudSS</a>有四种产品： <code>V2-Trail-3G-A</code> 、<code>V2-25G-A</code> 、<code>V2-S1-A</code> 、<code>V2-S2-A</code>。 这几种产品都支持iOS、Android、Windows、Mac四种类型的设备</strong></h2><h5 id="V2-Trail-3G-A"><a href="#V2-Trail-3G-A" class="headerlink" title="V2-Trail-3G-A"></a>V2-Trail-3G-A</h5><p>3G流量，可以使用7天，$9.9,<br>但是可以在支付的时候填<code>v2ray</code>的优惠码，价格就变成0.2$了，每个人一次机会，相当于体验版,不限制同时使用的设备数量;</p>
+<h2 id="这里说下，CloudSS有四种产品：-V2-Trail-3G-A-、V2-25G-A-、V2-S1-A-、V2-S2-A。-这几种产品都支持iOS、Android、Windows、Mac四种类型的设备"><a href="#这里说下，CloudSS有四种产品：-V2-Trail-3G-A-、V2-25G-A-、V2-S1-A-、V2-S2-A。-这几种产品都支持iOS、Android、Windows、Mac四种类型的设备" class="headerlink" title="这里说下，CloudSS有四种产品： V2-Trail-3G-A 、V2-25G-A 、V2-S1-A 、V2-S2-A。 这几种产品都支持iOS、Android、Windows、Mac四种类型的设备"></a><strong>这里说下，<a href="https://store.cloudss.org/aff.php?aff=5579">CloudSS</a>有四种产品： <code>V2-Trail-3G-A</code> 、<code>V2-25G-A</code> 、<code>V2-S1-A</code> 、<code>V2-S2-A</code>。 这几种产品都支持iOS、Android、Windows、Mac四种类型的设备</strong></h2><h5 id="V2-Trail-3G-A"><a href="#V2-Trail-3G-A" class="headerlink" title="V2-Trail-3G-A"></a>V2-Trail-3G-A</h5><p>3G流量，可以使用7天，$9.9,<br>但是可以在支付的时候填<code>v2ray</code>的优惠码，价格就变成0.2$了，每个人一次机会，相当于体验版,不限制同时使用的设备数量;</p>
 <p><img src="./VPN05.png" alt="Alt text"></p>
 <h5 id="V2-25G-A"><a href="#V2-25G-A" class="headerlink" title="V2-25G-A"></a>V2-25G-A</h5><p>25G流量，使用30天，不限制设备数量，不限制节点数量<br><img src="./VPN06.png" alt="Alt text"></p>
 <h5 id="V2-S1-A"><a href="#V2-S1-A" class="headerlink" title="V2-S1-A"></a>V2-S1-A</h5><p>每月128G流量，使用半年，最多5台设备同时登录，不限制节点数量</p>
@@ -583,7 +583,7 @@
 <p><img src="./VPN11.png" alt="Alt text"></p>
 <p>点击购买的服务，进入到服务页面，可以看到：<br><img src="./VPN12.png" alt="Alt text"></p>
 <p>大家可以先根据第一步的<code>使用教程</code>，下载下来自己设备需要的软件，安装完成之后，将第二步中<code>复制的地址</code>添加到软件中,然后就可以愉快的上网了。看一下<code>使用教程页面</code>:<br><img src="./VPN13.png" alt="Alt text"></p>
-<p>使用教程页面给出了每种平台使用的软件的下载地址，并给出了配置的详细步骤，这里我就不多说了。有一个细节非常值得一提，因为我使用的移动设备是iOS，使用的软件是<code>Shadowrocket</code>,但是<code>Shadowrocket</code>在中国区是不能下载的，而且也是一个付费软件，<a href="https://store.cloudss.org/aff.php?aff=5579" target="_blank" rel="noopener">CloudSS</a>给免费提供了下载<code>Shadowrocket</code>的账号和密码：</p>
+<p>使用教程页面给出了每种平台使用的软件的下载地址，并给出了配置的详细步骤，这里我就不多说了。有一个细节非常值得一提，因为我使用的移动设备是iOS，使用的软件是<code>Shadowrocket</code>,但是<code>Shadowrocket</code>在中国区是不能下载的，而且也是一个付费软件，<a href="https://store.cloudss.org/aff.php?aff=5579">CloudSS</a>给免费提供了下载<code>Shadowrocket</code>的账号和密码：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Apple商店账号：acc@shadowrocket.online</span><br><span class="line">Apple商店密码：88FREE@shadowrocket.online</span><br></pre></td></tr></table></figure>
 
 <p>现在，我们来看看效果：</p>
@@ -602,61 +602,61 @@
   <entry>
     <title>以技术之名周报06#| ReactiveCocoa入门篇| 2020-05-10</title>
     <url>/2020/05/10/week19/</url>
-    <content><![CDATA[<h3 id="Part-01-背景"><a href="#Part-01-背景" class="headerlink" title="Part-01 背景"></a>Part-01 背景</h3><p>作为一个iOS开发者，写的每一行代码都是对事件的反馈，像Button点击、网络请求、属性改变（KVO）、用户位置改变等。但是这些事件的处理采用的是Actions、delegate、KVO、回调等不同的方式。<a href="https://github.com/ReactiveCocoa/ReactiveCocoa" target="_blank" rel="noopener">ReactiveCocoa</a>针对不同的事件定义了的标准接口，这样不同的事件可以更容易链式调用、过滤、组合。</p>
-<p>ReactiveCocoa组合了一对编程范式：<a href="http://en.wikipedia.org/wiki/Functional_programming" target="_blank" rel="noopener">函数式编程</a>：使用更高级别的函数，该函数用其他函数作为他的参数。<a href="http://en.wikipedia.org/wiki/Reactive_programming" target="_blank" rel="noopener">响应式编程</a>:一种面向数据流和变化传播的声明式编程范式。所以，ReactiveCocoa也被称之为函数响应式编程框架。</p>
+    <content><![CDATA[<h3 id="Part-01-背景"><a href="#Part-01-背景" class="headerlink" title="Part-01 背景"></a>Part-01 背景</h3><p>作为一个iOS开发者，写的每一行代码都是对事件的反馈，像Button点击、网络请求、属性改变（KVO）、用户位置改变等。但是这些事件的处理采用的是Actions、delegate、KVO、回调等不同的方式。<a href="https://github.com/ReactiveCocoa/ReactiveCocoa">ReactiveCocoa</a>针对不同的事件定义了的标准接口，这样不同的事件可以更容易链式调用、过滤、组合。</p>
+<p>ReactiveCocoa组合了一对编程范式：<a href="http://en.wikipedia.org/wiki/Functional_programming">函数式编程</a>：使用更高级别的函数，该函数用其他函数作为他的参数。<a href="http://en.wikipedia.org/wiki/Reactive_programming">响应式编程</a>:一种面向数据流和变化传播的声明式编程范式。所以，ReactiveCocoa也被称之为函数响应式编程框架。</p>
 <p>ReactiveCocoa教程马上开始，接下来的教程侧重点在实用价值，所以给出的是实操而不是长篇大论。</p>
-<h3 id="Part-02-实践"><a href="#Part-02-实践" class="headerlink" title="Part-02 实践"></a>Part-02 实践</h3><h4 id="ReactivePlayground"><a href="#ReactivePlayground" class="headerlink" title="ReactivePlayground"></a>ReactivePlayground</h4><p>在接下来的整个ReactiveCocoa教程中，我们将通过ReactivePlayground这个应用来逐步引入响应式编程。下载<a href="https://koenig-media.raywenderlich.com/uploads/2014/01/ReactivePlayground-Starter.zip" target="_blank" rel="noopener">ReactivePlayground工程</a>，确保可以正常的build和run.</p>
+<h3 id="Part-02-实践"><a href="#Part-02-实践" class="headerlink" title="Part-02 实践"></a>Part-02 实践</h3><h4 id="ReactivePlayground"><a href="#ReactivePlayground" class="headerlink" title="ReactivePlayground"></a>ReactivePlayground</h4><p>在接下来的整个ReactiveCocoa教程中，我们将通过ReactivePlayground这个应用来逐步引入响应式编程。下载<a href="https://koenig-media.raywenderlich.com/uploads/2014/01/ReactivePlayground-Starter.zip">ReactivePlayground工程</a>，确保可以正常的build和run.</p>
 <p>ReactivePlaygroun是一款非常简单的应用，主要就是给用户展示了一个登录的页面。输入用户的账号和密码，验证通过之后，进入到一个有一只可爱猫咪的页面。</p>
 <p><img src="./week1901.jpg" alt="Alt text"></p>
 <p>打开工程，找到  <strong>RWViewController.m</strong>文件，你花费多久的时间可以找到<strong>Sign In</strong> Button变成enabing状态所需要的条件？展示/隐藏 <strong>signInFaulure</strong> Label的规则是什么？ 也许，你花费两三分钟的时间就可以回答这些问题，但是当你面对更加复杂的项目的时候，你分析同样的问题可能就会花费相当长的时间。</p>
 <p>这就是ReactiveCocoa的优势所在，ReactiveCocoa能够让应用程序的基本意图变得更加清晰。那让我们开始我们的工作吧！！！</p>
-<h4 id="添加ReactiveCocoa框架"><a href="#添加ReactiveCocoa框架" class="headerlink" title="添加ReactiveCocoa框架"></a>添加ReactiveCocoa框架</h4><p>最方便的方式就是通过<a href="http://cocoapods.org/" target="_blank" rel="noopener">CocoaPods.</a>的方式导入框架。如果在此之前你没有使用过<a href="http://cocoapods.org/" target="_blank" rel="noopener">CocoaPods.</a>，可以按照本网站的<a href="https://www.raywenderlich.com/?p=12139" target="_blank" rel="noopener">CocoaPods 入门教程</a>进行操作，或者至少通过该教程的初始步骤进行操作，以便安装必备的组件。</p>
+<h4 id="添加ReactiveCocoa框架"><a href="#添加ReactiveCocoa框架" class="headerlink" title="添加ReactiveCocoa框架"></a>添加ReactiveCocoa框架</h4><p>最方便的方式就是通过<a href="http://cocoapods.org/">CocoaPods.</a>的方式导入框架。如果在此之前你没有使用过<a href="http://cocoapods.org/">CocoaPods.</a>，可以按照本网站的<a href="https://www.raywenderlich.com/?p=12139">CocoaPods 入门教程</a>进行操作，或者至少通过该教程的初始步骤进行操作，以便安装必备的组件。</p>
 <blockquote>
-<p>如果因为某些原因你不想引入CocoaPods，你仍旧可以通过其他的方式使用ReactiveCocoa。可以参考Github上面的<a href="https://github.com/ReactiveCocoa/ReactiveCocoa#importing-reactivecocoa" target="_blank" rel="noopener">引入ReactiveCocoa</a>文档，一步步操作。</p>
+<p>如果因为某些原因你不想引入CocoaPods，你仍旧可以通过其他的方式使用ReactiveCocoa。可以参考Github上面的<a href="https://github.com/ReactiveCocoa/ReactiveCocoa#importing-reactivecocoa">引入ReactiveCocoa</a>文档，一步步操作。</p>
 </blockquote>
 <p>打开终端，进入到下载工程的根目录，执行下面的指令创建Podfile文件；</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">touch Podfile</span><br><span class="line">open -e Podfile</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">touch Podfile</span><br><span class="line">open -e Podfile</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>用文本编辑器打开Podfile文件，复制下面的代码到里面</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">platform :ios, &#39;7.0&#39;</span><br><span class="line">pod &#39;ReactiveCocoa&#39;, &#39;2.1.8&#39;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">platform :ios, &#39;7.0&#39;</span><br><span class="line">pod &#39;ReactiveCocoa&#39;, &#39;2.1.8&#39;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>这两句代码的意思是设置iOS平台且最小支持的版本是7.0、添加ReactiveCocoa框架作为依赖。保存文件，继续在终端执行下面的命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod install</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod install</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>你会看到终端打印出类似下面的内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Analyzing dependencies</span><br><span class="line">Downloading dependencies</span><br><span class="line">Installing ReactiveCocoa (2.1.8)</span><br><span class="line">Generating Pods project</span><br><span class="line">Integrating client project</span><br><span class="line"></span><br><span class="line">[!] From now on use &#96;RWReactivePlayground.xcworkspace&#96;.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Analyzing dependencies</span><br><span class="line">Downloading dependencies</span><br><span class="line">Installing ReactiveCocoa (2.1.8)</span><br><span class="line">Generating Pods project</span><br><span class="line">Integrating client project</span><br><span class="line"></span><br><span class="line">[!] From now on use &#96;RWReactivePlayground.xcworkspace&#96;.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>这意味着ReactiveCocoa framework已经被下载下来了，CocoaPods创建一个Xcode workspace文件将应用和framework整合起来了</p>
 <p><img src="./week1902.png" alt="Alt text"></p>
 <h4 id="开始实施"><a href="#开始实施" class="headerlink" title="开始实施"></a>开始实施</h4><p>正如上面介绍中提到的，ReacticeCocoa为应用程序中发生的事件流提供了一个标准的接口。这种接口在ReactiveCocoa中称为信号(Signal),通过<code>RACSignal</code>类来表示。</p>
 <p>打开<code>RWViewController.m</code>文件，引入ReactiveCocoa头文件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#import &lt;ReactiveCocoa&#x2F;ReactiveCocoa.h&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#import &lt;ReactiveCocoa&#x2F;ReactiveCocoa.h&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>暂时先不用替换任何现有代码，只需要做一些操作即可。添加下面的代码到<code>viewDidload</code>方法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[self.usernameTextField.rac_textSignal subscribeNext:^(id x)&#123;</span><br><span class="line">  NSLog(@&quot;%@&quot;, x);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[self.usernameTextField.rac_textSignal subscribeNext:^(id x)&#123;</span><br><span class="line">  NSLog(@&quot;%@&quot;, x);</span><br><span class="line">&#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>运行应用程序，在username textField中输入文字，查看控制台输出的内容：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2013-12-24 14:48:50.359 RWReactivePlayground[9193:a0b] i</span><br><span class="line">2013-12-24 14:48:50.436 RWReactivePlayground[9193:a0b] is</span><br><span class="line">2013-12-24 14:48:50.541 RWReactivePlayground[9193:a0b] is </span><br><span class="line">2013-12-24 14:48:50.695 RWReactivePlayground[9193:a0b] is t</span><br><span class="line">2013-12-24 14:48:50.831 RWReactivePlayground[9193:a0b] is th</span><br><span class="line">2013-12-24 14:48:50.878 RWReactivePlayground[9193:a0b] is thi</span><br><span class="line">2013-12-24 14:48:50.901 RWReactivePlayground[9193:a0b] is this</span><br><span class="line">2013-12-24 14:48:51.009 RWReactivePlayground[9193:a0b] is this </span><br><span class="line">2013-12-24 14:48:51.142 RWReactivePlayground[9193:a0b] is this m</span><br><span class="line">2013-12-24 14:48:51.236 RWReactivePlayground[9193:a0b] is this ma</span><br><span class="line">2013-12-24 14:48:51.335 RWReactivePlayground[9193:a0b] is this mag</span><br><span class="line">2013-12-24 14:48:51.439 RWReactivePlayground[9193:a0b] is this magi</span><br><span class="line">2013-12-24 14:48:51.535 RWReactivePlayground[9193:a0b] is this magic</span><br><span class="line">2013-12-24 14:48:51.774 RWReactivePlayground[9193:a0b] is this magic?</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2013-12-24 14:48:50.359 RWReactivePlayground[9193:a0b] i</span><br><span class="line">2013-12-24 14:48:50.436 RWReactivePlayground[9193:a0b] is</span><br><span class="line">2013-12-24 14:48:50.541 RWReactivePlayground[9193:a0b] is </span><br><span class="line">2013-12-24 14:48:50.695 RWReactivePlayground[9193:a0b] is t</span><br><span class="line">2013-12-24 14:48:50.831 RWReactivePlayground[9193:a0b] is th</span><br><span class="line">2013-12-24 14:48:50.878 RWReactivePlayground[9193:a0b] is thi</span><br><span class="line">2013-12-24 14:48:50.901 RWReactivePlayground[9193:a0b] is this</span><br><span class="line">2013-12-24 14:48:51.009 RWReactivePlayground[9193:a0b] is this </span><br><span class="line">2013-12-24 14:48:51.142 RWReactivePlayground[9193:a0b] is this m</span><br><span class="line">2013-12-24 14:48:51.236 RWReactivePlayground[9193:a0b] is this ma</span><br><span class="line">2013-12-24 14:48:51.335 RWReactivePlayground[9193:a0b] is this mag</span><br><span class="line">2013-12-24 14:48:51.439 RWReactivePlayground[9193:a0b] is this magi</span><br><span class="line">2013-12-24 14:48:51.535 RWReactivePlayground[9193:a0b] is this magic</span><br><span class="line">2013-12-24 14:48:51.774 RWReactivePlayground[9193:a0b] is this magic?</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>可以看到，每当改变textfield内容的时候，block中的代码都会执行。这里既没有target-action、也没有代理方法，仅仅用到了signals和block，令人激动万分！</p>
 <p>ReactiveCocoa的 <code>信号</code>（通过RACSignal表示）发送事件流给它的订阅者。主要是有三种类型的事件：<code>next</code>、<code>error</code>、<code>completed</code>. 信号会因为<code>error</code>或者<code>complete</code>结束，但在结束之前可以发送任意数量的<code>next</code>事件。</p>
 <p><code>RACSignal</code>有多种方法用于订阅不同的事件类型，每种方法都一个或者多个block，事件发生的时候可以用来执行你想要的逻辑。比如：<code>subscribeNext:</code>方法就提供了这样一个block，每当<code>next</code>事件发生的时候，就会执行该block;</p>
 <p>ReactiveCocoa框架通过<code>类别</code>给标准的UIKit控件添加信号，因此你可以订阅这些控件的事件。这就是你可以在textfield上使用<code>rac_textSignal</code>属性的原因。</p>
 <p>ReactiveCocoa有大量的可以用来操纵事件流的<code>操作符</code>。比如：你只对长度超过三个字符的用户名感兴趣，那么就可以使用    <code>filter</code>操作符。将viewDidload中添加的代码更新为下面的代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[self.usernameTextField.rac_textSignal</span><br><span class="line">  filter:^BOOL(id value) &#123;</span><br><span class="line">    NSString *text &#x3D; value;</span><br><span class="line">    return text.length &gt; 3;</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(id x) &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;, x);</span><br><span class="line">  &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[self.usernameTextField.rac_textSignal</span><br><span class="line">  filter:^BOOL(id value) &#123;</span><br><span class="line">    NSString *text &#x3D; value;</span><br><span class="line">    return text.length &gt; 3;</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(id x) &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;, x);</span><br><span class="line">  &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>运行程序，然后在文本框继续输入字符，你会发现控制台在textfield的内容长度超过3的时候才打印：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2013-12-26 08:17:51.335 RWReactivePlayground[9654:a0b] is t</span><br><span class="line">2013-12-26 08:17:51.478 RWReactivePlayground[9654:a0b] is th</span><br><span class="line">2013-12-26 08:17:51.526 RWReactivePlayground[9654:a0b] is thi</span><br><span class="line">2013-12-26 08:17:51.548 RWReactivePlayground[9654:a0b] is this</span><br><span class="line">2013-12-26 08:17:51.676 RWReactivePlayground[9654:a0b] is this </span><br><span class="line">2013-12-26 08:17:51.798 RWReactivePlayground[9654:a0b] is this m</span><br><span class="line">2013-12-26 08:17:51.926 RWReactivePlayground[9654:a0b] is this ma</span><br><span class="line">2013-12-26 08:17:51.987 RWReactivePlayground[9654:a0b] is this mag</span><br><span class="line">2013-12-26 08:17:52.141 RWReactivePlayground[9654:a0b] is this magi</span><br><span class="line">2013-12-26 08:17:52.229 RWReactivePlayground[9654:a0b] is this magic</span><br><span class="line">2013-12-26 08:17:52.486 RWReactivePlayground[9654:a0b] is this magic?</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2013-12-26 08:17:51.335 RWReactivePlayground[9654:a0b] is t</span><br><span class="line">2013-12-26 08:17:51.478 RWReactivePlayground[9654:a0b] is th</span><br><span class="line">2013-12-26 08:17:51.526 RWReactivePlayground[9654:a0b] is thi</span><br><span class="line">2013-12-26 08:17:51.548 RWReactivePlayground[9654:a0b] is this</span><br><span class="line">2013-12-26 08:17:51.676 RWReactivePlayground[9654:a0b] is this </span><br><span class="line">2013-12-26 08:17:51.798 RWReactivePlayground[9654:a0b] is this m</span><br><span class="line">2013-12-26 08:17:51.926 RWReactivePlayground[9654:a0b] is this ma</span><br><span class="line">2013-12-26 08:17:51.987 RWReactivePlayground[9654:a0b] is this mag</span><br><span class="line">2013-12-26 08:17:52.141 RWReactivePlayground[9654:a0b] is this magi</span><br><span class="line">2013-12-26 08:17:52.229 RWReactivePlayground[9654:a0b] is this magic</span><br><span class="line">2013-12-26 08:17:52.486 RWReactivePlayground[9654:a0b] is this magic?</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>其实，在这里你创建了一个非常简单的管道。这就是响应式编程的本质，通过数据流的方式来表达应用程序的功能。下面的图片看起来更为直观：<br><img src="./week1903.png" alt="Alt text"></p>
 <p>上图可以看到，<code>rac_textSignal</code>是事件的初始来源，数据流通过一个<code>filter</code>过滤,该<code>filter</code>仅允许字符长度大于等于3的事件通过。该管道的最后一步是<code>subscribeNext:</code>,在这一步可以通过block打印事件的值。</p>
 <p>这里需要注意的一点是，<code>filter</code>的返回值也是<code>RACSignal</code>,可以通过下面的方式揭示管道的执行过程：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RACSignal *usernameSourceSignal &#x3D; </span><br><span class="line">    self.usernameTextField.rac_textSignal;</span><br><span class="line"></span><br><span class="line">RACSignal *filteredUsername &#x3D; [usernameSourceSignal  </span><br><span class="line">  filter:^BOOL(id value) &#123;</span><br><span class="line">    NSString *text &#x3D; value;</span><br><span class="line">    return text.length &gt; 3;</span><br><span class="line">  &#125;];</span><br><span class="line"></span><br><span class="line">[filteredUsername subscribeNext:^(id x) &#123;</span><br><span class="line">  NSLog(@&quot;%@&quot;, x);</span><br><span class="line">&#125;];</span><br></pre></td></tr></table></figure>
-<p>因为在<code>RACSignal</code>执行的每一种操作符返回还是<code>RACSignal</code>,因此也被称为<a href="http://en.wikipedia.org/wiki/Fluent_interface" target="_blank" rel="noopener">fluentinterface</a>。该功能可以使你构造管道，而无需用局部变量引用每个步骤。<br>    &gt; Note: ReacticeCocoa使用了大量的blocks。如果你之前没有接触过block,你应该先看看Apple的<a href="https://developer.apple.com/library/ios/documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html" target="_blank" rel="noopener">Blocks Programming Topics</a>,如果你像我一样对block很熟悉，但是对语法有点疑惑的话，可以访问<a href="http://fuckingblocksyntax.com/" target="_blank" rel="noopener">http://fuckingblocksyntax.com/</a>来巩固下你的知识。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RACSignal *usernameSourceSignal &#x3D; </span><br><span class="line">    self.usernameTextField.rac_textSignal;</span><br><span class="line"></span><br><span class="line">RACSignal *filteredUsername &#x3D; [usernameSourceSignal  </span><br><span class="line">  filter:^BOOL(id value) &#123;</span><br><span class="line">    NSString *text &#x3D; value;</span><br><span class="line">    return text.length &gt; 3;</span><br><span class="line">  &#125;];</span><br><span class="line"></span><br><span class="line">[filteredUsername subscribeNext:^(id x) &#123;</span><br><span class="line">  NSLog(@&quot;%@&quot;, x);</span><br><span class="line">&#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>因为在<code>RACSignal</code>执行的每一种操作符返回还是<code>RACSignal</code>,因此也被称为<a href="http://en.wikipedia.org/wiki/Fluent_interface">fluentinterface</a>。该功能可以使你构造管道，而无需用局部变量引用每个步骤。<br>    &gt; Note: ReacticeCocoa使用了大量的blocks。如果你之前没有接触过block,你应该先看看Apple的<a href="https://developer.apple.com/library/ios/documentation/cocoa/Conceptual/Blocks/Articles/00_Introduction.html">Blocks Programming Topics</a>,如果你像我一样对block很熟悉，但是对语法有点疑惑的话，可以访问<a href="http://fuckingblocksyntax.com/">http://fuckingblocksyntax.com/</a>来巩固下你的知识。</p>
 <p>####隐式转换</p>
 <p>将之前的拆分的代码恢复成流式语法：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[self.usernameTextField.rac_textSignal</span><br><span class="line">  filter:^BOOL(id value) &#123;</span><br><span class="line">    NSString *text &#x3D; value; &#x2F;&#x2F; implicit cast</span><br><span class="line">    return text.length &gt; 3;</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(id x) &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;, x);</span><br><span class="line">  &#125;];</span><br></pre></td></tr></table></figure>
 <p>上面指定位置代码的隐式转换不够优雅，因为传递给该block的值始终是NSString类型，所以可以直接更改参数类型本身，更新代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[self.usernameTextField.rac_textSignal</span><br><span class="line">  filter:^BOOL(NSString *text) &#123;</span><br><span class="line">    return text.length &gt; 3;</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(id x) &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;, x);</span><br><span class="line">  &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[self.usernameTextField.rac_textSignal</span><br><span class="line">  filter:^BOOL(NSString *text) &#123;</span><br><span class="line">    return text.length &gt; 3;</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(id x) &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;, x);</span><br><span class="line">  &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>运行代码，会发现和之前的效果一致。</p>
 <h4 id="什么是-【事件-】？"><a href="#什么是-【事件-】？" class="headerlink" title="什么是 【事件 】？"></a>什么是 【事件 】？</h4><p>到目前为止，本教程已经描述了不同的事件类型，但是没有详细介绍这些事件的结构。有趣的是，事件可以包含任何东西！</p>
 <p>为了证明这一点，向该管道添加另一种操作符，更新代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[self.usernameTextField.rac_textSignal</span><br><span class="line">  map:^id(NSString *text) &#123;</span><br><span class="line">    return @(text.length);</span><br><span class="line">  &#125;]</span><br><span class="line">  filter:^BOOL(NSNumber *length) &#123;</span><br><span class="line">    return [length integerValue] &gt; 3;</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(id x) &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;, x);</span><br><span class="line">  &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[self.usernameTextField.rac_textSignal</span><br><span class="line">  map:^id(NSString *text) &#123;</span><br><span class="line">    return @(text.length);</span><br><span class="line">  &#125;]</span><br><span class="line">  filter:^BOOL(NSNumber *length) &#123;</span><br><span class="line">    return [length integerValue] &gt; 3;</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(id x) &#123;</span><br><span class="line">    NSLog(@&quot;%@&quot;, x);</span><br><span class="line">  &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>运行代码，发现控制台将会打印text field的内容长度而不是内容本身：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2013-12-26 12:06:54.566 RWReactivePlayground[10079:a0b] 4</span><br><span class="line">2013-12-26 12:06:54.725 RWReactivePlayground[10079:a0b] 5</span><br><span class="line">2013-12-26 12:06:54.853 RWReactivePlayground[10079:a0b] 6</span><br><span class="line">2013-12-26 12:06:55.061 RWReactivePlayground[10079:a0b] 7</span><br><span class="line">2013-12-26 12:06:55.197 RWReactivePlayground[10079:a0b] 8</span><br><span class="line">2013-12-26 12:06:55.300 RWReactivePlayground[10079:a0b] 9</span><br><span class="line">2013-12-26 12:06:55.462 RWReactivePlayground[10079:a0b] 10</span><br><span class="line">2013-12-26 12:06:55.558 RWReactivePlayground[10079:a0b] 11</span><br><span class="line">2013-12-26 12:06:55.646 RWReactivePlayground[10079:a0b] 12</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2013-12-26 12:06:54.566 RWReactivePlayground[10079:a0b] 4</span><br><span class="line">2013-12-26 12:06:54.725 RWReactivePlayground[10079:a0b] 5</span><br><span class="line">2013-12-26 12:06:54.853 RWReactivePlayground[10079:a0b] 6</span><br><span class="line">2013-12-26 12:06:55.061 RWReactivePlayground[10079:a0b] 7</span><br><span class="line">2013-12-26 12:06:55.197 RWReactivePlayground[10079:a0b] 8</span><br><span class="line">2013-12-26 12:06:55.300 RWReactivePlayground[10079:a0b] 9</span><br><span class="line">2013-12-26 12:06:55.462 RWReactivePlayground[10079:a0b] 10</span><br><span class="line">2013-12-26 12:06:55.558 RWReactivePlayground[10079:a0b] 11</span><br><span class="line">2013-12-26 12:06:55.646 RWReactivePlayground[10079:a0b] 12</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>新增的<code>map</code>操作通过提供的block来转换事件数据流。对于接收到的每一个<code>next</code>事件，它都会执行该block, 然后发出返回值，该返回值仍旧是一个<code>next</code>事件。上面的代码中，    <code>map</code>操作符拿到<code>NSString</code>类型的值，获得其长度，并将其转换成<code>NSNumber</code>类型返回。</p>
 <p>有关此功能的图形描述，可以看下面的图片：<br><img src="./week1904.png" alt="Alt text"></p>
@@ -666,18 +666,18 @@
 </blockquote>
 <p>现在应该使用所学的概念来更新<strong>ReactivePlayground</strong>的代码。</p>
 <h4 id="创建-Valid-State-Signals"><a href="#创建-Valid-State-Signals" class="headerlink" title="创建 Valid State Signals"></a>创建 Valid State Signals</h4><p>首先要做的就是，创建一对信号来指示<code>username</code>和<code>password</code>是否是有效的。在<strong>RWViewController.m</strong>的viewDidload方法中添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RACSignal *validUsernameSignal &#x3D;</span><br><span class="line">  [self.usernameTextField.rac_textSignal</span><br><span class="line">    map:^id(NSString *text) &#123;</span><br><span class="line">      return @([self isValidUsername:text]);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">RACSignal *validPasswordSignal &#x3D;</span><br><span class="line">  [self.passwordTextField.rac_textSignal</span><br><span class="line">    map:^id(NSString *text) &#123;</span><br><span class="line">      return @([self isValidPassword:text]);</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RACSignal *validUsernameSignal &#x3D;</span><br><span class="line">  [self.usernameTextField.rac_textSignal</span><br><span class="line">    map:^id(NSString *text) &#123;</span><br><span class="line">      return @([self isValidUsername:text]);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">RACSignal *validPasswordSignal &#x3D;</span><br><span class="line">  [self.passwordTextField.rac_textSignal</span><br><span class="line">    map:^id(NSString *text) &#123;</span><br><span class="line">      return @([self isValidPassword:text]);</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>如你所见，上面的代码将<code>map</code>操作符应用到每一个textfield的<code>rac_textSignal</code>，输出由Bool值封装的NSNumber对象。</p>
 <p>接下来继续转换这些信号，以便它们能够为textfield提供合适的背景色。你通过订阅这些信号，拿到相应的值就可以更新textfield的背景色，一个可行的选择如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[validPasswordSignal</span><br><span class="line">  map:^id(NSNumber *passwordValid) &#123;</span><br><span class="line">    return [passwordValid boolValue] ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(UIColor *color) &#123;</span><br><span class="line">    self.passwordTextField.backgroundColor &#x3D; color;</span><br><span class="line">  &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[validPasswordSignal</span><br><span class="line">  map:^id(NSNumber *passwordValid) &#123;</span><br><span class="line">    return [passwordValid boolValue] ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(UIColor *color) &#123;</span><br><span class="line">    self.passwordTextField.backgroundColor &#x3D; color;</span><br><span class="line">  &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>先不要添加上面的代码，因为我们还有更加优雅的方式。</p>
 <p>我们的目的是将信号的输出值赋值给textfield的background属性，但是上面的代码并不具备很好的表达性，赋值语句太过于靠后了。</p>
 <p>幸运的是ReactiveCocoa有一个宏定义，允许你更加优雅的来表达这个功能。将下面的代码直接添加到viewDidload中两个signals的下方。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RAC(self.passwordTextField, backgroundColor) &#x3D;</span><br><span class="line">  [validPasswordSignal</span><br><span class="line">    map:^id(NSNumber *passwordValid) &#123;</span><br><span class="line">      return [passwordValid boolValue] ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">RAC(self.usernameTextField, backgroundColor) &#x3D;</span><br><span class="line">  [validUsernameSignal</span><br><span class="line">    map:^id(NSNumber *passwordValid) &#123;</span><br><span class="line">     return [passwordValid boolValue] ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line">    &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">RAC(self.passwordTextField, backgroundColor) &#x3D;</span><br><span class="line">  [validPasswordSignal</span><br><span class="line">    map:^id(NSNumber *passwordValid) &#123;</span><br><span class="line">      return [passwordValid boolValue] ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br><span class="line">RAC(self.usernameTextField, backgroundColor) &#x3D;</span><br><span class="line">  [validUsernameSignal</span><br><span class="line">    map:^id(NSNumber *passwordValid) &#123;</span><br><span class="line">     return [passwordValid boolValue] ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line">    &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><code>RAC</code>宏定义允许你将信号的输出赋值给对象的属性，它需要两个参数，第一个是包含要设置属性的对象。第二个是参数是属性名称。每次信号发出下一个事件时，传递的值都会赋值给给定的属性。</p>
 <p>是不是非常优雅的解决方案？</p>
 <p>最后一件要做的事情是移除洗面的代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">self.usernameTextField.backgroundColor &#x3D; self.usernameIsValid ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line">self.passwordTextField.backgroundColor &#x3D; self.passwordIsValid ? [UIColor clearColor] : [UIColor yellowColor];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">self.usernameTextField.backgroundColor &#x3D; self.usernameIsValid ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line">self.passwordTextField.backgroundColor &#x3D; self.passwordIsValid ? [UIColor clearColor] : [UIColor yellowColor];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>通过下面的图像，可视化当前的逻辑。可以看到，这里有两个简单的管道，它们获取文本信号，然后通过<code>map</code>将它们映射为有指示有效性的Bool值，然后再映射为UIColor,将UIcolor绑定到textfield 的backgroundcolor上。<br><img src="/week1905.png" alt="Alt text"></p>
 <p>你是否好奇，为什么创建了两个分离的信号<code>validPasswordSignal</code>和<code>validUsernameSignal</code>,而不是为每个textfield创建一个单一的流畅管道。保持耐心，这种疯狂背后的方法很快将变得清晰！！！</p>
 <h4 id="Combining-signals-组合信号"><a href="#Combining-signals-组合信号" class="headerlink" title="Combining signals (组合信号)"></a>Combining signals (组合信号)</h4><p>当前情况下， <strong>Sigin  In</strong>Button只有在username和password输入框都有效的情况下才能点击，是时候通过响应式的方式来做这件事情了。</p>
@@ -689,9 +689,9 @@
 <p>RACSignal组合方法可以组合任意数量的信号，reduce block中的参数对应着每个<code>源信号</code>的值。ReacticeCocoa有一个小的实用类<code>RACBlockTrampoline</code>,该类用来处理reduce block中的可变参数列表。</p>
 </blockquote>
 <p>现在你就有了一个合适的信号，继续添加下面的代码到    <code>viewDidload</code>方法的最后：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[signUpActiveSignal subscribeNext:^(NSNumber *signupActive) &#123;</span><br><span class="line">   self.signInButton.enabled &#x3D; [signupActive boolValue];</span><br><span class="line"> &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[signUpActiveSignal subscribeNext:^(NSNumber *signupActive) &#123;</span><br><span class="line">   self.signInButton.enabled &#x3D; [signupActive boolValue];</span><br><span class="line"> &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>在运行程序之前，移除下面的属性和代码</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@property (nonatomic) BOOL passwordIsValid;</span><br><span class="line">@property (nonatomic) BOOL usernameIsValid;</span><br><span class="line"></span><br><span class="line">----------------------------</span><br><span class="line">&#x2F;&#x2F; handle text changes for both text fields</span><br><span class="line">[self.usernameTextField addTarget:self</span><br><span class="line">                           action:@selector(usernameTextFieldChanged)</span><br><span class="line">                 forControlEvents:UIControlEventEditingChanged];</span><br><span class="line">[self.passwordTextField addTarget:self </span><br><span class="line">                           action:@selector(passwordTextFieldChanged)</span><br><span class="line">                 forControlEvents:UIControlEventEditingChanged];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">@property (nonatomic) BOOL passwordIsValid;</span><br><span class="line">@property (nonatomic) BOOL usernameIsValid;</span><br><span class="line"></span><br><span class="line">----------------------------</span><br><span class="line">&#x2F;&#x2F; handle text changes for both text fields</span><br><span class="line">[self.usernameTextField addTarget:self</span><br><span class="line">                           action:@selector(usernameTextFieldChanged)</span><br><span class="line">                 forControlEvents:UIControlEventEditingChanged];</span><br><span class="line">[self.passwordTextField addTarget:self </span><br><span class="line">                           action:@selector(passwordTextFieldChanged)</span><br><span class="line">                 forControlEvents:UIControlEventEditingChanged];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>同时也移除<code>updateUIState</code>、<code>usernameTextFieldChange</code>和<code>passwordTextfieldChange</code>方法。最后确保移除viewDidload中对<code>updateUIState</code>的调用。</p>
 <p>运行程序，测试<strong>Sign In</strong> button，当username和password都是有效的时候，<code>Sign In</code> Button应该也是enabled的。这个逻辑如下图：<br><img src="./week1906.png" alt="Alt text"></p>
 <p>上图揭示了一对非常重要的概念，这对概念可以让你用ReactiveCocoa执行非常强大的任务</p>
@@ -705,44 +705,44 @@
 <p>打开<code>Main.storyboard</code>,找到<code>Sign In</code> Button,点击<code>crtl</code>键打开<code>outlet/action</code>连接，点击X移除连接，下图显示在哪里可以找到删除按钮：<br><img src="./week1907.jpg" alt="Alt text"></p>
 <p>你已经知道ReactiveCocoa 框架如何给UIKit标准控件添加属性和方法。在此之前，你是用的是<code>rac_textSignal</code>，它在text改变的时候提交事件。为了处理事件，你需要另一种方法：    <code>rac_signalForControEvents</code>.</p>
 <p>回到<code>RWViewController.m</code>，在viewDidload方法最后添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[self.signInButton</span><br><span class="line">   rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">   subscribeNext:^(id x) &#123;</span><br><span class="line">     NSLog(@&quot;button clicked&quot;);</span><br><span class="line">   &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[self.signInButton</span><br><span class="line">   rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">   subscribeNext:^(id x) &#123;</span><br><span class="line">     NSLog(@&quot;button clicked&quot;);</span><br><span class="line">   &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>上面的代码从Button的<code>UIControlEventTouchUpInside</code>事件创建了一个的信号，并添加订阅，以便每次该事件发生的时候都会打印日志。</p>
 <p>运行程序，当username和password有效的时候，点击该button, 查看控制台输出日志:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2013-12-28 08:05:10.816 RWReactivePlayground[18203:a0b] button clicked</span><br><span class="line">2013-12-28 08:05:11.675 RWReactivePlayground[18203:a0b] button clicked</span><br><span class="line">2013-12-28 08:05:12.605 RWReactivePlayground[18203:a0b] button clicked</span><br><span class="line">2013-12-28 08:05:12.766 RWReactivePlayground[18203:a0b] button clicked</span><br><span class="line">2013-12-28 08:05:12.917 RWReactivePlayground[18203:a0b] button clicked</span><br></pre></td></tr></table></figure>
 <p>现在按钮有了点击事件的信号，下一步是将此与登录过程本身关联起来。这带来一些问题，但是没关系，你并不介意这些问题，对吗？ 打开<code>RWDummySigInService.h</code>:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef void (^RWSignInResponse)(BOOL);</span><br><span class="line"></span><br><span class="line">@interface RWDummySignInService : NSObject</span><br><span class="line"></span><br><span class="line">- (void)signInWithUsername:(NSString *)username</span><br><span class="line">                  password:(NSString *)password </span><br><span class="line">                  complete:(RWSignInResponse)completeBlock;</span><br><span class="line"></span><br><span class="line">@end</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef void (^RWSignInResponse)(BOOL);</span><br><span class="line"></span><br><span class="line">@interface RWDummySignInService : NSObject</span><br><span class="line"></span><br><span class="line">- (void)signInWithUsername:(NSString *)username</span><br><span class="line">                  password:(NSString *)password </span><br><span class="line">                  complete:(RWSignInResponse)completeBlock;</span><br><span class="line"></span><br><span class="line">@end</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>该接口将<code>username</code>、<code>password</code>和<code>completeBlock</code>作为参数，当登录成功或者失败的时候执行<code>completeBlock</code>。你可以直接在button的<code>subscribeNext:</code>的block中调用该接口，为什么你能这么做呢？因为这种异步的、基于事件的行为，对ReactiveCocoa来说就是家常便饭。</p>
 <blockquote>
 <p>Note: 为了简单期间，本教程使用的简单的虚拟服务，这样就不依赖任何外部的API。但是现在有一个非常现实的问题，怎么使用未用信号表示的API。</p>
 </blockquote>
 <h4 id="Creating-Signals-创建信号"><a href="#Creating-Signals-创建信号" class="headerlink" title="Creating Signals (创建信号)"></a>Creating Signals (创建信号)</h4><p>幸运的是，将现有的异步API调整为信号相当容易。首先移除<code>signInButtonTouched:</code>方法，该方法将被其他逻辑所取代。<br>在<code>RWViewController.m</code>中添加下面的方法：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-(RACSignal *)signInSignal &#123;</span><br><span class="line">  return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</span><br><span class="line">    [self.signInService</span><br><span class="line">     signInWithUsername:self.usernameTextField.text</span><br><span class="line">     password:self.passwordTextField.text</span><br><span class="line">     complete:^(BOOL success) &#123;</span><br><span class="line">       [subscriber sendNext:@(success)];</span><br><span class="line">       [subscriber sendCompleted];</span><br><span class="line">     &#125;];</span><br><span class="line">    return nil;</span><br><span class="line">  &#125;];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-(RACSignal *)signInSignal &#123;</span><br><span class="line">  return [RACSignal createSignal:^RACDisposable *(id&lt;RACSubscriber&gt; subscriber) &#123;</span><br><span class="line">    [self.signInService</span><br><span class="line">     signInWithUsername:self.usernameTextField.text</span><br><span class="line">     password:self.passwordTextField.text</span><br><span class="line">     complete:^(BOOL success) &#123;</span><br><span class="line">       [subscriber sendNext:@(success)];</span><br><span class="line">       [subscriber sendCompleted];</span><br><span class="line">     &#125;];</span><br><span class="line">    return nil;</span><br><span class="line">  &#125;];</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>上面的方法创建了使用当前的username和password登录的信号，现在将其进行拆解：</p>
 <p>上面的代码使用<code>RACSignal</code>中的<code>createSignal:</code>方法创建信号，该方法的参数是一个Block，用来描述该信号，且该Block只有一个参数。当信号有订阅者的时候，该Block中的代码将会执行。</p>
 <p>传递给该Block的是一个<code>subscriber</code>实例，该实例遵守<code>RACSubscriber</code>协议，该协议中有你用来发出事件的方法，你可以发送任意个数的<code>next</code>事件,这些事件会因为<code>error</code>或者<code>complete</code>事件结束。本教程中，将会发送一个<code>next</code>事件来显示是否登录成功或者失败，然后发送    <code>comlete</code>事件结束。</p>
 <p>这个Block的返回值是一个    <code>RACDisposable</code>对象，它允许你执行取消或者取消订阅的时候可能需要的任何清理工作。此信号因为没有任何清理需要，所以直接返回<code>nil</code>;</p>
 <p>正如你所看到的，在信号中包装异步的API非常的简单。</p>
 <p>现在我们来利用这个信号，将下面的代码添加到viewDidload的最后</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[self.signInButton</span><br><span class="line">   rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">   map:^id(id x) &#123;</span><br><span class="line">     return [self signInSignal];</span><br><span class="line">   &#125;]</span><br><span class="line">   subscribeNext:^(id x) &#123;</span><br><span class="line">     NSLog(@&quot;Sign in result: %@&quot;, x);</span><br><span class="line">   &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[self.signInButton</span><br><span class="line">   rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">   map:^id(id x) &#123;</span><br><span class="line">     return [self signInSignal];</span><br><span class="line">   &#125;]</span><br><span class="line">   subscribeNext:^(id x) &#123;</span><br><span class="line">     NSLog(@&quot;Sign in result: %@&quot;, x);</span><br><span class="line">   &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>上面的代码通过<code>map</code>操作符将登录信号转换为登录信号，订阅者只打印结果。</p>
 <p>直接运行该代码，然后点击<code>Sign In</code>Button，查看XCode的控制台打印，将会看到下面的结果,该结果也许和你想象的不太一样：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2014-01-08 21:00:25.919 RWReactivePlayground[33818:a0b] Sign in result:</span><br><span class="line">                                   &lt;RACDynamicSignal: 0xa068a00&gt; name: +createSignal:</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2014-01-08 21:00:25.919 RWReactivePlayground[33818:a0b] Sign in result:</span><br><span class="line">                                   &lt;RACDynamicSignal: 0xa068a00&gt; name: +createSignal:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><code>subscribeNext:</code>block传递的是整个信号，而不是登录信号的结果。</p>
 <p>来看下这张图：<br><img src="./week1908.png" alt="Alt text"></p>
 <p>当你点击button的时候，<code>rac_signallForControlEvents</code>发出一个<code>next</code>事件，然后<code>map</code>将创建并返回登录信号，这意味着下面的管道步骤接收的是RACSignal。这就是你在<code>subscribeNext:</code>中观察到的内容。</p>
 <p>上面中情况称为信号中的信号，换言之是包含内部信号的外部信号。如果你想的话，你可以在外部信号的    <code>subscribeNext:</code>中订阅内部信号。但是这样做会导致嵌套混乱！幸运的是，这是一个常见的问题，ReactiveCocoa已经针对这种情况做好了准备;</p>
 <h4 id="信号中的信号"><a href="#信号中的信号" class="headerlink" title="信号中的信号"></a>信号中的信号</h4><p>此问题的解决步骤非常的简单，只需将<code>map</code>函数改成<code>flattenMap</code>:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[self.signInButton</span><br><span class="line">   rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">   flattenMap:^id(id x) &#123;</span><br><span class="line">     return [self signInSignal];</span><br><span class="line">   &#125;]</span><br><span class="line">   subscribeNext:^(id x) &#123;</span><br><span class="line">     NSLog(@&quot;Sign in result: %@&quot;, x);</span><br><span class="line">   &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[self.signInButton</span><br><span class="line">   rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">   flattenMap:^id(id x) &#123;</span><br><span class="line">     return [self signInSignal];</span><br><span class="line">   &#125;]</span><br><span class="line">   subscribeNext:^(id x) &#123;</span><br><span class="line">     NSLog(@&quot;Sign in result: %@&quot;, x);</span><br><span class="line">   &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>这段代码同样是将按钮的<code>点击信号</code>映射为<code>登录信号</code>,但是<code>flattens</code>可以将事件从内部信号发送到外部信号。</p>
 <p>运行代码，看一下Xcode的控制台：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2013-12-28 18:20:08.156 RWReactivePlayground[22993:a0b] Sign in result: 0</span><br><span class="line">2013-12-28 18:25:50.927 RWReactivePlayground[22993:a0b] Sign in result: 1</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2013-12-28 18:20:08.156 RWReactivePlayground[22993:a0b] Sign in result: 0</span><br><span class="line">2013-12-28 18:25:50.927 RWReactivePlayground[22993:a0b] Sign in result: 1</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>现在这个管道正在做的就是你想要的了，最后一步就是在<code>subscribeNext</code>中添加相关的逻辑，以在登录成功之后执行所需的导航。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[self.signInButton</span><br><span class="line">  rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">  flattenMap:^id(id x) &#123;</span><br><span class="line">    return [self signInSignal];</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(NSNumber *signedIn) &#123;</span><br><span class="line">    BOOL success &#x3D; [signedIn boolValue];</span><br><span class="line">    self.signInFailureText.hidden &#x3D; success;</span><br><span class="line">    if (success) &#123;</span><br><span class="line">      [self performSegueWithIdentifier:@&quot;signInSuccess&quot; sender:self];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[self.signInButton</span><br><span class="line">  rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">  flattenMap:^id(id x) &#123;</span><br><span class="line">    return [self signInSignal];</span><br><span class="line">  &#125;]</span><br><span class="line">  subscribeNext:^(NSNumber *signedIn) &#123;</span><br><span class="line">    BOOL success &#x3D; [signedIn boolValue];</span><br><span class="line">    self.signInFailureText.hidden &#x3D; success;</span><br><span class="line">    if (success) &#123;</span><br><span class="line">      [self performSegueWithIdentifier:@&quot;signInSuccess&quot; sender:self];</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>运行程序：<br><img src="./week1909.jpg" alt="Alt text"></p>
 <p>你是否注意到当前的应用程序存在一个小的用户体验的问题？ 当登录服务验证提供的凭据时，应禁用登录按钮。这样可以防止用户重复相同的登录。此外，如果出现登录尝试失败，当用户再次尝试登录时，错误消息应隐藏。</p>
 <p>但是，如何将此逻辑添加到当前管道？更改按钮的<code>enable</code>状态不是<code>transformation</code>、<code>filter</code>或到目前为止遇到的任何其他概念。其实，它被称为<code>副作用</code>或<code>管道中next事件发生时执行的逻辑</code>，它实际上不会更改事件本身。</p>
 <h4 id="Adding-side-effects（添加副作用）"><a href="#Adding-side-effects（添加副作用）" class="headerlink" title="Adding side-effects（添加副作用）"></a>Adding side-effects（添加副作用）</h4><p>用下面的代码取代当前的代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[[self.signInButton</span><br><span class="line">   rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">   doNext:^(id x) &#123;</span><br><span class="line">     self.signInButton.enabled &#x3D; NO;</span><br><span class="line">     self.signInFailureText.hidden &#x3D; YES;</span><br><span class="line">   &#125;]</span><br><span class="line">   flattenMap:^id(id x) &#123;</span><br><span class="line">     return [self signInSignal];</span><br><span class="line">   &#125;]</span><br><span class="line">   subscribeNext:^(NSNumber *signedIn) &#123;</span><br><span class="line">     self.signInButton.enabled &#x3D; YES;</span><br><span class="line">     BOOL success &#x3D; [signedIn boolValue];</span><br><span class="line">     self.signInFailureText.hidden &#x3D; success;</span><br><span class="line">     if (success) &#123;</span><br><span class="line">       [self performSegueWithIdentifier:@&quot;signInSuccess&quot; sender:self];</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;];</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[[[[self.signInButton</span><br><span class="line">   rac_signalForControlEvents:UIControlEventTouchUpInside]</span><br><span class="line">   doNext:^(id x) &#123;</span><br><span class="line">     self.signInButton.enabled &#x3D; NO;</span><br><span class="line">     self.signInFailureText.hidden &#x3D; YES;</span><br><span class="line">   &#125;]</span><br><span class="line">   flattenMap:^id(id x) &#123;</span><br><span class="line">     return [self signInSignal];</span><br><span class="line">   &#125;]</span><br><span class="line">   subscribeNext:^(NSNumber *signedIn) &#123;</span><br><span class="line">     self.signInButton.enabled &#x3D; YES;</span><br><span class="line">     BOOL success &#x3D; [signedIn boolValue];</span><br><span class="line">     self.signInFailureText.hidden &#x3D; success;</span><br><span class="line">     if (success) &#123;</span><br><span class="line">       [self performSegueWithIdentifier:@&quot;signInSuccess&quot; sender:self];</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;];</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>你可以看到上面如何添加 <code>doNext：</code>,在按钮触摸事件创建后立即向管道添加该步骤。请注意，    <code>doNext：</code> 块没有返回值，因为它是副作用，它使事件本身保持不变。</p>
 <p>上面的 <code>doNext：</code> 块将按钮的属性设置为 NO，并隐藏失败文本。当订阅<code>Next：</code>块的时候重新启用按钮，并根据登录结果显示或隐藏失败文本。</p>
 <p><img src="./week1910.png" alt="Alt text"></p>
@@ -755,8 +755,8 @@
 <p>希望本教程已经给你一个良好的基础，这将有助于你在自己的应用程序中使用ReactiveCocoa框架。熟悉这些概念可能需要多加练习，但与任何语言或程序一样，一旦你找到它的窍门，它真的很简单。ReactiveCocoa的核心是信号，它们只不过是事件流。还有什么比这更简单的呢？</p>
 <p>对于ReactiveCocoa，我发现的有趣的事情之一是有许多方法可以解决同样的问题。你可以通过这个应用程序练习，通过调整信号和管道，以更改它们拆分和组合的方式。</p>
 <p>ReactiveCocoa的主要目标是使代码更简洁、更易于理解。就个人而言，我发现，如果应用程序的逻辑表示为清晰的管道，使用流畅的语法，则更容易理解应用程序的作用。</p>
-<p>在本教程系列的<a href="https://www.raywenderlich.com/?p=62796" target="_blank" rel="noopener">第二部分中</a>，你将了解更高级的主题，如错误处理以及如何管理在不同线程上执行的代码。</p>
-<h3 id="Part-03-原文"><a href="#Part-03-原文" class="headerlink" title="Part-03 原文"></a>Part-03 原文</h3><p><a href="https://www.raywenderlich.com/2493-reactivecocoa-tutorial-the-definitive-introduction-part-1-2" target="_blank" rel="noopener">ReactiveCocoa Tutorial – The Definitive Introduction: Part 1/2</a></p>
+<p>在本教程系列的<a href="https://www.raywenderlich.com/?p=62796">第二部分中</a>，你将了解更高级的主题，如错误处理以及如何管理在不同线程上执行的代码。</p>
+<h3 id="Part-03-原文"><a href="#Part-03-原文" class="headerlink" title="Part-03 原文"></a>Part-03 原文</h3><p><a href="https://www.raywenderlich.com/2493-reactivecocoa-tutorial-the-definitive-introduction-part-1-2">ReactiveCocoa Tutorial – The Definitive Introduction: Part 1/2</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -795,8 +795,8 @@
 <p> <img src="week1701.png" alt=""></p>
 <h3 id="Part02-瘦身实施"><a href="#Part02-瘦身实施" class="headerlink" title="Part02 - 瘦身实施"></a>Part02 - 瘦身实施</h3><h4 id="图片资源优化"><a href="#图片资源优化" class="headerlink" title="图片资源优化"></a>图片资源优化</h4><p>对大部分的App来讲，占比最大资源文件应该就是图片资源，所以资源文件优化的重点就是图片资源的优化。图片资源的优化可以从下面几个方向来进行。</p>
 <h5 id="1⃣️️将部分图片资源放到服务器上"><a href="#1⃣️️将部分图片资源放到服务器上" class="headerlink" title="1⃣️️将部分图片资源放到服务器上"></a>1⃣️️将部分图片资源放到服务器上</h5><p>将所有的图片资源都打到安装包中其实是不必要的，反而会造成安装包极速的增大，资源应该是按需加载的。除了一些常用的图片资源和一些如果放在线上非常影响用户体验的图片，其他的图片都应该放在资源服务器上，做好相应的图片缓存策略。</p>
-<h5 id="2⃣️清理没用的图片资源"><a href="#2⃣️清理没用的图片资源" class="headerlink" title="2⃣️清理没用的图片资源"></a>2⃣️清理没用的图片资源</h5><p>随着版本的迭代，之前导入的一些图片资源已经不再使用，要做到及时的清理没用的图片资源。<a href="https://github.com/tinymind/LSUnusedResources" target="_blank" rel="noopener">LSUnusedResources </a>是一款非常不错的无用图片查找工具，<a href="https://github.com/tinymind/LSUnusedResources" target="_blank" rel="noopener">LSUnusedResources </a>的思路是，先获取图片文件(imageset, jpg, png, gif)集合A，然后搜索代码文件中所有字符串名称得到B，然后从A集合中排除集合B就得到未使用的图片资源。</p>
-<h5 id="3⃣️图片资源压缩"><a href="#3⃣️图片资源压缩" class="headerlink" title="3⃣️图片资源压缩"></a>3⃣️图片资源压缩</h5><p>可以使用<a href="https://github.com/ImageOptim/ImageOptim" target="_blank" rel="noopener">ImageOptim</a>，通过优化压缩参数，移除无用的文件元数据和不必要的颜色配置来实现图片的无损压缩。我们UI切图使用的是蓝湖，蓝湖也支持图片压缩，如果没有使用过的同学可以尝试。</p>
+<h5 id="2⃣️清理没用的图片资源"><a href="#2⃣️清理没用的图片资源" class="headerlink" title="2⃣️清理没用的图片资源"></a>2⃣️清理没用的图片资源</h5><p>随着版本的迭代，之前导入的一些图片资源已经不再使用，要做到及时的清理没用的图片资源。<a href="https://github.com/tinymind/LSUnusedResources">LSUnusedResources </a>是一款非常不错的无用图片查找工具，<a href="https://github.com/tinymind/LSUnusedResources">LSUnusedResources </a>的思路是，先获取图片文件(imageset, jpg, png, gif)集合A，然后搜索代码文件中所有字符串名称得到B，然后从A集合中排除集合B就得到未使用的图片资源。</p>
+<h5 id="3⃣️图片资源压缩"><a href="#3⃣️图片资源压缩" class="headerlink" title="3⃣️图片资源压缩"></a>3⃣️图片资源压缩</h5><p>可以使用<a href="https://github.com/ImageOptim/ImageOptim">ImageOptim</a>，通过优化压缩参数，移除无用的文件元数据和不必要的颜色配置来实现图片的无损压缩。我们UI切图使用的是蓝湖，蓝湖也支持图片压缩，如果没有使用过的同学可以尝试。</p>
 <h5 id="4⃣️iconfont"><a href="#4⃣️iconfont" class="headerlink" title="4⃣️iconfont"></a>4⃣️iconfont</h5><p>即使经过了图片转下载，无用图片删除，但是工程中的图片数量还是极为可观，其中各种各样的icon图标占了不少的数量。为了进一步减少图片数量，可以使用<code>iconfont</code>方案， <code>iconfont</code>优点：</p>
 <ul>
 <li>矢量，缩放不失真</li>
@@ -814,21 +814,21 @@
 </ol>
 </li>
 <li><p>LinkMap文件分析：</p>
-<p>可以使用<a href="https://github.com/huanxsd/LinkMap" target="_blank" rel="noopener">LinkMap - LinkMap.txt 文件解析工具</a>分析每个类或者静态库的大小。通过查看LinkMap文件，各个静态库和文件的大小一目了然。</p>
+<p>可以使用<a href="https://github.com/huanxsd/LinkMap">LinkMap - LinkMap.txt 文件解析工具</a>分析每个类或者静态库的大小。通过查看LinkMap文件，各个静态库和文件的大小一目了然。</p>
 <p><img src="week1702.png" alt="Alt text"></p>
 <p>1、 在选用三方库的时候，尽量使用占用内存比较小的三方库，及时的移除不再使用的三方库。<br>2、分析占用内存比较大的类，删除类中没用的代码，减少冗余，保证用最简代码实现相应的功能，提升代码的复用性。</p>
 </li>
 </ul>
-<p><code>LinkMap</code>可以在宏观上获取需要优化的部分，但是微观上，哪些是无用的类和方法，需要我们在    <code>Mach-O</code>层面进行分析，可以使用<a href="https://github.com/fangshufeng/MachOView" target="_blank" rel="noopener">MachOView </a>对<code>Mach-O</code>文件进行分析。可以通过阅读<a href="http://hawk0620.github.io/blog/2018/03/22/study-mach-o-file/" target="_blank" rel="noopener">这篇文章</a>探秘<code>Mach-O</code>。 下面这张图是<code>MachOView</code>查看<code>Mach-O</code>文件的截图：</p>
+<p><code>LinkMap</code>可以在宏观上获取需要优化的部分，但是微观上，哪些是无用的类和方法，需要我们在    <code>Mach-O</code>层面进行分析，可以使用<a href="https://github.com/fangshufeng/MachOView">MachOView </a>对<code>Mach-O</code>文件进行分析。可以通过阅读<a href="http://hawk0620.github.io/blog/2018/03/22/study-mach-o-file/">这篇文章</a>探秘<code>Mach-O</code>。 下面这张图是<code>MachOView</code>查看<code>Mach-O</code>文件的截图：</p>
 <p><img src="week1703.png" alt="Alt text"></p>
-<p>大家可以阅读<a href="https://juejin.im/post/5d5d1a92e51d45620923886a" target="_blank" rel="noopener">:删除无用的类</a>进行实践</p>
+<p>大家可以阅读<a href="https://juejin.im/post/5d5d1a92e51d45620923886a">:删除无用的类</a>进行实践</p>
 <h5 id="2⃣️尽量不要使用OC和Swift混编"><a href="#2⃣️尽量不要使用OC和Swift混编" class="headerlink" title="2⃣️尽量不要使用OC和Swift混编"></a>2⃣️尽量不要使用OC和Swift混编</h5><p>OC和Swift混编的时候，因为需要一些静态库的支持，会造成安装包急剧增大。所以，尽量选择一种语言开发，不要采用混编的方式。<br><img src="week1704.png" alt="Alt text"></p>
-<h5 id="3⃣️代码瘦身"><a href="#3⃣️代码瘦身" class="headerlink" title="3⃣️代码瘦身"></a>3⃣️代码瘦身</h5><p>可以使用<a href="https://www.jetbrains.com/objc/" target="_blank" rel="noopener">AppCode</a>进行代码的静态检查。<a href="https://www.jetbrains.com/objc/" target="_blank" rel="noopener">AppCode</a> 提供了非常强大的代码静态检查工具，使用<code>Inspect Code</code>，可以找到很多代码优化的地方:主要包括删除不用的类，不用的函数，重复的代码等。<br><img src="week1705.png" alt="Alt text"></p>
+<h5 id="3⃣️代码瘦身"><a href="#3⃣️代码瘦身" class="headerlink" title="3⃣️代码瘦身"></a>3⃣️代码瘦身</h5><p>可以使用<a href="https://www.jetbrains.com/objc/">AppCode</a>进行代码的静态检查。<a href="https://www.jetbrains.com/objc/">AppCode</a> 提供了非常强大的代码静态检查工具，使用<code>Inspect Code</code>，可以找到很多代码优化的地方:主要包括删除不用的类，不用的函数，重复的代码等。<br><img src="week1705.png" alt="Alt text"></p>
 <h4 id="编译优化"><a href="#编译优化" class="headerlink" title="编译优化"></a>编译优化</h4><p>Xcode 支持编译器层面的一些优化优化选项，可以让我们介于更快的编译速度、更小的二进制大小和更快的执行速度之间自由选择想要进行的优化粒度。</p>
 <h5 id="1⃣️BitCode"><a href="#1⃣️BitCode" class="headerlink" title="1⃣️BitCode"></a>1⃣️BitCode</h5><p>可以在<code>Xcode Target -&gt; Build Settings -&gt; Enable Bitcode</code> 中打开 bitcode 选项</p>
 <p>Bitcode可以作为中间产物一起提交AppStore。包含Bitcode配置的程序将会在AppStore上被编译和链接。Bitcode允许苹果在后期重新优化我们程序的二进制文件，而不需要我们重新提交一个新的版本到AppStore上。</p>
 <p>在打包时，如果一些三方的依赖库没有开启 bitcode，或者开启了但是没有在最终引用的链接库中带有 bitcode，那么整个工程就无法用 bitcode 来编译了。</p>
-<h3 id="Part03-参考"><a href="#Part03-参考" class="headerlink" title="Part03- 参考"></a>Part03- 参考</h3><p><a href="https://juejin.im/post/5cbb3f9151882529e5627ece" target="_blank" rel="noopener">App瘦身小记</a><br><a href="http://www.cocoachina.com/articles/859032" target="_blank" rel="noopener">京东商城iOS App瘦身实践</a><br><a href="https://www.jianshu.com/p/c94dedef90b7" target="_blank" rel="noopener">APP安装包瘦身实践</a><br><a href="https://zhuanlan.zhihu.com/p/86317689" target="_blank" rel="noopener">iOS开发：Archive、ipa 和 App 包瘦身</a><br><a href="https://juejin.im/post/5e969d816fb9a03c60188229?utm_source=gold_browser_extension" target="_blank" rel="noopener">APP体积优化</a></p>
+<h3 id="Part03-参考"><a href="#Part03-参考" class="headerlink" title="Part03- 参考"></a>Part03- 参考</h3><p><a href="https://juejin.im/post/5cbb3f9151882529e5627ece">App瘦身小记</a><br><a href="http://www.cocoachina.com/articles/859032">京东商城iOS App瘦身实践</a><br><a href="https://www.jianshu.com/p/c94dedef90b7">APP安装包瘦身实践</a><br><a href="https://zhuanlan.zhihu.com/p/86317689">iOS开发：Archive、ipa 和 App 包瘦身</a><br><a href="https://juejin.im/post/5e969d816fb9a03c60188229?utm_source=gold_browser_extension">APP体积优化</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -847,7 +847,7 @@
 <li>Button的title能够跟自动转换成设备手机选择的Language</li>
 <li>支持配置圆角以满足你自己UI的风格（iOS、MacOS、Web）</li>
 </ol>
-<p>对开发者而言，可以看这些使用引导<a href="https://developer.apple.com/documentation/authenticationservices/asauthorizationappleidbutton" target="_blank" rel="noopener">ASAuthorizationAppleIDButton</a> (iOS, macOS, and tvOS), <a href="https://developer.apple.com/documentation/watchkit/wkinterfaceauthorizationappleidbutton" target="_blank" rel="noopener">WKInterfaceAuthorizationAppleIDButton</a> (watchOS), and <a href="https://developer.apple.com/documentation/signinwithapplejs/displaying_and_configuring_sign_in_with_apple_buttons" target="_blank" rel="noopener">Displaying and Configuring Sign in with Apple Buttons</a> (web).</p>
+<p>对开发者而言，可以看这些使用引导<a href="https://developer.apple.com/documentation/authenticationservices/asauthorizationappleidbutton">ASAuthorizationAppleIDButton</a> (iOS, macOS, and tvOS), <a href="https://developer.apple.com/documentation/watchkit/wkinterfaceauthorizationappleidbutton">WKInterfaceAuthorizationAppleIDButton</a> (watchOS), and <a href="https://developer.apple.com/documentation/signinwithapplejs/displaying_and_configuring_sign_in_with_apple_buttons">Displaying and Configuring Sign in with Apple Buttons</a> (web).</p>
 <p>系统提供的Button 的Title有几种文案。根据你使用的平台，选择最合适的文案。</p>
 <p>下面几种Button Title都可以在iOS、macOS、和tvOS中使用，但是只有Sign in with Apple 和 Continue with Apple 可以在Web中使用</p>
 <p><img src="SignWithApple01.png" alt=""></p>
@@ -880,7 +880,7 @@
 </tbody></table>
 <h3 id="创建一个自定义的-Sign-in-with-Apple-Button"><a href="#创建一个自定义的-Sign-in-with-Apple-Button" class="headerlink" title="创建一个自定义的 Sign in with Apple Button"></a>创建一个自定义的 Sign in with Apple Button</h3><p>如果你有需要的话，可以在iOS、macOS、或者Web平台上自己创建一个自定义的Sign in with Apple Button 。比如：或许你支持多种登录方式，你想展示<code>Left-Aligned Logo</code> Button或者<code>Logo-Only</code> Button。</p>
 <p><img src="SignWithApple08.png" alt=""></p>
-<p><a href="https://developer.apple.com/design/resources/" target="_blank" rel="noopener">Apple Design Resources </a>提供了一些美术资源，你可以使用这些美术资源自定义Sign in with Apple Button。这些资源包括PNG、SVG和PDF三种格式，并且包含黑白两种表现形式。下面是<code>Logo-Only</code> Button的两个例子，每个Logo都添加了富有表现力的背景色</p>
+<p><a href="https://developer.apple.com/design/resources/">Apple Design Resources </a>提供了一些美术资源，你可以使用这些美术资源自定义Sign in with Apple Button。这些资源包括PNG、SVG和PDF三种格式，并且包含黑白两种表现形式。下面是<code>Logo-Only</code> Button的两个例子，每个Logo都添加了富有表现力的背景色</p>
 <p><img src="SignWithApple09.png" alt=""></p>
 <p>所有下载的Logo文件都包含一个内边距，这样在Button中放置logo更加容易</p>
 <ol>
@@ -933,9 +933,9 @@
   <entry>
     <title>如何在OC中进行源码分析</title>
     <url>/2020/04/13/OCCodeAnalysis/</url>
-    <content><![CDATA[<h3 id="Part01-获取objc-runtime的源码"><a href="#Part01-获取objc-runtime的源码" class="headerlink" title="Part01-获取objc-runtime的源码"></a>Part01-获取objc-runtime的源码</h3><p><a href="https://opensource.apple.com/tarballs/objc4/" target="_blank" rel="noopener">objc-runtime的源码地址</a></p>
+    <content><![CDATA[<h3 id="Part01-获取objc-runtime的源码"><a href="#Part01-获取objc-runtime的源码" class="headerlink" title="Part01-获取objc-runtime的源码"></a>Part01-获取objc-runtime的源码</h3><p><a href="https://opensource.apple.com/tarballs/objc4/">objc-runtime的源码地址</a></p>
 <p>注意：⚠️⚠️⚠️，objc-runtime的源码的新旧程度并不是按照时间进行排序，而是按照包的大小进行的排序，一般可以理解为包最大的即为最新的源码</p>
-<p>但是官网的runtime代码是无法直接运行的，如果想直接运行可以下载<a href="https://github.com/RetVal" target="_blank" rel="noopener">RetVal</a>处理过的<a href="https://github.com/RetVal/objc-runtime" target="_blank" rel="noopener">源代码</a></p>
+<p>但是官网的runtime代码是无法直接运行的，如果想直接运行可以下载<a href="https://github.com/RetVal">RetVal</a>处理过的<a href="https://github.com/RetVal/objc-runtime">源代码</a></p>
 <h3 id="Part02-将OC代码编译成C-代码"><a href="#Part02-将OC代码编译成C-代码" class="headerlink" title="Part02-将OC代码编译成C++代码"></a>Part02-将OC代码编译成C++代码</h3><ol>
 <li>找到需要编译成C++代码的OC文件，这里我们拿<code>main.m</code>来举例</li>
 </ol>
@@ -943,7 +943,7 @@
 <ol start="2">
 <li>进入到main.m所在的文件夹，执行：</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;-fobjc-arc表示编译需要支持ARC特性。</span><br><span class="line">&#x2F;&#x2F;-framework Foundation表示引用Foundation框架，这个框架中定义了很多基本的类，例如字符串、数组、字典等等。</span><br><span class="line">&#x2F;&#x2F;后面的 mian.m 就是待编译的源代码文件名。</span><br><span class="line">&#x2F;&#x2F;-o main 表示输出的可执行文件的文件名是 main。</span><br><span class="line"></span><br><span class="line">clang -fobjc-arc -framework Foundation main.m -o main</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F;-fobjc-arc表示编译需要支持ARC特性。</span><br><span class="line">&#x2F;&#x2F;-framework Foundation表示引用Foundation框架，这个框架中定义了很多基本的类，例如字符串、数组、字典等等。</span><br><span class="line">&#x2F;&#x2F;后面的 mian.m 就是待编译的源代码文件名。</span><br><span class="line">&#x2F;&#x2F;-o main 表示输出的可执行文件的文件名是 main。</span><br><span class="line"></span><br><span class="line">clang -fobjc-arc -framework Foundation main.m -o main</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>得到执行文件，双击可以看到执行结果</p>
 <p><img src="OCCodeAnalysis02.png" alt="image"></p>
 <ol start="3">
@@ -974,7 +974,7 @@
 <h3 id="Part04-iOS实现AOP的一个成熟的开源框架：Aspects"><a href="#Part04-iOS实现AOP的一个成熟的开源框架：Aspects" class="headerlink" title="Part04- iOS实现AOP的一个成熟的开源框架：Aspects"></a>Part04- iOS实现AOP的一个成熟的开源框架：Aspects</h3><h4 id="Aspects的实现思路"><a href="#Aspects的实现思路" class="headerlink" title="Aspects的实现思路"></a>Aspects的实现思路</h4><p>Aspects是利用 oc 自己的消息转发机制进行转发，在解释这个过程之前，我们先看一下消息是怎么找到对应的IMP的<img src="week1501.jpg" alt="image"></p>
 <p>从上面我们可以发现，在发消息的时候，如果 <code>selector</code> 有对应的 <code>IMP</code> ,则直接执行，如果没有，oc 给我们提供了几个可供补救的机会，依次有 <code>resolveInstanceMethod</code> 、<code>forwardingTargetForSelector</code>、<code>forwardInvocation</code>。Aspects 之所以选择在 <code>forwardInvocation</code>这里处理是因为，这几个阶段特性都不太一样：<code>resolvedInstanceMethod</code>适合给类/对象动态添加一个相应的实现，<code>forwardingTargetForSelector</code>适合将消息转发给其他对象处理,相对而言，<code>forwardInvocation</code> 是里面最灵活，最能符合需求的。因此 Aspects 的方案就是，对于待<code>hook</code> 的 <code>selector</code>，将其指向 <code>objc_msgForward / _objc_msgForward_stret</code>,同时生成一个新的 <code>aliasSelector</code> 指向原来的 <code>IMP</code>，并且 <code>hook</code> 住 <code>forwardInvocation</code> 函数，使他指向自己的实现。按照上面的思路，当被 <code>hook</code>的 <code>selector</code> 被执行的时候，首先根据 <code>selector</code>找到了<code>objc_msgForward / _objc_msgForward_stret</code>,而这个会触发消息转发，从而进入 <code>forwardInvocation</code>。同时由于 <code>forwardInvocation</code> 的指向也被修改了，因此会转入新的<code>forwardInvocation</code> 函数，在里面执行需要嵌入的附加代码，完成之后，再转回原来的<code>IMP</code>。</p>
 <h4 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h4><h5 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h5><p>从头文件中可以看到使用aspects有两种使用方式：(1)类方法 ；(2)实例方法</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+ (id&lt;AspectToken&gt;)aspect_hookSelector:(SEL)selector</span><br><span class="line">                           withOptions:(AspectOptions)options</span><br><span class="line">                            usingBlock:(id)block</span><br><span class="line">                                 error:(NSError **)error;</span><br><span class="line">&#x2F;&#x2F;&#x2F; Adds a block of code before&#x2F;instead&#x2F;after the current &#96;selector&#96; for a specific instance.</span><br><span class="line">- (id&lt;AspectToken&gt;)aspect_hookSelector:(SEL)selector</span><br><span class="line">                           withOptions:(AspectOptions)options</span><br><span class="line">                            usingBlock:(id)block</span><br><span class="line">                                 error:(NSError **)error;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+ (id&lt;AspectToken&gt;)aspect_hookSelector:(SEL)selector</span><br><span class="line">                           withOptions:(AspectOptions)options</span><br><span class="line">                            usingBlock:(id)block</span><br><span class="line">                                 error:(NSError **)error;</span><br><span class="line">&#x2F;&#x2F;&#x2F; Adds a block of code before&#x2F;instead&#x2F;after the current &#96;selector&#96; for a specific instance.</span><br><span class="line">- (id&lt;AspectToken&gt;)aspect_hookSelector:(SEL)selector</span><br><span class="line">                           withOptions:(AspectOptions)options</span><br><span class="line">                            usingBlock:(id)block</span><br><span class="line">                                 error:(NSError **)error;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>两者的主要原理基本差不多，这里不做一一介绍，只是以实例方法为例进行说明。在介绍之前，先介绍里面几个重要的数据结构：</p>
 <h5 id="AspectOptions"><a href="#AspectOptions" class="headerlink" title="AspectOptions"></a>AspectOptions</h5><p> block 执行的时机，也就是额外操作的执行时机，它可以在原始函数执行之前，也可以是执行之后，甚至可以完全替换掉原来的逻辑。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">typedef NS_OPTIONS(NSUInteger, AspectOptions) &#123;</span><br><span class="line">    AspectPositionAfter   &#x3D; 0,            &#x2F;&#x2F;&#x2F; Called after the original implementation (default)</span><br><span class="line">    AspectPositionInstead &#x3D; 1,            &#x2F;&#x2F;&#x2F; Will replace the original implementation.</span><br><span class="line">    AspectPositionBefore  &#x3D; 2,            &#x2F;&#x2F;&#x2F; Called before the original implementation.</span><br><span class="line">    AspectOptionAutomaticRemoval &#x3D; 1 &lt;&lt; 3 &#x2F;&#x2F;&#x2F; Will remove the hook after the first execution.</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -1000,7 +1000,7 @@
 <h6 id="handle-ForwardInvocation"><a href="#handle-ForwardInvocation" class="headerlink" title="handle ForwardInvocation"></a>handle ForwardInvocation</h6><p>基于上面的代码分析知道，转发最终的逻辑代码最终转入 <code>__ASPECTS_ARE_BEING_CALLED__</code> 函数的处理中。这里，需要处理的部分包括额外处理代码（如打点代码）以及最终重新转会原来的<code>selector</code>所指向的函数，其实现代码如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">static void __ASPECTS_ARE_BEING_CALLED__(__unsafe_unretained NSObject *self, SEL selector, NSInvocation *invocation) &#123;</span><br><span class="line">...</span><br><span class="line">     &#x2F;&#x2F; Before hooks.  原来逻辑之前执行</span><br><span class="line">    aspect_invoke(classContainer.beforeAspects, info);</span><br><span class="line">    aspect_invoke(objectContainer.beforeAspects, info);</span><br><span class="line">    &#x2F;&#x2F; Instead hooks.</span><br><span class="line">    BOOL respondsToAlias &#x3D; YES;</span><br><span class="line">    if (objectContainer.insteadAspects.count || classContainer.insteadAspects.count) &#123;&#x2F;&#x2F;是否需要替换掉原来的路基</span><br><span class="line">         aspect_invoke(classContainer.insteadAspects, info);</span><br><span class="line">         aspect_invoke(objectContainer.insteadAspects, info);</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        Class klass &#x3D; object_getClass(invocation.target);</span><br><span class="line">        do &#123;</span><br><span class="line">              if ((respondsToAlias &#x3D; [klass instancesRespondToSelector:aliasSelector])) &#123;</span><br><span class="line">                    [invocation invoke];&#x2F;&#x2F;根据aliasSelector找到原来的逻辑并执行</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;while (!respondsToAlias &amp;&amp; (klass &#x3D; class_getSuperclass(klass)));</span><br><span class="line">     &#125;</span><br><span class="line">    &#x2F;&#x2F; After hooks.  原来逻辑之后执行</span><br><span class="line">     aspect_invoke(classContainer.afterAspects, info);</span><br><span class="line">     aspect_invoke(objectContainer.afterAspects, info);</span><br><span class="line">    &#x2F;&#x2F; If no hooks are installed, call original implementation (usually to throw an exception)</span><br><span class="line">     if (!respondsToAlias) &#123;&#x2F;&#x2F;找不到aliasSelector的IMP实现，没有找到原来的逻辑，进行消息转发</span><br><span class="line">          invocation.selector &#x3D; originalSelector;</span><br><span class="line">          SEL originalForwardInvocationSEL &#x3D; NSSelectorFromString(AspectsForwardInvocationSelectorName);</span><br><span class="line">          if ([self respondsToSelector:originalForwardInvocationSEL]) &#123;</span><br><span class="line">               ((void( *)(id, SEL, NSInvocation *))objc_msgSend)(self, originalForwardInvocationSEL, invocation);</span><br><span class="line">          &#125; else &#123;</span><br><span class="line">              [self doesNotRecognizeSelector:invocation.selector];</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;                     </span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>依次处理 <code>before/instead/after hook</code> 以及真正函数实现。如果没有找到原始的函数实现，还需要进行转发操作。</p>
-<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://wereadteam.github.io/2016/06/30/Aspects/" target="_blank" rel="noopener">面向切面编程之 Aspects 源码解析及应用</a></p>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://wereadteam.github.io/2016/06/30/Aspects/">面向切面编程之 Aspects 源码解析及应用</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -1146,10 +1146,10 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movq  a, %rax</span><br><span class="line">movq  b, %rbx</span><br><span class="line">addq  %rbx, %rax</span><br><span class="line">imulq %rbx</span><br><span class="line">movq  %rax, c</span><br></pre></td></tr></table></figure>
 <p><code>imul</code>指令有点不太一样：它将其参数乘以<code>％rax</code>的内容，然后将结果的低64位放入<code>％rax</code>，将高64位放入<code>％rdx</code>。（将两个64位数字相乘会产生一个128位数字。）</p>
 <p><code>idiv</code>指令和乘法指令差不多：它以一个128位整数值开始，其低64位位于<code>％rax</code>，高位64位位于<code>％rdx</code>中，并将其除以参数。<code>（CDQO</code>指令用于将<code>％rax</code>符号扩展为<code>％rdx</code>，以便正确处理负值。）商被放在<code>％rax</code>中，余数放在<code>％rdx</code>中。例如，除以5：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movq a,  %rax    # set the low 64 bits of the dividend</span><br><span class="line">cdqo             # sign-extend %rax into %rdx</span><br><span class="line">idivq $5</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movq a,  %rax    # set the low 64 bits of the dividend</span><br><span class="line">cdqo             # sign-extend %rax into %rdx</span><br><span class="line">idivq $5 </span><br></pre></td></tr></table></figure>
 
 <p>大多数语言中的求模指令只是利用<code>％rdx</code>中剩余的余数,指令<code>INC</code>和<code>DEC</code>分别递增和递减寄存器。例如，语句<code>a = ++ b</code>可以翻译为：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movq b, %rax</span><br><span class="line">incq %rax</span><br><span class="line">movq %rax, a</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">movq b, %rax</span><br><span class="line">incq %rax</span><br><span class="line">movq %rax, a</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>布尔操作的工作方式非常类似：AND，OR，和XOR指令需要两个参数，而NOT指令只需要一个参数。像MOV指令一样，各种算术指令可以在各种寻址模式下工作。但是，您可能会发现使用MOV将值载入和载出寄存器是最方便的，然后仅使用寄存器来执行算术运算。</p>
 <h5 id="比较和跳转指令"><a href="#比较和跳转指令" class="headerlink" title="比较和跳转指令"></a>比较和跳转指令</h5><p>使用<code>JMP</code>指令，我们可以创建一个简单的无限循环，使用<code>％eax</code>寄存器从零开始计数：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">   movq $0, %rax</span><br><span class="line">loop:</span><br><span class="line">    incq %rax</span><br><span class="line">    jmp loop</span><br></pre></td></tr></table></figure>
@@ -1316,7 +1316,7 @@
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include &lt;stdio.h&gt;</span><br><span class="line"></span><br><span class="line">int sum(int a, int b)&#123;</span><br><span class="line">    return (a+b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main()&#123;</span><br><span class="line">    int x &#x3D; sum(1, 2);</span><br><span class="line">    printf(&quot;result is:%d\n&quot;, x);</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <p>编译为汇编代码之后，为了方便读代码，我们去除一些不需要的指示段之后得到如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.file   &quot;main.c&quot;</span><br><span class="line">    .text</span><br><span class="line">    .globl  sum</span><br><span class="line">    .type   sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">    pushq   %rbp</span><br><span class="line">    movq    %rsp, %rbp</span><br><span class="line">    movl    %edi, -4(%rbp)</span><br><span class="line">    movl    %esi, -8(%rbp)</span><br><span class="line">    movl    -4(%rbp), %edx</span><br><span class="line">    movl    -8(%rbp), %eax</span><br><span class="line">    addl    %edx, %eax</span><br><span class="line">    popq    %rbp</span><br><span class="line">    ret</span><br><span class="line">.LFE0:</span><br><span class="line">    .size   sum, .-sum</span><br><span class="line">    .section    .rodata</span><br><span class="line">.LC0:</span><br><span class="line">    .string &quot;result is:%d\n&quot;</span><br><span class="line">    .text</span><br><span class="line">    .globl  main</span><br><span class="line">    .type   main, @function</span><br><span class="line">main:</span><br><span class="line">.LFB1:</span><br><span class="line">    pushq   %rbp</span><br><span class="line">    movq    %rsp, %rbp</span><br><span class="line">    subq    $16, %rsp</span><br><span class="line">    movl    $2, %esi</span><br><span class="line">    movl    $1, %edi</span><br><span class="line">    call    sum</span><br><span class="line">    movl    %eax, -4(%rbp)</span><br><span class="line">    movl    -4(%rbp), %eax</span><br><span class="line">    movl    %eax, %esi</span><br><span class="line">    movl    $.LC0, %edi</span><br><span class="line">    movl    $0, %eax</span><br><span class="line">    call    printf</span><br><span class="line">    movl    $0, %eax</span><br><span class="line">    leave</span><br><span class="line">    ret</span><br><span class="line">.LFE1:</span><br><span class="line">    .size   main, .-main</span><br><span class="line">    .ident  &quot;GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.9) 5.4.0 20160609&quot;</span><br><span class="line">    .section    .note.GNU-stack,&quot;&quot;,@progbits</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.file   &quot;main.c&quot;</span><br><span class="line">    .text</span><br><span class="line">    .globl  sum</span><br><span class="line">    .type   sum, @function</span><br><span class="line">sum:</span><br><span class="line">.LFB0:</span><br><span class="line">    pushq   %rbp</span><br><span class="line">    movq    %rsp, %rbp</span><br><span class="line">    movl    %edi, -4(%rbp)</span><br><span class="line">    movl    %esi, -8(%rbp)</span><br><span class="line">    movl    -4(%rbp), %edx</span><br><span class="line">    movl    -8(%rbp), %eax</span><br><span class="line">    addl    %edx, %eax</span><br><span class="line">    popq    %rbp</span><br><span class="line">    ret</span><br><span class="line">.LFE0:</span><br><span class="line">    .size   sum, .-sum</span><br><span class="line">    .section    .rodata</span><br><span class="line">.LC0:</span><br><span class="line">    .string &quot;result is:%d\n&quot;</span><br><span class="line">    .text</span><br><span class="line">    .globl  main</span><br><span class="line">    .type   main, @function</span><br><span class="line">main:</span><br><span class="line">.LFB1:</span><br><span class="line">    pushq   %rbp</span><br><span class="line">    movq    %rsp, %rbp</span><br><span class="line">    subq    $16, %rsp</span><br><span class="line">    movl    $2, %esi</span><br><span class="line">    movl    $1, %edi</span><br><span class="line">    call    sum</span><br><span class="line">    movl    %eax, -4(%rbp)</span><br><span class="line">    movl    -4(%rbp), %eax</span><br><span class="line">    movl    %eax, %esi</span><br><span class="line">    movl    $.LC0, %edi</span><br><span class="line">    movl    $0, %eax</span><br><span class="line">    call    printf</span><br><span class="line">    movl    $0, %eax</span><br><span class="line">    leave</span><br><span class="line">    ret</span><br><span class="line">.LFE1:</span><br><span class="line">    .size   main, .-main</span><br><span class="line">    .ident  &quot;GCC: (Ubuntu 5.4.0-6ubuntu1~16.04.9) 5.4.0 20160609&quot;</span><br><span class="line">    .section    .note.GNU-stack,&quot;&quot;,@progbits</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>我们知道linux系统中<code>main</code>函数是由glibc中的 <code>exec()</code>簇 函数调用的，比如我们从shell环境中启动程序最终就是由 <code>execvp()</code>调用而来。我们这里不展开说明，你只需要知道<code>main</code>函数其实也是被调用的函数。我们从<code>main</code>函数的第一条指令开始：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">main:</span><br><span class="line">.LFB1:</span><br><span class="line">    pushq   %rbp</span><br><span class="line">    movq    %rsp, %rbp</span><br></pre></td></tr></table></figure>
@@ -1342,24 +1342,24 @@
 
 <p>这样就可以跳转到函数结束后的下一条指令 “movl %eax, -4(%rbp)”处继续执行,至此我们看一下完整调用过程中栈的变化：</p>
 <p><img src="Assembly06.png" alt="image"></p>
-<p>更多关于寄存器的知识可以看<a href="https://nifengz.com/introduction_x64_assembly/" target="_blank" rel="noopener">这篇博客</a>,讲的更加详细</p>
+<p>更多关于寄存器的知识可以看<a href="https://nifengz.com/introduction_x64_assembly/">这篇博客</a>,讲的更加详细</p>
 <h4 id="Part05-LLDB常用指令"><a href="#Part05-LLDB常用指令" class="headerlink" title="Part05 - LLDB常用指令"></a>Part05 - LLDB常用指令</h4><p>了解了汇编的基本指令时候，我们需要再了解在Xcode中如何使用LLDB指令来调试汇编代码</p>
 <ul>
 <li>读取寄存器的值</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">register read&#x2F; </span><br><span class="line">&#x2F;*例*&#x2F;POPQ  %rax</span><br><span class="line">register read&#x2F;x rax    &#x2F;&#x2F; 读取寄存器 rax 里面的值，&#x2F;后面的参数为进制：x:16 进制,f: 浮点,d:10 进制</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">register read&#x2F; </span><br><span class="line">&#x2F;*例*&#x2F;POPQ  %rax</span><br><span class="line">register read&#x2F;x rax    &#x2F;&#x2F; 读取寄存器 rax 里面的值，&#x2F;后面的参数为进制：x:16 进制,f: 浮点,d:10 进制</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <ul>
 <li>修改寄存器的值</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">register write</span><br><span class="line">&#x2F;*例*&#x2F;</span><br><span class="line">register write rax 4 &#x2F;&#x2F; 将rax修改为 4</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">register write</span><br><span class="line">&#x2F;*例*&#x2F;</span><br><span class="line">register write rax 4 &#x2F;&#x2F; 将rax修改为 4</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <ul>
 <li>读取内存中的值</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x&#x2F;数量-格式-字节大小</span><br><span class="line"></span><br><span class="line">&#x2F;*例*&#x2F;</span><br><span class="line"></span><br><span class="line">x&#x2F;4xg 0x1000002</span><br><span class="line">&#x2F;&#x2F; 将 0x1000002 地址的值, 以 8 个字节的格式, 分成 4 份, 16 进制 展示</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">x&#x2F;数量-格式-字节大小</span><br><span class="line"></span><br><span class="line">&#x2F;*例*&#x2F;</span><br><span class="line"></span><br><span class="line">x&#x2F;4xg 0x1000002</span><br><span class="line">&#x2F;&#x2F; 将 0x1000002 地址的值, 以 8 个字节的格式, 分成 4 份, 16 进制 展示</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <ul>
 <li>修改内存中的值</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">memory write 内存地址 数值</span><br><span class="line"></span><br><span class="line">&#x2F;*例*&#x2F;</span><br><span class="line"></span><br><span class="line">memory write  0x1000002 10</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">memory write 内存地址 数值</span><br><span class="line"></span><br><span class="line">&#x2F;*例*&#x2F;</span><br><span class="line"></span><br><span class="line">memory write  0x1000002 10</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>格式</li>
@@ -1396,7 +1396,7 @@
 <h4 id="Part06-Swift汇编例子"><a href="#Part06-Swift汇编例子" class="headerlink" title="Part06 - Swift汇编例子"></a>Part06 - Swift汇编例子</h4><ol>
 <li>新建一个<code>Command Line Tool</code>工程，并在<code>main.swift</code>文件中新建一个<code>sum</code>函数</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">func sum( a: Int, b: Int) -&gt; Int&#123;</span><br><span class="line">    return (a+b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">func sum( a: Int, b: Int) -&gt; Int&#123;</span><br><span class="line">    return (a+b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <ol start="2">
 <li><code>Xcode</code>进入汇编调试模式，并在<code>main</code>函数中调用<code>sum</code>函数</li>
 </ol>
@@ -1404,11 +1404,11 @@
 <p>3.在<code>main</code>函数中，调用<code>sum</code>函数，在调用<code>sum</code>函数地方打断点</p>
 <p><img src="Assembly08.png" alt="image"></p>
 <p>4.通过在控制台执行 <code>n</code>指令，可以定位到第11行,执行<code>si</code>指令可以进入<code>sum</code>函数，在<code>sum</code>函数中，我们可以看到最终通过<code>%rdx</code>和<code>%rcx</code>完成累加，并最终将值放如<code>%rax</code>寄存器，作为函数返回值<br><img src="Assembly09.png" alt="image"></p>
-<h4 id="Part07-参考"><a href="#Part07-参考" class="headerlink" title="Part07 - 参考"></a>Part07 - 参考</h4><p><a href="https://nifengz.com/introduction_x64_assembly/" target="_blank" rel="noopener">x86-64汇编入门
+<h4 id="Part07-参考"><a href="#Part07-参考" class="headerlink" title="Part07 - 参考"></a>Part07 - 参考</h4><p><a href="https://nifengz.com/introduction_x64_assembly/">x86-64汇编入门
 </a></p>
-<p><a href="https://hanleylee.com/compile-of-ios-project.html" target="_blank" rel="noopener">iOS 之编译</a></p>
-<p><a href="https://zhuanlan.zhihu.com/p/27339191" target="_blank" rel="noopener">x86-64 下函数调用及栈帧原理</a></p>
-<p><a href="https://juejin.im/post/5ddf66385188256e855b6e0c" target="_blank" rel="noopener">从 简单汇编基础 到 Swift 不简单的 a + 1</a></p>
+<p><a href="https://hanleylee.com/compile-of-ios-project.html">iOS 之编译</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/27339191">x86-64 下函数调用及栈帧原理</a></p>
+<p><a href="https://juejin.im/post/5ddf66385188256e855b6e0c">从 简单汇编基础 到 Swift 不简单的 a + 1</a></p>
 ]]></content>
       <categories>
         <category>周报</category>
@@ -1478,7 +1478,7 @@
 <h4 id="Hexo添加文摘要的三种方式"><a href="#Hexo添加文摘要的三种方式" class="headerlink" title="Hexo添加文摘要的三种方式"></a>Hexo添加文摘要的三种方式</h4><ol>
 <li>在文章中使用<code>&lt;!--more--&gt;</code>进行手动截断,这其实就是上面讲到的文章截断，推荐在使用<code>&lt;!--more--&gt;</code>之前写好文章摘要</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">本文的主要目的是关于写文章摘要的一些思考，以及Hexo的Next主题添加文章摘要的三种方式，希望能给读者提供一些帮助。</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"> 摘要是简洁、具体的摘要要反映论文的实质性内容，展示论文内容足够的信息，体现论文的创新性，展现论文的重要梗概，一般由具体研究的对象、方法、结果、结论四要素组成。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">本文的主要目的是关于写文章摘要的一些思考，以及Hexo的Next主题添加文章摘要的三种方式，希望能给读者提供一些帮助。</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line"> 摘要是简洁、具体的摘要要反映论文的实质性内容，展示论文内容足够的信息，体现论文的创新性，展现论文的重要梗概，一般由具体研究的对象、方法、结果、结论四要素组成。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 
 <ol start="2">
@@ -1488,7 +1488,7 @@
 <ol start="3">
 <li>自动生成摘要，主题配置文件中添加以下代码，这种方是更加机械的切割，没有办法控制摘要显示的内容, 而且是对整个网站生效的,不是特别推荐</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">auto_excerpt:</span><br><span class="line">  enable: true</span><br><span class="line">  length: 150</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>网站</category>
@@ -1507,7 +1507,7 @@
 <a id="more"></a>
 
 <h5 id="插入本地图片-01"><a href="#插入本地图片-01" class="headerlink" title="插入本地图片 -01"></a>插入本地图片 -01</h5><ol>
-<li><a href="https://github.com/xcodebuild/hexo-asset-image" target="_blank" rel="noopener">安装插件</a>: 在博客的根目录下执行：<code>npm install hexo-asset-image --save</code> 或<code>npm install hexo-asset-image --g</code></li>
+<li><a href="https://github.com/xcodebuild/hexo-asset-image">安装插件</a>: 在博客的根目录下执行：<code>npm install hexo-asset-image --save</code> 或<code>npm install hexo-asset-image --g</code></li>
 <li>修改站点配置文件<code>_config.yml</code>： 找到 <code>post_asset_folder</code>，把值改成 <code>true</code>，这样在执行<code>hexo new page</code> 的时候，会在<code>source/_posts</code>文件夹下生成一个和<code>page</code>同名的文件夹，可以存放该<code>page</code>中用到的图片</li>
 <li>插入本地图片<code>![imageTitle](img.jpg)</code></li>
 </ol>
@@ -1530,9 +1530,9 @@
   <entry>
     <title>Linux(Centos)安装tomcat并且部署Java Web项目---踩坑</title>
     <url>/2020/03/21/InstallTomcat/</url>
-    <content><![CDATA[<h3 id="购买云服务器"><a href="#购买云服务器" class="headerlink" title="购买云服务器"></a>购买云服务器</h3><p>我使用的是<a href="https://cloud.tencent.com/login?s_url=https%3A%2F%2Fconsole.cloud.tencent.com%2F" target="_blank" rel="noopener">腾讯云</a>, 配置：1核 1GB 1Mbps系统盘：普通云硬盘，Centos系统</p>
+    <content><![CDATA[<h3 id="购买云服务器"><a href="#购买云服务器" class="headerlink" title="购买云服务器"></a>购买云服务器</h3><p>我使用的是<a href="https://cloud.tencent.com/login?s_url=https%3A%2F%2Fconsole.cloud.tencent.com%2F">腾讯云</a>, 配置：1核 1GB 1Mbps系统盘：普通云硬盘，Centos系统</p>
 <a id="more"></a>
-<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>腾讯云提供了好几种<a href="https://cloud.tencent.com/document/product/213/5436" target="_blank" rel="noopener">登录</a>方式</p>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>腾讯云提供了好几种<a href="https://cloud.tencent.com/document/product/213/5436">登录</a>方式</p>
 <ol>
 <li>最简单的登陆方式是登陆控制台，点击下面的【登录】按钮，使用WebShell登录，这里就不过多介绍了</li>
 </ol>
@@ -1552,15 +1552,15 @@
 <ul>
 <li>在自己的Linux系统上生成SSH密钥和公钥<br>打开终端，使用下面的ssh-keygen来生成RSA密钥和公钥．-t表示type，就是说要生成RSA加密的钥匙．</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>RSA也是默认的加密类型．所以你也可以只输入ssh-keygen．默认的RSA长度是2048位．如果你非常注重安全，那么可以指定4096位的长度</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -b 4096 -t rsa</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-keygen -b 4096 -t rsa</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>生成SSH Key的过程中会要求你指定一个文件来保存密钥，按Enter键使用默认的文件就行了．然后需要输入一个密码来加密你的SSH Key．密码至少要20位长度．SSH密钥会保存在home目录下的<code>.ssh/id_rsa</code>文件中．SSH公钥保存在<code>.ssh/id_rsa.pub</code>文件中．</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Generating public&#x2F;private rsa key pair.</span><br><span class="line">Enter file in which to save the key (&#x2F;home&#x2F;matrix&#x2F;.ssh&#x2F;id_rsa): 　按Enter键</span><br><span class="line">Enter passphrase (empty for no passphrase): 　　输入一个密码</span><br><span class="line">Enter same passphrase again: 　　再次输入密码</span><br><span class="line">Your identification has been saved in &#x2F;home&#x2F;matrix&#x2F;.ssh&#x2F;id_rsa.</span><br><span class="line">Your public key has been saved in &#x2F;home&#x2F;matrix&#x2F;.ssh&#x2F;id_rsa.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">e1:dc:ab:ae:b6:19:b0:19:74:d5:fe:57:3f:32:b4:d0 matrix@vivid</span><br><span class="line">The key&#39;s randomart image is:</span><br><span class="line">+---[RSA 4096]----+</span><br><span class="line">| .. |</span><br><span class="line">| . . |</span><br><span class="line">| . . .. . |</span><br><span class="line">| . . o o.. E .|</span><br><span class="line">| o S ..o ...|</span><br><span class="line">| &#x3D; ..+...|</span><br><span class="line">| o . . .o .|</span><br><span class="line">| .o . |</span><br><span class="line">| .++o |</span><br><span class="line">+-----------------+</span><br></pre></td></tr></table></figure>
 <ul>
 <li>将SSH公钥上传到Linux服务器,可以使用<code>ssh-copy-id</code>命令来完成</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-copy-id root@ip</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ssh-copy-id root@ip</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><img src="Linux02.png" alt="linux02.png"></p>
 <p>输入远程用户的密码后，SSH公钥就会自动上传了．SSH公钥保存在远程Linux服务器的<code>.ssh/authorized_keys</code>文件中．<br>上传完成后，SSH登录就不需要再次输入密码了．但是首次使用SSH Key登录时需要输入一次SSH密钥的加密密码．（只需要输入一次，将来会自动登录，不再需要输入密钥的密码．）</p>
 <p>使用scp命令来传送文件时也不需要输入密码</p>
@@ -1568,7 +1568,7 @@
 <p>如果你是按照腾讯云的步骤来的话，登录成功后可能会继续让你分区与格式化数据盘，虽然我也扩展了数据盘，但是我发现其实没必要做这一步(主要是我按照官方的步骤一直失败，后来发现已经默认分了一个盘，而且一直处于挂载的状态，也无法卸载，就没再捣鼓)，接下来就可以配置部署所需要的环境了</p>
 </blockquote>
 <h3 id="安装JDK-centos默认安装了yum-所以我用yum安装的JDK"><a href="#安装JDK-centos默认安装了yum-所以我用yum安装的JDK" class="headerlink" title="安装JDK(centos默认安装了yum,所以我用yum安装的JDK)"></a>安装JDK(centos默认安装了yum,所以我用yum安装的JDK)</h3><h4 id="安装步骤"><a href="#安装步骤" class="headerlink" title="安装步骤"></a>安装步骤</h4><ul>
-<li><p>下载tomcat linux安装包： <a href="http://tomcat.apache.org/download-80.cgi" target="_blank" rel="noopener">安装包下载地址</a></p>
+<li><p>下载tomcat linux安装包： <a href="http://tomcat.apache.org/download-80.cgi">安装包下载地址</a></p>
 </li>
 <li><p>在云服务器创建存放tomcat的文件夹,例如创建一个kencery的文件夹</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd &#x2F;usr&#x2F;local&#x2F;</span><br><span class="line">mkdir kencery</span><br><span class="line">cd kencery&#x2F;</span><br></pre></td></tr></table></figure></li>
@@ -1577,7 +1577,7 @@
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">tar -zxv -f apache-tomcat-8.0.29.tar.gz</span><br><span class="line">mv apache-tomcat-8.0.29 tomcat</span><br><span class="line">cd tomcat</span><br></pre></td></tr></table></figure>
 <p>解析完成后即可以启动tomcat，检查是否安装成功，命令如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&#x2F;bin&#x2F;startup.sh</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&#x2F;bin&#x2F;startup.sh</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p><img src="Linux03.png" alt="linux03.png"></p>
 <p>出现如上图所示信息，则表示启动成功。这时候我们可以在浏览器中使用<code>http://ip:8080</code>访问（注：ip为服务器外网ip），如能够显示tomcat的主页，则表示不需要进行任何操作了，如果不能显示，则需要在Linux中开放防火墙的8080端口。</p>
 <p><strong>Tips:</strong> 在进行这一步的时候，好多次，都不成功，可以通过下面的方式来排除问题</p>
@@ -1597,7 +1597,7 @@
 <p>添加的配置如下：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">export JAVA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;javajdk   #javajdk的安装路径，使用echo $JAVA_HOME命令可以读取  </span><br><span class="line">export CATALINA_HOME&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat  </span><br><span class="line">export CATALINA_BASE&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat  </span><br><span class="line">export CATALINA_TMPDIR&#x3D;&#x2F;usr&#x2F;local&#x2F;kencery&#x2F;tomcat&#x2F;temp</span><br></pre></td></tr></table></figure>
 <p>以上所有工作顺利进行并没有报错，则配置完成，输入下面命令进行验证：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service tomcat start</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service tomcat start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service tomcat stop</span><br></pre></td></tr></table></figure>
 
@@ -1610,24 +1610,24 @@
 <p>完成上面的设置后我们可以将CentOS关机重启一下，看tomcat是否成功自启动</p>
 <h3 id="给tomcat设置用户和密码登录"><a href="#给tomcat设置用户和密码登录" class="headerlink" title="给tomcat设置用户和密码登录"></a>给tomcat设置用户和密码登录</h3><p>当tomcat安装完成之后，访问<code>http://ip:8080</code>即可以看到tomcat发布的网站，若要管理我们发布的网站，就需要登录tomcat，下面就进行用户名和密码的设置。</p>
 <p>在tomcat安装包下面的conf文件下含有一个tomcat-usrs.xml文件，修改此文件即可，命令如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim tomcat-users.xml</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vim tomcat-users.xml</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>在打开的xml配置文件后面写入下面这段配置内容后，【:wq】保存并且退出即可。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;role rolename&#x3D;&quot;admin-gui&quot;&#x2F;&gt;     </span><br><span class="line">&lt;role rolename&#x3D;&quot;manager-gui&quot;&#x2F;&gt;  </span><br><span class="line">&lt;user username&#x3D;&quot;tomcat&quot; password&#x3D;&quot;tomcat&quot; roles&#x3D;&quot;manager-gui,admin-gui&quot;&#x2F;&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;role rolename&#x3D;&quot;admin-gui&quot;&#x2F;&gt;     </span><br><span class="line">&lt;role rolename&#x3D;&quot;manager-gui&quot;&#x2F;&gt;  </span><br><span class="line">&lt;user username&#x3D;&quot;tomcat&quot; password&#x3D;&quot;tomcat&quot; roles&#x3D;&quot;manager-gui,admin-gui&quot;&#x2F;&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>在这里会出现一个问题，因为tomcat-users.xml里面有注释的用户设置信息，取消注释，用文件提供的用户名和密码去访问的时候，会出现403错误，什么原因呢？这是因为我们没有指定用户所拥有的权限。如若我们现在想访问tomcat中图形化管理应用的功能，也就是Manager App，就需要指定manager-gui的权限，如果想访问host manager就必须指定admin-gui权限，故而需要上面所示的配置内容。</p>
 <p>配置完用户名和密码之后，需要重新启动tomcat，命令如下</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service tomcat stop</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service tomcat stop</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service tomcat start</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">service tomcat start</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>重启服务之后，检测是否登录成功，输入用户名和密码登录进入系统，则说明登录成功</p>
 <h3 id="将Java-Web项目发布到tomcat8-0下面并且访问展示"><a href="#将Java-Web项目发布到tomcat8-0下面并且访问展示" class="headerlink" title="将Java Web项目发布到tomcat8.0下面并且访问展示"></a>将Java Web项目发布到tomcat8.0下面并且访问展示</h3><p>以上所有工作都完成之后，完美就可以将打包的JavaWeb程序发布到tomcat下即可<br>tomcat默认的发布web项目的目录是：webapps<br>将导出的war包拷贝到webapps根目录下，随之tomcat的启动，war包可以自动被解析。<br>然后在浏览器中输入路径链接，查询是否安装成功</p>
-<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://blog.csdn.net/sqzhao/article/details/71307850" target="_blank" rel="noopener">Linux系统下的ssh使用(依据个人经验总结)</a></p>
-<p><a href="https://www.linuxdashen.com/ssh-key%EF%BC%9A%E4%B8%A4%E4%B8%AA%E7%AE%80%E5%8D%95%E6%AD%A5%E9%AA%A4%E5%AE%9E%E7%8E%B0ssh%E6%97%A0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95" target="_blank" rel="noopener">SSH无密码登录：只需两个简单步骤 (Linux)</a></p>
-<p><a href="https://blog.csdn.net/to_baidu/article/details/52823402" target="_blank" rel="noopener">Linux(Centos)安装tomcat并且部署Java Web项目</a></p>
-<p><a href="https://www.kancloud.cn/curder/linux/121073" target="_blank" rel="noopener">Linux学习笔记</a></p>
-<p><a href="https://blog.csdn.net/loongshawn/article/details/50468201" target="_blank" rel="noopener">MacPro 利用SCP上传下载Linux服务器文件</a></p>
-<p><a href="https://www.cnblogs.com/lwhp/p/5789305.html" target="_blank" rel="noopener">腾讯云访问不了80端口，与8080问题</a></p>
-<p><a href="https://os.51cto.com/art/201609/517037.htm" target="_blank" rel="noopener">CentOS下安装JDK的三种方法</a></p>
-<p><a href="https://www.iteye.com/blog/canfly2010-429078" target="_blank" rel="noopener">查看Tomcat配置的端口</a></p>
+<h3 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h3><p><a href="https://blog.csdn.net/sqzhao/article/details/71307850">Linux系统下的ssh使用(依据个人经验总结)</a></p>
+<p><a href="https://www.linuxdashen.com/ssh-key%EF%BC%9A%E4%B8%A4%E4%B8%AA%E7%AE%80%E5%8D%95%E6%AD%A5%E9%AA%A4%E5%AE%9E%E7%8E%B0ssh%E6%97%A0%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95">SSH无密码登录：只需两个简单步骤 (Linux)</a></p>
+<p><a href="https://blog.csdn.net/to_baidu/article/details/52823402">Linux(Centos)安装tomcat并且部署Java Web项目</a></p>
+<p><a href="https://www.kancloud.cn/curder/linux/121073">Linux学习笔记</a></p>
+<p><a href="https://blog.csdn.net/loongshawn/article/details/50468201">MacPro 利用SCP上传下载Linux服务器文件</a></p>
+<p><a href="https://www.cnblogs.com/lwhp/p/5789305.html">腾讯云访问不了80端口，与8080问题</a></p>
+<p><a href="https://os.51cto.com/art/201609/517037.htm">CentOS下安装JDK的三种方法</a></p>
+<p><a href="https://www.iteye.com/blog/canfly2010-429078">查看Tomcat配置的端口</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -1639,8 +1639,8 @@
   <entry>
     <title>iOS，一行代码进行RSA、DES 、AES、MD5加密、解密</title>
     <url>/2019/03/21/Encrypt/</url>
-    <content><![CDATA[<p><a href="https://github.com/iamlay/Encryptions" target="_blank" rel="noopener">加密的Demo，欢迎下载</a></p>
-<p>java端的加密解密，读者可以看我同事的<a href="https://note.youdao.com/" target="_blank" rel="noopener">这篇文章</a></p>
+    <content><![CDATA[<p><a href="https://github.com/iamlay/Encryptions">加密的Demo，欢迎下载</a></p>
+<p>java端的加密解密，读者可以看我同事的<a href="https://note.youdao.com/">这篇文章</a></p>
 <a id="more"></a>
 
 <p>最近做了一个移动项目，是有服务器和客户端类型的项目，客户端是要登录才行的，服务器也会返回数据，服务器是用Java开发的，客户端要同时支持多平台（Android、iOS），在处理iOS的数据加密的时候遇到了一些问题。起初采取的方案是DES加密，老大说DES加密是对称的，网络抓包加上反编译可能会被破解，故采取RSA方式加密。RSA加密时需要公钥和私钥，客户端保存公钥加密数据，服务器保存私钥解密数据。（iOS端公钥加密私钥解密、java端公钥加密私钥解密，java端私钥加密公钥解密都容易做到，iOS不能私钥加密公钥解密，只能用于验签）。</p>
@@ -1653,7 +1653,7 @@
 <li>.输入指令:<code>pkcs8 -topk8 -in rsa_private_key.pem -out pkcs8_rsa_private_key.pem -nocrypt</code>(私钥转格式，在ios端使用私钥解密时用这个私钥)</li>
 </ul>
 <p>注意:在MAC上生成三个.pem格式的文件，一个公钥，两个私钥，都可以在终端通过指令vim xxx.pem 打开，里面是字符串，第三步生成的私钥是java端用来解密数据的，第五步转换格式的私钥iOS端可以用来调试公钥、私钥解密（因为私钥不留在客户端）</p>
-<p><a href="http://blog.sina.com.cn/s/blog_12c8ae0d80102vy21.html" target="_blank" rel="noopener">详细步骤</a></p>
+<p><a href="http://blog.sina.com.cn/s/blog_12c8ae0d80102vy21.html">详细步骤</a></p>
 <h4 id="服务器返回数据也要加密，老大打算用java私钥加密-ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式"><a href="#服务器返回数据也要加密，老大打算用java私钥加密-ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式" class="headerlink" title="服务器返回数据也要加密，老大打算用java私钥加密,ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式"></a>服务器返回数据也要加密，老大打算用java私钥加密,ios用公钥解密（由于iOS做不到用私钥加密公钥解密，只能私钥加密公钥验签），所以这种方案也有问题。通过看一些大牛的介绍，了解了iOS常用的加密方式</h4><ul>
 <li>通过简单的URLENCODE ＋ BASE64编码防止数据明文传输</li>
 <li>对普通请求、返回数据，生成MD5校验（MD5中加入动态密钥），进行数据完整性（简单防篡改，安全性较低，优点：快速）校验</li>
@@ -1666,9 +1666,9 @@
 
 <h4 id="iOS端进行RSA加密、解密时非常方便"><a href="#iOS端进行RSA加密、解密时非常方便" class="headerlink" title="iOS端进行RSA加密、解密时非常方便"></a>iOS端进行RSA加密、解密时非常方便</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、引入头文件 #import &quot;RSAUtil.h&quot;</span><br><span class="line">2、公钥加密时调用类方法：</span><br><span class="line">+ (NSString *)encryptString:(NSString *)str publicKey:(NSString *)pubKey;</span><br><span class="line">+ (NSData *)encryptData:(NSData *)data publicKey:(NSString *)pubKey;</span><br><span class="line">3、私钥解密时调用类方法 </span><br><span class="line">+ (NSString *)decryptString:(NSString *)str privateKey:(NSString *)privKey;</span><br><span class="line">+ (NSData *)decryptData:(NSData *)data privateKey:(NSString *)privKey;</span><br></pre></td></tr></table></figure>
 
-<h4 id="iOS端进行MD5加密、解密时非常方便"><a href="#iOS端进行MD5加密、解密时非常方便" class="headerlink" title="iOS端进行MD5加密、解密时非常方便"></a>iOS端进行MD5加密、解密时非常方便</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、引入头文件 #import &quot;MD5Util&quot;</span><br><span class="line">2、加密时调用方法：- (NSString *)md5:(NSString *)str;</span><br></pre></td></tr></table></figure>
-<h4 id="iOS端进行AES加密、解密时非常方便"><a href="#iOS端进行AES加密、解密时非常方便" class="headerlink" title="iOS端进行AES加密、解密时非常方便"></a>iOS端进行AES加密、解密时非常方便</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、引入头文件 #import &quot;AES.h&quot;</span><br><span class="line">2、加密时调用方法</span><br><span class="line">+ (NSString *)encrypt:(NSString *)message password:(NSString *)password;</span><br><span class="line">2、解密时调用的方法</span><br><span class="line">+ (NSString *)decrypt:(NSString *)base64EncodedString password:(NSString *)password;</span><br></pre></td></tr></table></figure>
-<p><a href="https://www.jianshu.com/p/2927ca2b3719" target="_blank" rel="noopener">有关RSA、MD5、AES加密的原理介绍</a></p>
+<h4 id="iOS端进行MD5加密、解密时非常方便"><a href="#iOS端进行MD5加密、解密时非常方便" class="headerlink" title="iOS端进行MD5加密、解密时非常方便"></a>iOS端进行MD5加密、解密时非常方便</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、引入头文件 #import &quot;MD5Util&quot;</span><br><span class="line">2、加密时调用方法：- (NSString *)md5:(NSString *)str;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="iOS端进行AES加密、解密时非常方便"><a href="#iOS端进行AES加密、解密时非常方便" class="headerlink" title="iOS端进行AES加密、解密时非常方便"></a>iOS端进行AES加密、解密时非常方便</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、引入头文件 #import &quot;AES.h&quot;</span><br><span class="line">2、加密时调用方法</span><br><span class="line">+ (NSString *)encrypt:(NSString *)message password:(NSString *)password;</span><br><span class="line">2、解密时调用的方法</span><br><span class="line">+ (NSString *)decrypt:(NSString *)base64EncodedString password:(NSString *)password;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><a href="https://www.jianshu.com/p/2927ca2b3719">有关RSA、MD5、AES加密的原理介绍</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -1680,7 +1680,7 @@
   <entry>
     <title>cocoapods依赖关系可视化</title>
     <url>/2019/03/21/cocoapodsVisual/</url>
-    <content><![CDATA[<p><a href="https://www.weichao.ren/ios/2018/12/27/cocoapods-graph/" target="_blank" rel="noopener">转载</a></p>
+    <content><![CDATA[<p><a href="https://www.weichao.ren/ios/2018/12/27/cocoapods-graph/">转载</a></p>
 <blockquote>
 <p>cocoapods管理的三方库之间有时候存在依赖关系，Podfile.lock藏满了各个版本库的版本号信息和彼此的依赖关系。</p>
 </blockquote>
@@ -1689,12 +1689,12 @@
 <a id="more"></a>
 <p>使用方式</p>
 <p>进入到工程的根目录，执行:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cocoapods-graph -f Podfile.lock --html</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cocoapods-graph -f Podfile.lock --html</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <h3 id="图片可视化导出"><a href="#图片可视化导出" class="headerlink" title="图片可视化导出"></a>图片可视化导出</h3><p>终端安装插件:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo gem install cocoapods-dependencies</span><br><span class="line">brew install graphviz</span><br></pre></td></tr></table></figure>
 <p>使用方式:<br>进入到工程的根目录，执行:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod dependencies [PODSPEC] [--graphviz] [--image]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod dependencies [PODSPEC] [--graphviz] [--image]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>Use the –graphviz option to generate .gv or Podfile.gv containing the dependency graph in graphviz format.</p>
 <p>Use the –image option to generate .png or Podfile.png containing a rendering of the dependency graph.</p>
@@ -1713,20 +1713,20 @@
     <content><![CDATA[<blockquote>
 <p>在开发的过程中很多功能模块可能会在同一个App的不同的业务模块出现，也可能在不同的App出现，为了提高我们的开发效率，我们应该将普遍使用的功能模块封装成组件，并通过Cocoapods来管理</p>
 </blockquote>
-<p><a href="https://cyrill.win/articles/2016/12/04/pod-trunk" target="_blank" rel="noopener">利用pod trunk发布程序</a></p>
+<p><a href="https://cyrill.win/articles/2016/12/04/pod-trunk">利用pod trunk发布程序</a></p>
 <a id="more"></a>
 
 <h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod trunk register 邮箱 &#39;用户名&#39; --description&#x3D;&#39;电脑描述&#39;</span><br></pre></td></tr></table></figure>
 <h3 id="查收邮件"><a href="#查收邮件" class="headerlink" title="查收邮件"></a>查收邮件</h3><ul>
 <li>如果是QQ邮箱，可能会被放到“垃圾箱”中，并不一定是“收件箱”</li>
-<li>点击邮件中的链接： <a href="https://trunk.cocoapods.org/sessions/verify/xxxx" target="_blank" rel="noopener">https://trunk.cocoapods.org/sessions/verify/xxxx</a></li>
+<li>点击邮件中的链接： <a href="https://trunk.cocoapods.org/sessions/verify/xxxx">https://trunk.cocoapods.org/sessions/verify/xxxx</a></li>
 </ul>
 <h3 id="查看个人信息"><a href="#查看个人信息" class="headerlink" title="查看个人信息"></a>查看个人信息</h3><ul>
 <li>pod trunk me</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- Name:     &#39;Cyrill&#39;</span><br><span class="line">- Email:    lichunyang@outlook.com</span><br><span class="line">- Since:    December 4th, 2016 21:22</span><br><span class="line">- Pods:     None</span><br><span class="line">- Sessions:</span><br><span class="line">- December 4th, 2016 21:22 - July 13th, 21:00. IP: 103.244.255.84 Description: ‘MacbookProOfCyrill’</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- Name:     &#39;Cyrill&#39;</span><br><span class="line">- Email:    lichunyang@outlook.com</span><br><span class="line">- Since:    December 4th, 2016 21:22</span><br><span class="line">- Pods:     None</span><br><span class="line">- Sessions:</span><br><span class="line">- December 4th, 2016 21:22 - July 13th, 21:00. IP: 103.244.255.84 Description: ‘MacbookProOfCyrill’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>中间可能遇到这种错误</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">NoMethodError - undefined method &#39;last&#39; for #&lt;Netrc::Entry:0x007fc59c246378&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">NoMethodError - undefined method &#39;last&#39; for #&lt;Netrc::Entry:0x007fc59c246378&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>这时候需要尝试更新gem源或者pod</p>
 <ul>
 <li>sudo gem update –system</li>
@@ -1746,7 +1746,7 @@
 <li>删除tag</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git tag -d 1.0</span><br><span class="line">git push origin :refs&#x2F;tags&#x2F;1.0</span><br><span class="line">git tag -a 1.0 -m &quot;Version 1.0&quot;</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-<h3 id="检测podspec语法"><a href="#检测podspec语法" class="headerlink" title="检测podspec语法"></a>检测podspec语法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod spec lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod lib lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod spec相对于pod lib会更为精确，pod lib相当于只验证一个本地仓库，pod spec会同时验证本地仓库和远程仓库。</span><br></pre></td></tr></table></figure>
+<h3 id="检测podspec语法"><a href="#检测podspec语法" class="headerlink" title="检测podspec语法"></a>检测podspec语法</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod spec lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod lib lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod spec相对于pod lib会更为精确，pod lib相当于只验证一个本地仓库，pod spec会同时验证本地仓库和远程仓库。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="发布podspec"><a href="#发布podspec" class="headerlink" title="发布podspec"></a>发布podspec</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod trunk push CYPhotoLib.podspec</span><br><span class="line">如果是第一次发布pod，需要去 https:&#x2F;&#x2F;trunk.cocoapods.org&#x2F;claims&#x2F;new 认领pod</span><br></pre></td></tr></table></figure>
 <p>有可能出现的错误</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pod lib lint 的时候是通过了的，没有错误</span><br><span class="line">然后 pod trunk push 的时候报错，如下：</span><br><span class="line">    [iOS] unknown: Encountered an unknown error (Pod::DSLError) during validation.</span><br><span class="line">解决：这种状况有可能是git的tag和podspec的tag不对</span><br></pre></td></tr></table></figure>
@@ -1772,7 +1772,7 @@
     <title>Jenkins自动打包搭建之路</title>
     <url>/2018/04/21/Jenkins/</url>
     <content><![CDATA[<blockquote>
-<p>本文的大部分步骤参考的是<a href="https://halfrost.com/ios_jenkins/" target="_blank" rel="noopener">一缕殇流化隐半边冰霜的博客</a>，所以截图和很多步骤都是直接拷贝的该博客，然后补充了自己踩的一些坑。最后的脚本问题我没有拷贝过来，如果大家希望有所了解，可以去原博客，本文主要是个人以后回忆所用</p>
+<p>本文的大部分步骤参考的是<a href="https://halfrost.com/ios_jenkins/">一缕殇流化隐半边冰霜的博客</a>，所以截图和很多步骤都是直接拷贝的该博客，然后补充了自己踩的一些坑。最后的脚本问题我没有拷贝过来，如果大家希望有所了解，可以去原博客，本文主要是个人以后回忆所用</p>
 </blockquote>
 <a id="more"></a>
 
@@ -1785,9 +1785,9 @@
 <li>任何时间、任何地点生成可部署的软件</li>
 <li>增强项目的可见性</li>
 </ol>
-<h3 id="环境准备步骤"><a href="#环境准备步骤" class="headerlink" title="环境准备步骤"></a>环境准备步骤</h3><p>现在我们来开始安装Jenkins。从<a href="https://jenkins.io/zh/" target="_blank" rel="noopener">官网</a> 上下载最新的pkg安装包。但是，这个时候直接安装是装不上的，Jenkins依赖于Java运行环境，因此需要首先安装<a href="https://www.oracle.com/java/technologies/javase-jdk8-downloads.html" target="_blank" rel="noopener">Java的SDK</a>。</p>
+<h3 id="环境准备步骤"><a href="#环境准备步骤" class="headerlink" title="环境准备步骤"></a>环境准备步骤</h3><p>现在我们来开始安装Jenkins。从<a href="https://jenkins.io/zh/">官网</a> 上下载最新的pkg安装包。但是，这个时候直接安装是装不上的，Jenkins依赖于Java运行环境，因此需要首先安装<a href="https://www.oracle.com/java/technologies/javase-jdk8-downloads.html">Java的SDK</a>。</p>
 <p>下载JAVA的SDK，并安装。安装完成后，打开终端，cd进入到jenkins.war包所在目录，执行以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -jar jenkins.war --httpPort&#x3D;8080</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">java -jar jenkins.war --httpPort&#x3D;8080</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <p>httpPort指的就是Jenkins所使用的http端口，这里指定8080(默认的就是这个)，可根据具体情况来修改。待Jenkins启动后，在浏览器页面输入以下地址:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">http:&#x2F;&#x2F;localhost:8080</span><br></pre></td></tr></table></figure>
@@ -1834,7 +1834,7 @@
 <p><img src="jenkins20.png" alt="jenkins20.png"></p>
 <p>如果构建失败了，可以去查看Console Output可以查看log日志。</p>
 <p><img src="jenkins21.png" alt="jenkins21.png"></p>
-<h3 id="Jenkins自动打包，断断续续持续了一年才成功，开始的时候一直失败，中间一段时间因为没有时间尝试，最近重新拾起来了。遇到的坑，我想起来的时候，会持续补充"><a href="#Jenkins自动打包，断断续续持续了一年才成功，开始的时候一直失败，中间一段时间因为没有时间尝试，最近重新拾起来了。遇到的坑，我想起来的时候，会持续补充" class="headerlink" title="Jenkins自动打包，断断续续持续了一年才成功，开始的时候一直失败，中间一段时间因为没有时间尝试，最近重新拾起来了。遇到的坑，我想起来的时候，会持续补充"></a>Jenkins自动打包，断断续续持续了一年才成功，开始的时候一直失败，中间一段时间因为没有时间尝试，最近重新拾起来了。遇到的坑，我想起来的时候，会持续补充</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://halfrost.com/ios_jenkins/" target="_blank" rel="noopener">手把手教你利用 Jenkins 持续集成 iOS 项目</a></p>
+<h3 id="Jenkins自动打包，断断续续持续了一年才成功，开始的时候一直失败，中间一段时间因为没有时间尝试，最近重新拾起来了。遇到的坑，我想起来的时候，会持续补充"><a href="#Jenkins自动打包，断断续续持续了一年才成功，开始的时候一直失败，中间一段时间因为没有时间尝试，最近重新拾起来了。遇到的坑，我想起来的时候，会持续补充" class="headerlink" title="Jenkins自动打包，断断续续持续了一年才成功，开始的时候一直失败，中间一段时间因为没有时间尝试，最近重新拾起来了。遇到的坑，我想起来的时候，会持续补充"></a>Jenkins自动打包，断断续续持续了一年才成功，开始的时候一直失败，中间一段时间因为没有时间尝试，最近重新拾起来了。遇到的坑，我想起来的时候，会持续补充</h3><h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://halfrost.com/ios_jenkins/">手把手教你利用 Jenkins 持续集成 iOS 项目</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -1860,7 +1860,7 @@
 <p>到这一步就可以在初始化数据库时对数据库进行加密</p>
 <p>通过客户端验证是否可以读取数据库信息<br>取到app中的数据库<br>真机连接<code>xcode-&gt;window-&gt;Devices</code></p>
 <p>将会得到下面的文件，然后右键显示包含内容，找到自己创建的数据库</p>
-<p>打开数据库的工具,笔者使用的是<a href="https://www.waitsun.com/navicat-premium-11-1-15.html" target="_blank" rel="noopener">Navicat Premium</a></p>
+<p>打开数据库的工具,笔者使用的是<a href="https://www.waitsun.com/navicat-premium-11-1-15.html">Navicat Premium</a></p>
 <p>打开Navicat Premium,链接数据库，选择sqlite</p>
 <p>选中本地保存的数据库文件，点击ok打开</p>
 <p>将会提示</p>
@@ -1885,7 +1885,7 @@
 </ul>
 <h3 id="代码操作"><a href="#代码操作" class="headerlink" title="代码操作"></a>代码操作</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;** encrypt sqlite database to new file *&#x2F;</span><br><span class="line"></span><br><span class="line">+ (BOOL)encryptDatabase:(NSString *)sourcePath targetPath:(NSString *)targetPath encryptKey:(NSString *)encryptKey</span><br><span class="line">&#123;</span><br><span class="line">const char* sqlQ &#x3D; [[NSString stringWithFormat:@&quot;ATTACH DATABASE &#39;%@&#39; AS encrypted KEY &#39;%@&#39;;&quot;, targetPath, encryptKey] UTF8String];</span><br><span class="line">sqlite3 *unencrypted_DB;</span><br><span class="line">if (sqlite3_open([sourcePath UTF8String], &amp;unencrypted_DB) &#x3D;&#x3D; SQLITE_OK) &#123;</span><br><span class="line">char *errmsg;</span><br><span class="line">&#x2F;&#x2F; Attach empty encrypted database to unencrypted database</span><br><span class="line">sqlite3_exec(unencrypted_DB, sqlQ, NULL, NULL, &amp;errmsg);</span><br><span class="line">if (errmsg) &#123;</span><br><span class="line">NSLog(@&quot;%@&quot;, [NSString stringWithUTF8String:errmsg]);</span><br><span class="line">sqlite3_close(unencrypted_DB);</span><br><span class="line">return NO;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; export database</span><br><span class="line">sqlite3_exec(unencrypted_DB, &quot;SELECT sqlcipher_export(&#39;encrypted&#39;);&quot;, NULL, NULL, &amp;errmsg);</span><br><span class="line">if (errmsg) &#123;</span><br><span class="line">NSLog(@&quot;%@&quot;, [NSString stringWithUTF8String:errmsg]);</span><br><span class="line">sqlite3_close(unencrypted_DB);</span><br><span class="line">return NO;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; Detach encrypted database</span><br><span class="line">sqlite3_exec(unencrypted_DB, &quot;DETACH DATABASE encrypted;&quot;, NULL, NULL, &amp;errmsg);</span><br><span class="line">if (errmsg) &#123;</span><br><span class="line">NSLog(@&quot;%@&quot;, [NSString stringWithUTF8String:errmsg]);</span><br><span class="line">sqlite3_close(unencrypted_DB);</span><br><span class="line">return NO;</span><br><span class="line">&#125;</span><br><span class="line">sqlite3_close(unencrypted_DB);</span><br><span class="line">return YES;</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">sqlite3_close(unencrypted_DB);</span><br><span class="line">NSAssert1(NO, @&quot;Failed to open database with message &#39;%s&#39;.&quot;, sqlite3_errmsg(unencrypted_DB));</span><br><span class="line">return NO;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;** decrypt sqlite database to new file *&#x2F;</span><br><span class="line">+ (BOOL)unEncryptDatabase:(NSString *)sourcePath targetPath:(NSString *)targetPath encryptKey:(NSString *)encryptKey</span><br><span class="line">&#123;</span><br><span class="line">const char* sqlQ &#x3D; [[NSString stringWithFormat:@&quot;ATTACH DATABASE &#39;%@&#39; AS plaintext KEY &#39;&#39;;&quot;, targetPath] UTF8String];</span><br><span class="line">sqlite3 *encrypted_DB;</span><br><span class="line">if (sqlite3_open([sourcePath UTF8String], &amp;encrypted_DB) &#x3D;&#x3D; SQLITE_OK) &#123;</span><br><span class="line">char* errmsg;</span><br><span class="line">sqlite3_exec(encrypted_DB, [[NSString stringWithFormat:@&quot;PRAGMA key &#x3D; &#39;%@&#39;;&quot;, encryptKey] UTF8String], NULL, NULL, &amp;errmsg);</span><br><span class="line">&#x2F;&#x2F; Attach empty unencrypted database to encrypted database</span><br><span class="line">sqlite3_exec(encrypted_DB, sqlQ, NULL, NULL, &amp;errmsg);</span><br><span class="line">if (errmsg) &#123;</span><br><span class="line">NSLog(@&quot;%@&quot;, [NSString stringWithUTF8String:errmsg]);</span><br><span class="line">sqlite3_close(encrypted_DB);</span><br><span class="line">return NO;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; export database</span><br><span class="line">sqlite3_exec(encrypted_DB, &quot;SELECT sqlcipher_export(&#39;plaintext&#39;);&quot;, NULL, NULL, &amp;errmsg);</span><br><span class="line">if (errmsg) &#123;</span><br><span class="line">NSLog(@&quot;%@&quot;, [NSString stringWithUTF8String:errmsg]);</span><br><span class="line">sqlite3_close(encrypted_DB);</span><br><span class="line">return NO;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;&#x2F; Detach unencrypted database</span><br><span class="line">sqlite3_exec(encrypted_DB, &quot;DETACH DATABASE plaintext;&quot;, NULL, NULL, &amp;errmsg);</span><br><span class="line">if (errmsg) &#123;</span><br><span class="line">NSLog(@&quot;%@&quot;, [NSString stringWithUTF8String:errmsg]);</span><br><span class="line">sqlite3_close(encrypted_DB);</span><br><span class="line">return NO;</span><br><span class="line">&#125;</span><br><span class="line">sqlite3_close(encrypted_DB);</span><br><span class="line">return YES;</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">sqlite3_close(encrypted_DB);</span><br><span class="line">NSAssert1(NO, @&quot;Failed to open database with message &#39;%s&#39;.&quot;, sqlite3_errmsg(encrypted_DB));</span><br><span class="line">return NO;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;** change secretKey for sqlite database *&#x2F;</span><br><span class="line">+ (BOOL)changeKey:(NSString *)dbPath originKey:(NSString *)originKey newKey:(NSString *)newKey</span><br><span class="line">&#123;</span><br><span class="line">sqlite3 *encrypted_DB;</span><br><span class="line">if (sqlite3_open([dbPath UTF8String], &amp;encrypted_DB) &#x3D;&#x3D; SQLITE_OK) &#123;</span><br><span class="line">sqlite3_exec(encrypted_DB, [[NSString stringWithFormat:@&quot;PRAGMA key &#x3D; &#39;%@&#39;;&quot;, originKey] UTF8String], NULL, NULL, NULL);</span><br><span class="line">sqlite3_exec(encrypted_DB, [[NSString stringWithFormat:@&quot;PRAGMA rekey &#x3D; &#39;%@&#39;;&quot;, newKey] UTF8String], NULL, NULL, NULL);</span><br><span class="line">sqlite3_close(encrypted_DB);</span><br><span class="line">return YES;</span><br><span class="line">&#125;</span><br><span class="line">else &#123;</span><br><span class="line">sqlite3_close(encrypted_DB);</span><br><span class="line">NSAssert1(NO, @&quot;Failed to open database with message &#39;%s&#39;.&quot;, sqlite3_errmsg(encrypted_DB));</span><br><span class="line">return NO;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>SQLCipher使用起来还是很方便的，基本上不需要怎么配置，需要注意的是，尽量不要在操作过程中修改secretKey，否则，可能导致读不了数据，在使用第三方库的时候尽量不去修改源代码，可以通过扩展或继承的方式修改原来的行为，这样第三方库代码可以与官方保持一致，可以跟随官方版本升级，具体代码可以到<a href="https://github.com/zhengbomo/sqlcipherDemo" target="_blank" rel="noopener">github上下载</a></p>
+<h3 id="结尾"><a href="#结尾" class="headerlink" title="结尾"></a>结尾</h3><p>SQLCipher使用起来还是很方便的，基本上不需要怎么配置，需要注意的是，尽量不要在操作过程中修改secretKey，否则，可能导致读不了数据，在使用第三方库的时候尽量不去修改源代码，可以通过扩展或继承的方式修改原来的行为，这样第三方库代码可以与官方保持一致，可以跟随官方版本升级，具体代码可以到<a href="https://github.com/zhengbomo/sqlcipherDemo">github上下载</a></p>
 ]]></content>
       <categories>
         <category>iOS</category>
@@ -1952,12 +1952,12 @@
   <entry>
     <title>NSScanner,一个陌生的条件判断利器!</title>
     <url>/2016/03/21/NSScanner/</url>
-    <content><![CDATA[<p><a href="https://developer.apple.com/documentation/foundation/scanner#//apple_ref/occ/instm/NSScanner/scanInteger:" target="_blank" rel="noopener">NSScanner官方文档</a></p>
-<p>NSScanner类是一个<a href="https://baike.baidu.com/item/%E7%B1%BB%E7%B0%87?fr=aladdin" target="_blank" rel="noopener">类簇</a>的抽象父类,该类簇为一个从NSString对象扫描值的对象提供了程序接口。</p>
+    <content><![CDATA[<p><a href="https://developer.apple.com/documentation/foundation/scanner#//apple_ref/occ/instm/NSScanner/scanInteger:">NSScanner官方文档</a></p>
+<p>NSScanner类是一个<a href="https://baike.baidu.com/item/%E7%B1%BB%E7%B0%87?fr=aladdin">类簇</a>的抽象父类,该类簇为一个从NSString对象扫描值的对象提供了程序接口。</p>
 <a id="more"></a>
 
 <p>NSScanner对象把NSString 对象的的字符解释和转化成 number和string 类型的值。在创建NSScanner对象的时候为它分配字符(string )，当你从NSScanner对象获取内容的时候，它会从头到尾遍历字符串(string)。</p>
-<p>由于类簇的属性， scanner对象并不是 NSScanner类的实例，而是它一个私有子类的实例。尽管scanner对象的类是私有的，但是它的接口是公开的（抽象父类已经声明）。 NSScanner 的原始方法是string和<a href="https://developer.apple.com/documentation/foundation/scanner#//apple_ref/doc/uid/20000159-SW1" target="_blank" rel="noopener">Configuring a Scanner</a>方法下面列举的所有的方法。</p>
+<p>由于类簇的属性， scanner对象并不是 NSScanner类的实例，而是它一个私有子类的实例。尽管scanner对象的类是私有的，但是它的接口是公开的（抽象父类已经声明）。 NSScanner 的原始方法是string和<a href="https://developer.apple.com/documentation/foundation/scanner#//apple_ref/doc/uid/20000159-SW1">Configuring a Scanner</a>方法下面列举的所有的方法。</p>
 <p>在 NSScanner 对象扫描字符串的时候，你可以通过设置属性<code>charactersToBeSkipped</code>忽略某些字符。在扫描字符串之前，那些位于<code>忽略字符集</code>中的字符将会被跳过。默认的忽略字符是空格和回车字符。</p>
 <p>可以通过<code>[[scanner string] substringFromIndex:[scanner scanLocation]]</code>获取未扫描的字符串。</p>
 <h3 id="创建-Scanner对象"><a href="#创建-Scanner对象" class="headerlink" title="创建 Scanner对象"></a>创建 Scanner对象</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">+ (instancetype)scannerWithString:(NSString *)aString</span><br><span class="line"></span><br><span class="line">+ (id)localizedScannerWithString:(NSString *)aString</span><br><span class="line"></span><br><span class="line">- (instancetype)initWithString:(NSString *)aString</span><br></pre></td></tr></table></figure>
@@ -2019,13 +2019,13 @@
 <p>问题就出在：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">OSStatus status &#x3D; SecItemAdd((__bridge CFDictionaryRef)publicKey, &amp;persistKey);</span><br></pre></td></tr></table></figure>
 
-<p>在<a href="https://stackoverflow.com/questions/20344255/secitemadd-and-secitemcopymatching-returns-error-code-34018-errsecmissingentit" target="_blank" rel="noopener">stack overflow</a>发现有的人也遇到了类似的问题，现总问题结如下：</p>
+<p>在<a href="https://stackoverflow.com/questions/20344255/secitemadd-and-secitemcopymatching-returns-error-code-34018-errsecmissingentit">stack overflow</a>发现有的人也遇到了类似的问题，现总问题结如下：</p>
 <blockquote>
 <p>1.当我在连接着Xcode的真机设备上运行app的时候,我试图获取钥匙串，却由于-34018的错误导致运行失败。缺乏钥匙串错误代码开发文档，而且也很难重现此错误(发生的概率大概30%，我也不知道为什么发生)。由于缺乏相关的文档，所以调试这种错误就变得非常困难。为什么会出现此错误，如何解决？xcode5、ios7</p>
 </blockquote>
 <h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><h5 id="方案一："><a href="#方案一：" class="headerlink" title="方案一："></a>方案一：</h5><p>你不得不通过在你的test target中添加下面的代码作为运行脚本来签名你的 .xcttest文件夹</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">codesign --verify --force --sign &quot;$CODE_SIGN_IDENTITY&quot; &quot;$CODESIGNING_FOLDER_PATH&quot;</span><br></pre></td></tr></table></figure>
-<h5 id="方案二："><a href="#方案二：" class="headerlink" title="方案二："></a>方案二：</h5><p>在查看<a href="https://opensource.apple.com/source/Security/Security-55471/sec/Security/" target="_blank" rel="noopener">源码</a> 之后，我注意到钥匙串通过一种安全进程(区别于app的进程)获取。<br>app和<code>安全进程</code>通过一项称之为<a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingXPCServices.html" target="_blank" rel="noopener">XPC</a>的技术进行<code>对话</code>。<code>安全进程</code>经由<code>XPC</code>的启动命令启动。你可以发现真机（模拟器也是如此）app的<code>安全进程</code>正在运行，它的父进程也已经启动。<br>我猜测，有可能某些未知的原因导致<code>安全进程</code>启动失败或者启动太慢，使得你使用它的时候还没有准备好。<br>或许，你可以考虑如何重启<code>安全进程</code>。</p>
+<h5 id="方案二："><a href="#方案二：" class="headerlink" title="方案二："></a>方案二：</h5><p>在查看<a href="https://opensource.apple.com/source/Security/Security-55471/sec/Security/">源码</a> 之后，我注意到钥匙串通过一种安全进程(区别于app的进程)获取。<br>app和<code>安全进程</code>通过一项称之为<a href="https://developer.apple.com/library/archive/documentation/MacOSX/Conceptual/BPSystemStartup/Chapters/CreatingXPCServices.html">XPC</a>的技术进行<code>对话</code>。<code>安全进程</code>经由<code>XPC</code>的启动命令启动。你可以发现真机（模拟器也是如此）app的<code>安全进程</code>正在运行，它的父进程也已经启动。<br>我猜测，有可能某些未知的原因导致<code>安全进程</code>启动失败或者启动太慢，使得你使用它的时候还没有准备好。<br>或许，你可以考虑如何重启<code>安全进程</code>。</p>
 <h5 id="来自苹果官方回复："><a href="#来自苹果官方回复：" class="headerlink" title="来自苹果官方回复："></a>来自苹果官方回复：</h5><p>1.我们终于能够在ios8.3里重现-34018错误，这是我们查找问题根源和修复问题的第一步。<br>可是，我们并不能给出确切的解决时间，但是由于已经影响了很多的开发者，我们也非常希望尽快解决。<br>作为变通方案，我建议在在didFinishLaunchingWithOptions 和applicationDidBecomeActive: 两个方法之前添加一个小的延时给获取字符串争取一点时间。然而，好像并没有明显的作用，这就意味着除了重启app确实没有更好的解决方法。<br>这个问题似乎和内存压力也有一定的关系，在解决这个问题的时候，要积极处理内存警告的问题</p>
 <h3 id="更新："><a href="#更新：" class="headerlink" title="更新："></a>更新：</h3><ul>
 <li>一些情况下是由于不正确的app签名造成的，你可以很清楚的辨别这种原因，因为它100%可以重现。</li>
@@ -2052,7 +2052,7 @@
   <entry>
     <title>四胞胎之----nil 、 Nil 、 NULL 、NSNull</title>
     <url>/2015/10/21/Nill/</url>
-    <content><![CDATA[<p><a href="https://nshipster.cn/nil/" target="_blank" rel="noopener">转自：nil / Nil / NULL / NSNull</a></p>
+    <content><![CDATA[<p><a href="https://nshipster.cn/nil/">转自：nil / Nil / NULL / NSNull</a></p>
 <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在OC开发过程中，我们会遇到nil 、 Nil 、 NULL 、NSNull这个四个长得极为相似的字符，nill应该是使用最频繁的，在创建对象之初我们往往会把对象的指针指向nill，但是它们之间的区别到底是什么，我们可能不太清楚。</p>
 <a id="more"></a>
 

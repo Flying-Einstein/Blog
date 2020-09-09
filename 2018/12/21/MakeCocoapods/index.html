@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 4.2.0">
+<meta name="generator" content="Hexo 5.1.1">
 <!--接入谷歌广告-->
 <script data-ad-client="ca-pub-3825645052664031" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
@@ -30,7 +30,7 @@
 <meta property="og:description" content="在开发的过程中很多功能模块可能会在同一个App的不同的业务模块出现，也可能在不同的App出现，为了提高我们的开发效率，我们应该将普遍使用的功能模块封装成组件，并通过Cocoapods来管理  利用pod trunk发布程序">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2018-12-20T16:00:00.000Z">
-<meta property="article:modified_time" content="2020-03-21T09:52:56.751Z">
+<meta property="article:modified_time" content="2020-03-21T09:52:56.000Z">
 <meta property="article:author" content="Ray">
 <meta property="article:tag" content="转载">
 <meta name="twitter:card" content="summary">
@@ -304,20 +304,20 @@
         <blockquote>
 <p>在开发的过程中很多功能模块可能会在同一个App的不同的业务模块出现，也可能在不同的App出现，为了提高我们的开发效率，我们应该将普遍使用的功能模块封装成组件，并通过Cocoapods来管理</p>
 </blockquote>
-<p><a href="https://cyrill.win/articles/2016/12/04/pod-trunk" target="_blank" rel="noopener">利用pod trunk发布程序</a></p>
+<p><a target="_blank" rel="noopener" href="https://cyrill.win/articles/2016/12/04/pod-trunk">利用pod trunk发布程序</a></p>
 <a id="more"></a>
 
 <h3 id="注册"><a href="#注册" class="headerlink" title="注册"></a>注册</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk register 邮箱 &#39;用户名&#39; --description&#x3D;&#39;电脑描述&#39;</span><br></pre></td></tr></table></figure>
 <h3 id="查收邮件"><a href="#查收邮件" class="headerlink" title="查收邮件"></a>查收邮件</h3><ul>
 <li>如果是QQ邮箱，可能会被放到“垃圾箱”中，并不一定是“收件箱”</li>
-<li>点击邮件中的链接： <a href="https://trunk.cocoapods.org/sessions/verify/xxxx" target="_blank" rel="noopener">https://trunk.cocoapods.org/sessions/verify/xxxx</a></li>
+<li>点击邮件中的链接： <a target="_blank" rel="noopener" href="https://trunk.cocoapods.org/sessions/verify/xxxx">https://trunk.cocoapods.org/sessions/verify/xxxx</a></li>
 </ul>
 <h3 id="查看个人信息"><a href="#查看个人信息" class="headerlink" title="查看个人信息"></a>查看个人信息</h3><ul>
 <li>pod trunk me</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">- Name:     &#39;Cyrill&#39;</span><br><span class="line">- Email:    lichunyang@outlook.com</span><br><span class="line">- Since:    December 4th, 2016 21:22</span><br><span class="line">- Pods:     None</span><br><span class="line">- Sessions:</span><br><span class="line">- December 4th, 2016 21:22 - July 13th, 21:00. IP: 103.244.255.84 Description: ‘MacbookProOfCyrill’</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">- Name:     &#39;Cyrill&#39;</span><br><span class="line">- Email:    lichunyang@outlook.com</span><br><span class="line">- Since:    December 4th, 2016 21:22</span><br><span class="line">- Pods:     None</span><br><span class="line">- Sessions:</span><br><span class="line">- December 4th, 2016 21:22 - July 13th, 21:00. IP: 103.244.255.84 Description: ‘MacbookProOfCyrill’</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>中间可能遇到这种错误</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">NoMethodError - undefined method &#39;last&#39; for #&lt;Netrc::Entry:0x007fc59c246378&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">NoMethodError - undefined method &#39;last&#39; for #&lt;Netrc::Entry:0x007fc59c246378&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>这时候需要尝试更新gem源或者pod</p>
 <ul>
 <li>sudo gem update –system</li>
@@ -337,7 +337,7 @@
 <li>删除tag</li>
 </ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git tag -d 1.0</span><br><span class="line">git push origin :refs&#x2F;tags&#x2F;1.0</span><br><span class="line">git tag -a 1.0 -m &quot;Version 1.0&quot;</span><br><span class="line">git push --tags</span><br></pre></td></tr></table></figure>
-<h3 id="检测podspec语法"><a href="#检测podspec语法" class="headerlink" title="检测podspec语法"></a>检测podspec语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod lib lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod spec相对于pod lib会更为精确，pod lib相当于只验证一个本地仓库，pod spec会同时验证本地仓库和远程仓库。</span><br></pre></td></tr></table></figure>
+<h3 id="检测podspec语法"><a href="#检测podspec语法" class="headerlink" title="检测podspec语法"></a>检测podspec语法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod lib lint CYPhotoLib.podspec</span><br><span class="line"></span><br><span class="line">pod spec相对于pod lib会更为精确，pod lib相当于只验证一个本地仓库，pod spec会同时验证本地仓库和远程仓库。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h3 id="发布podspec"><a href="#发布podspec" class="headerlink" title="发布podspec"></a>发布podspec</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pod trunk push CYPhotoLib.podspec</span><br><span class="line">如果是第一次发布pod，需要去 https:&#x2F;&#x2F;trunk.cocoapods.org&#x2F;claims&#x2F;new 认领pod</span><br></pre></td></tr></table></figure>
 <p>有可能出现的错误</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint 的时候是通过了的，没有错误</span><br><span class="line">然后 pod trunk push 的时候报错，如下：</span><br><span class="line">    [iOS] unknown: Encountered an unknown error (Pod::DSLError) during validation.</span><br><span class="line">解决：这种状况有可能是git的tag和podspec的tag不对</span><br></pre></td></tr></table></figure>
@@ -458,7 +458,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#注册"><span class="nav-number">1.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查收邮件"><span class="nav-number">2.</span> <span class="nav-text">查收邮件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看个人信息"><span class="nav-number">3.</span> <span class="nav-text">查看个人信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建podspec文件"><span class="nav-number">4.</span> <span class="nav-text">创建podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#填写podspec内容"><span class="nav-number">5.</span> <span class="nav-text">填写podspec内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测podspec语法"><span class="nav-number">6.</span> <span class="nav-text">检测podspec语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布podspec"><span class="nav-number">7.</span> <span class="nav-text">发布podspec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检测"><span class="nav-number">8.</span> <span class="nav-text">检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#仓库更新"><span class="nav-number">9.</span> <span class="nav-text">仓库更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#遇到的坑："><span class="nav-number">10.</span> <span class="nav-text">遇到的坑：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B3%A8%E5%86%8C"><span class="nav-number">1.</span> <span class="nav-text">注册</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E6%94%B6%E9%82%AE%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">查收邮件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E4%B8%AA%E4%BA%BA%E4%BF%A1%E6%81%AF"><span class="nav-number">3.</span> <span class="nav-text">查看个人信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9B%E5%BB%BApodspec%E6%96%87%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">创建podspec文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A1%AB%E5%86%99podspec%E5%86%85%E5%AE%B9"><span class="nav-number">5.</span> <span class="nav-text">填写podspec内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8Bpodspec%E8%AF%AD%E6%B3%95"><span class="nav-number">6.</span> <span class="nav-text">检测podspec语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%91%E5%B8%83podspec"><span class="nav-number">7.</span> <span class="nav-text">发布podspec</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A3%80%E6%B5%8B"><span class="nav-number">8.</span> <span class="nav-text">检测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%93%E5%BA%93%E6%9B%B4%E6%96%B0"><span class="nav-number">9.</span> <span class="nav-text">仓库更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91%EF%BC%9A"><span class="nav-number">10.</span> <span class="nav-text">遇到的坑：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
